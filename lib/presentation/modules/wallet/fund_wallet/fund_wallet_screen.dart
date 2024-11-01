@@ -2,8 +2,15 @@ import 'package:clipboard/clipboard.dart';
 import 'package:fastlink_app/core/extentions.dart';
 import 'package:fastlink_app/data/user/user.dart';
 import 'package:fastlink_app/presentation/modules/wallet/card_payment/cards_controller.dart';
+import 'package:fastlink_app/presentation/modules/wallet/card_payment/fund_with_card/fund_wallet_card.dart';
+import 'package:fastlink_app/presentation/modules/wallet/card_payment/fund_with_card/fund_with_card_controller.dart';
+import 'package:fastlink_app/presentation/modules/wallet/transfer_payment/kyc/kyc_controller.dart';
+import 'package:fastlink_app/presentation/modules/wallet/transfer_payment/kyc/kyc_screen.dart';
+import 'package:fastlink_app/presentation/utils/styles/text_size.dart';
 import 'package:fastlink_app/presentation/widgets/app_card.dart';
 import 'package:fastlink_app/presentation/widgets/app_text_form_field.dart';
+import 'package:fastlink_app/presentation/widgets/spacer.dart';
+import 'package:fastlink_app/resources/assets.gen.dart';
 import 'package:pwa_install/pwa_install.dart' as pwa;
 
 import 'package:flutter/gestures.dart';
@@ -19,6 +26,10 @@ import '../../../utils/constants.dart';
 import '../../../widgets/column_pro.dart';
 import 'fund_wallet_controller.dart';
 
+import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+
+
 class FundWalletScreen extends GetView<FundWalletController> {
   FundWalletScreen({Key? key}) : super(key: key);
 
@@ -28,81 +39,107 @@ class FundWalletScreen extends GetView<FundWalletController> {
       appBar: AppBar(
         title: Text('Fund Wallet'),
       ),
-      body: Form(
-        key: controller.formKey,
-        child: FlexibleScrollViewColumn(
-          padding: EdgeInsets.all(20),
-          crossAxisAlignment: CrossAxisAlignment.stretch,
+      body: _fundWalletView(),
+    );
+  }
+
+  Widget _fundWalletView() {
+    return ListView(
+      children: [
+        PaymentMethod(),
+      ],
+    );
+  }
+}
+
+class PaymentMethod extends StatelessWidget {
+  const PaymentMethod({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      height: 400,
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          PaymentWidget(
+            image: Assets.images.bank.image(),
+            bigDescription: 'Bank Transfer',
+            smallDescription: 'Fund your wallet via mobile or internet\n banking at no cost.',
+            onTap: () {
+               // Instantiate the ProfilePageController before navigating
+                  Get.put(KycController());
+                  Get.to(() => KycScreen());
+            },
+          ),
+           PaymentWidget(
+            image: Assets.images.card.image(),
+            bigDescription: 'Debit Card',
+            smallDescription: 'Fund wallet directly from your bank\n card or account at 0.4% ',
+            onTap: () {
+               // Instantiate the ProfilePageController before navigating
+                  Get.put(FundWithCardController());
+                  Get.to(() => FundWithCardScreen());
+            },
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class PaymentWidget extends StatelessWidget {
+  final String bigDescription;
+  final String smallDescription; 
+  final Widget image;
+  final VoidCallback? onTap;
+
+  const PaymentWidget({
+    Key? key,
+    required this.bigDescription,
+    required this.smallDescription, 
+    required this.image,
+    required this.onTap,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      onTap: onTap,
+      child: Padding(
+        padding: const EdgeInsets.all(30.0),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.start,
           children: [
-            // Container(
-            //   margin: EdgeInsets.all(20),
-            //   alignment: Alignment.center,
-            //   child: Column(
-            //     children: [
-            //       Text('Enter Amount'),
-            //       Gap(10),
-            //       TextFormField(
-            //         decoration: InputDecoration(
-            //           border: InputBorder.none,
-            //           enabledBorder: InputBorder.none,
-            //           focusedBorder: InputBorder.none,
-            //           errorBorder: InputBorder.none,
-            //           disabledBorder: InputBorder.none,
-            //         ),
-            //         style: GoogleFonts.getFont(
-            //           'Roboto',
-            //           fontSize: 35,
-            //           fontWeight: FontWeight.w500,
-            //           letterSpacing: 1.5,
-            //         ),
-            //         textAlign: TextAlign.center,
-            //         initialValue: controller.formatter.format('0'),
-            //         inputFormatters: <TextInputFormatter>[controller.formatter],
-            //         keyboardType: TextInputType.number,
-            //       ),
-            //     ],
-            //   ),
-            // ),
-            Gap(100),
-            Image.asset(
-              'assets/images/wallet.png',
-              height: 187,
-            ),
-            Gap(40),
-            // Text(
-            //   'Add Money to your Wallet',
-            //   textAlign: TextAlign.center,
-            // ),
-            Gap(20),
-            AppTextFormField(
-              label: 'Amount',
-              hintText: 'Enter amount to be added in Wallet',
-              moneyInput: true,
-              // readOnly: controller.paymentResponse.value != null,
-              prefixText: 'NGN ',
-              initialValue: controller.formatter.format('0'),
-              inputFormatters: <TextInputFormatter>[controller.formatter],
-              validator: (String? value) {
-                if (controller.amount < 100) {
-                  return 'Amount must be greater than NGN 99';
-                }
-                return null;
-              },
-              onChanged: controller.onTextChanged,
-            ),
-            Gap(36),
-            ElevatedButton(
-              onPressed: controller.proceed_to_pay,
-              child: Text(
-                'Proceed To Pay',
+            image,
+            horizontalSpace(30),
+            Expanded( 
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start, 
+                children: [
+                  Text(
+                    bigDescription,
+                    style: FBText.fBTextBlackBoldMiddMedium
+                  ),
+                  Text(
+                    smallDescription,
+                    style: FBText.fBTextBlacklittle,
+                  ),
+                ],
               ),
-            ).center
+            ),
+            const Icon(
+              Icons.arrow_forward_ios,
+              size: 16,
+              color: Colors.black,
+            ),
           ],
         ),
       ),
     );
   }
 }
+
 
 class PaymentErrorPage extends StatelessWidget {
   @override

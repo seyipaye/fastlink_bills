@@ -15,8 +15,8 @@ class VerifyPaymentController extends GetxController {
 
   Rx<User> get user => AuthRepository.instance.user;
 
-  final CurrencyTextInputFormatter formatter =
-      CurrencyTextInputFormatter(locale: 'en_NG', decimalDigits: 0, symbol: '');
+  // final CurrencyTextInputFormatter formatter =
+  //     CurrencyTextInputFormatter(locale: 'en_NG', decimalDigits: 0, symbol: '');
 
   final paymentResponse = Rxn<FundwalletResponse>();
 
@@ -68,7 +68,7 @@ class VerifyPaymentController extends GetxController {
   }
 
   void onTextChanged(String value) {
-    if (formatter.getUnformattedValue() != 0)
-      amount.value = formatter.getUnformattedValue();
+    // if (formatter.getUnformattedValue() != 0)
+    //   amount.value = formatter.getUnformattedValue();
   }
 }

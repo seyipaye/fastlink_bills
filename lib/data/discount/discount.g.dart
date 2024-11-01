@@ -15,9 +15,9 @@ Discount _$DiscountFromJson(Map<String, dynamic> json) => Discount(
       applicable_plan: json['applicable_plan'] as String,
       valid: json['valid'] as bool,
       max_price: (json['max_price'] as num).toDouble(),
-      max_usage: json['max_usage'] as int,
+      max_usage: (json['max_usage'] as num).toInt(),
       title: json['title'] as String,
-      usage_count: json['usage_count'] as int,
+      usage_count: (json['usage_count'] as num).toInt(),
       percentage: (json['percentage'] as num).toDouble(),
     );
 

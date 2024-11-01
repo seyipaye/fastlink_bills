@@ -11,8 +11,8 @@ class TopUpController extends GetxController {
   final formKey = GlobalKey<FormState>();
 
   Rx<User> get user => AuthRepository.instance.user;
-  final CurrencyTextInputFormatter formatter = CurrencyTextInputFormatter(
-      locale: 'en_NG', decimalDigits: 0, symbol: '₦');
+  // final CurrencyTextInputFormatter formatter = CurrencyTextInputFormatter(
+  //     locale: 'en_NG', decimalDigits: 0, symbol: '₦');
   late String wallet_id;
 
   @override
@@ -22,34 +22,34 @@ class TopUpController extends GetxController {
     // wallet_id = Get.arguments;
   }
 
-  void topUp() {
-    final amount = formatter.getUnformattedValue();
+  // void topUp() {
+  //  // final amount = formatter.getUnformattedValue();
 
-    FocusManager.instance.primaryFocus?.unfocus();
+  //   FocusManager.instance.primaryFocus?.unfocus();
 
-    final form = formKey.currentState!;
-    if (form.validate()) {
-      form.save();
+  //   final form = formKey.currentState!;
+  //   if (form.validate()) {
+  //     form.save();
 
-      showLoadingState;
+  //     showLoadingState;
 
-      AuthRepository.instance
-          .topUp(
-        amount: amount,
-      )
-          .then((msg) {
-        // Success, Go Back back
-        showMessage(msg, clear: true);
-        Get.until((route) => Get.currentRoute == Routes.home);
-      }).catchError((err, stackTrace) {
-        if (err is! String) {
-          err = err.toString();
-        }
-        // Error
-        showError(err, clear: true);
-      });
-    }
-  }
+  //     AuthRepository.instance
+  //         .topUp(
+  //       amount: amount,
+  //     )
+  //         .then((msg) {
+  //       // Success, Go Back back
+  //       showMessage(msg, clear: true);
+  //       Get.until((route) => Get.currentRoute == Routes.home);
+  //     }).catchError((err, stackTrace) {
+  //       if (err is! String) {
+  //         err = err.toString();
+  //       }
+  //       // Error
+  //       showError(err, clear: true);
+  //     });
+  //   }
+  // }
 
   // void recievePayment() => Get.toNamed(Routes.receivePayment);
 }

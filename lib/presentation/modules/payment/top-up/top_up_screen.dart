@@ -37,15 +37,15 @@ class TopUpScreen extends GetView<TopUpController> {
                     ),
                     
                     textAlign: TextAlign.center,
-                    initialValue: controller.formatter.format('0'),
-                    inputFormatters: <TextInputFormatter>[controller.formatter],
+                    //initialValue: controller.formatter.format('0'),
+                   // inputFormatters: <TextInputFormatter>[controller.formatter],
                     keyboardType: TextInputType.number,
                   ),
                 ],
               ),
             ),
             Gap(20),
-            ElevatedButton(onPressed: controller.topUp, child: Text('Top-Up'))
+            //ElevatedButton(onPressed: controller.topUp, child: Text('Top-Up'))
           ],
         ),
       ),

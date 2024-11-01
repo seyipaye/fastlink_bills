@@ -12,11 +12,11 @@ Plan _$PlanFromJson(Map<String, dynamic> json) => Plan(
       json['tags'] as String,
       json['data_unit'] as String,
       json['renewable'] as bool,
-      json['days_to_use'] as int,
+      (json['days_to_use'] as num).toInt(),
       json['title'] as String,
-      json['data_value'] as int,
-      json['profile_id'] as int,
-      json['id'] as int,
+      (json['data_value'] as num).toInt(),
+      (json['profile_id'] as num).toInt(),
+      (json['id'] as num).toInt(),
     );
 
 Map<String, dynamic> _$PlanToJson(Plan instance) => <String, dynamic>{

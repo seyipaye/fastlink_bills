@@ -13,8 +13,8 @@ class PurchasePlanController extends GetxController {
   final formKey = GlobalKey<FormState>();
 
   Rx<User> get user => AuthRepository.instance.user;
-  final CurrencyTextInputFormatter formatter = CurrencyTextInputFormatter(
-      locale: 'en_NG', decimalDigits: 0, symbol: '₦');
+  // final CurrencyTextInputFormatter formatter = CurrencyTextInputFormatter(
+  //     locale: 'en_NG', decimalDigits: 0, symbol: '₦');
   late Plan plan;
   late Discounts? discounts;
   final selected_discount = Rxn<Discount>();

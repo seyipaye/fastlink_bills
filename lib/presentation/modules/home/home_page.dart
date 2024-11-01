@@ -1,29 +1,17 @@
-import 'package:fastlink_app/presentation/utils/colors.dart';
+import 'package:fastlink_app/presentation/modules/data/profile/profile_controller.dart';
+import 'package:fastlink_app/presentation/modules/data/profile/profile_screen.dart';
+import 'package:fastlink_app/presentation/utils/styles/color.dart';
+import 'package:fastlink_app/presentation/utils/styles/fb_button.dart';
+import 'package:fastlink_app/presentation/utils/styles/text_size.dart';
+import 'package:fastlink_app/presentation/widgets/fund_wallet_card.dart';
+import 'package:fastlink_app/presentation/widgets/quick_link.dart';
+import 'package:fastlink_app/presentation/widgets/referral_tab.dart';
+import 'package:fastlink_app/presentation/widgets/spacer.dart';
+import 'package:fastlink_app/presentation/widgets/transaction_tab.dart';
+import 'package:fastlink_app/resources/assets.gen.dart';
 import 'package:flutter/material.dart';
-import 'package:gap/gap.dart';
 import 'package:get/get.dart';
-import 'package:fastlink_app/presentation/widgets/app_card.dart';
-import 'package:percent_indicator/circular_percent_indicator.dart';
-import 'package:readmore/readmore.dart';
-import '../../../core/app_routes.dart';
-import '../../../../core/extentions.dart';
-
-import '../../utils/constants.dart';
-import '../../widgets/money_text_view.dart';
 import 'home_controller.dart';
-
-const message =
-    '''Note: We are suspending operations from Friday 8th December, 2023 - Monday 8th January, 2024  
-              
-We will be closed for the year officially, but we promise to resume with a much better service
-
-Be rest assured that your deposits are fully secured and will be made available on resumption of our operations
-
-Till then, do have a wonderful holiday
-
-Merry Christmas and a Happy New Year in Advance 💫
-
-''';
 
 class HomePage extends GetView<HomePageController> {
   HomePage({Key? key}) : super(key: key);
@@ -31,183 +19,30 @@ class HomePage extends GetView<HomePageController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text(
-          'Hello ${(controller.user.value.name ?? controller.user.value.username)}!',
-        ),
-        automaticallyImplyLeading: false,
-      ),
-      body: _buildBody(),
+      body: _homeBody(),
     );
   }
 
-  Widget _buildBody() {
+  Widget _homeBody() {
     return RefreshIndicator(
       key: controller.refreshIndicatorKey,
       onRefresh: controller.refresh,
       child: ListView(
         children: [
-          AppMaterial(
-            margin: EdgeInsets.all(20),
-            padding: EdgeInsets.all(20),
-            color: AppColors.blue,
-            child: DefaultTextStyle(
-              style: TextStyle(color: Colors.white),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Obx(() => Text(controller.user.value.profile)),
-                      Image.asset(
-                        'assets/images/fast_link_logo_compact.png',
-                        width: 60,
-                      )
-                    ],
-                  ),
-                  Gap(10),
-                  Container(
-                    height: 110,
-                    width: 110,
-                    alignment: Alignment.centerLeft,
-                    child: GetX<HomePageController>(
-                      init: HomePageController(),
-                      builder: (_) {
-                        return CircularPercentIndicator(
-                          radius: 55,
-                          lineWidth: 7,
-                          percent: controller.percentage,
-                          backgroundColor: Colors.white24,
-                          animation: true,
-                          center: Column(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            mainAxisSize: MainAxisSize.min,
-                            children: [
-                              Text(
-                                (controller.user.value.data?.data_used
-                                            .dataFomart() ??
-                                        '0 MB') +
-                                    '/',
-                                style: Get.textTheme.titleLarge?.copyWith(
-                                  color: Colors.white,
-                                  fontSize: 18,
-                                ),
-                              ),
-                              Text(
-                                controller.user.value.data?.data_cap
-                                        .dataFomart() ??
-                                    '0 MB',
-                                style: Get.textTheme.titleLarge?.copyWith(
-                                  color: Colors.white70,
-                                  fontSize: 16,
-                                ),
-                              ),
-                            ],
-                          ),
-                          progressColor: Colors.white,
-                          circularStrokeCap: CircularStrokeCap.round,
-                        );
-                      },
-                    ),
-                  ),
-                  if (!kIsWebMobile) Gap(10),
-                  // Missalignment on Web
-                  Obx(() => Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        crossAxisAlignment: kIsWebMobile
-                            ? CrossAxisAlignment.end
-                            : CrossAxisAlignment.center,
-                        children: [
-                          (controller.user.value.to_date != null)
-                              ? GetX<HomePageController>(
-                                  builder: (_) {
-                                    return Text(
-                                      'Valid till ${controller.user.value.data?.to_date?.yMMMdFomart}',
-                                      style: TextStyle(
-                                        fontSize: 12,
-                                      ),
-                                    );
-                                  },
-                                )
-                              : Text(''),
-                          ElevatedButton(
-                            child: Text(
-                              'Buy Data',
-                              style: Get.textTheme.titleSmall
-                                  ?.apply(color: Colors.white),
-                            ),
-                            style: ElevatedButton.styleFrom(
-                              minimumSize: Size(0, 40),
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(100),
-                              ),
-                            ),
-                            onPressed: () {
-                              Get.toNamed(Routes.buyData);
-                            },
-                          ),
-                        ],
-                      )),
-                ],
-              ),
-            ),
-          ),
-          // AppMaterial(
-          //   margin: EdgeInsets.all(20),
-          //   padding: EdgeInsets.all(20),
-          //   color: AppColors.primary.shade50,
-          //   child: ReadMoreText(
-          //     message,
-          //     trimLines: 2,
-          //     colorClickableText: AppColors.primary,
-          //     trimMode: TrimMode.Line,
-          //     style: Get.textTheme.labelMedium,
-          //     trimCollapsedText: 'Show more',
-          //     trimExpandedText: 'Show less',
-          //     moreStyle: TextStyle(fontSize: 14, fontWeight: FontWeight.bold),
-          //   ),
-          // ),
-          AppMaterial(
-            margin: EdgeInsets.all(20),
-            padding: EdgeInsets.all(20),
+          Padding(
+            padding: const EdgeInsets.all(25.0),
             child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
-                Text(
-                  'Wallet Balance',
-                  style: Get.textTheme.labelMedium,
-                ),
-                Gap(10),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    GetX<HomePageController>(
-                      builder: (_) {
-                        return MoneyText(
-                          controller.user.value.balance,
-                          style: Get.textTheme.titleMedium
-                              ?.copyWith(fontWeight: FontWeight.bold),
-                        );
-                      },
-                    ),
-                    OutlinedButton(
-                      child: Text(
-                        'Fund Wallet',
-                        style: Get.textTheme.titleSmall
-                            ?.apply(color: AppColors.primary),
-                      ),
-                      style: OutlinedButton.styleFrom(
-                        minimumSize: Size(0, 40),
-                        shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(100)),
-                      ),
-                      onPressed: () {
-                        Get.toNamed(Routes.fundWallet);
-                      },
-                    ),
-                  ],
-                ),
+                ProfileAndNotification(),
+                verticalSpace(20),
+                FundWalletCard(),
+                verticalSpace(20),
+                QuickLink(),
+                verticalSpace(20),
+                TransactionTab(),
+                verticalSpace(40),
+                ReferralTab()
               ],
             ),
           ),
@@ -215,25 +50,135 @@ class HomePage extends GetView<HomePageController> {
       ),
     );
   }
+}
 
-  Column buildActionButton({
-    required String text,
-    required VoidCallback onPressed,
-    required Widget icon,
-  }) {
-    return Column(
+class ProfileAndNotification extends StatelessWidget {
+  const ProfileAndNotification({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        FloatingActionButton.small(
-            onPressed: onPressed,
-            elevation: 3,
-            shape: CircleBorder(),
-            child: icon),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.start,
+          children: [
+            Container(
+              width: 40,
+              height: 40,
+              decoration: BoxDecoration(
+                shape: BoxShape.circle,
+                border: Border.all(
+                  color: Colors.orange, // Border color
+                  width: 1.0, // Border width
+                ),
+              ),
+              child: IconButton(
+                onPressed: () {
+                  // Instantiate the ProfilePageController before navigating
+                  Get.put(ProfileController());
+                  Get.to(() => ProfileScreen());
+                },
+                icon: Icon(Icons.person),
+                iconSize: 15,
+              ),
+            ),
+            horizontalSpace(5),
+            Text(
+              'Hi, Rachael',
+              style: FBText.fBTextBlackBold,
+            ),
+          ],
+        ),
+        IconButton(
+          onPressed: () {
+            // Instantiate the ProfilePageController before navigating
+            //  Get.put(ProfileController());
+            //     Get.to(() => ProfileScreen());
+          },
+          icon: Icon(Icons.notifications),
+          iconSize: 25,
+          color: FBColors.blackColor,
+        ),
+      ],
+    );
+  }
+}
+
+
+
+
+
+
+//Information coming from the server.
+class TransactionsData extends StatelessWidget {
+  const TransactionsData({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      // mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: [
+        Assets.images.phone.image(width: 80, height: 40),
+        horizontalSpace(7),
+        Column(
+          children: [
+            Text(
+              'Airtime Purchase',
+              style: FBText.fBTextBlackBoldMidMedium,
+            ),
+            verticalSpace(7),
+            Text(
+              'Sep 5th, 18;25',
+              style: FBText.fBTextBlacklittle,
+            ),
+          ],
+        ),
+        horizontalSpace(40),
         Text(
-          text,
-          style: TextStyle(fontSize: 12),
-          textAlign: TextAlign.center,
+          '-200',
+          style: FBText.fBTextBlackBoldMidMedium,
         )
       ],
+    );
+  }
+}
+
+
+class CustomTextButton extends StatelessWidget {
+  final String text;
+  final Widget? leading;
+  final Widget? trailing;
+  final VoidCallback? onTap;
+  final Color? color; // Optional color parameter
+
+  const CustomTextButton({
+    Key? key,
+    required this.text,
+    this.leading,
+    this.trailing,
+    this.onTap,
+    this.color, // Allow users to pass a color
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      onTap: onTap,
+      child: Row(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          if (leading != null) leading!,
+          Text(
+            text,
+            style: FBText.fBTextOrangeSmall.copyWith(
+              color: color ?? Colors.orange, // Default to orange if color is not provided
+            ),
+          ),
+          horizontalSpace(5),
+          if (trailing != null) trailing!,
+        ],
+      ),
     );
   }
 }

@@ -1,7 +1,7 @@
+import 'package:fastlink_app/constants/constants.dart';
 import 'package:fastlink_app/presentation/modules/data/profile/profile_controller.dart';
 import 'package:fastlink_app/presentation/modules/data/profile/profile_screen.dart';
 import 'package:fastlink_app/presentation/utils/styles/color.dart';
-import 'package:fastlink_app/presentation/utils/styles/fb_button.dart';
 import 'package:fastlink_app/presentation/utils/styles/text_size.dart';
 import 'package:fastlink_app/presentation/widgets/fund_wallet_card.dart';
 import 'package:fastlink_app/presentation/widgets/quick_link.dart';
@@ -19,6 +19,11 @@ class HomePage extends GetView<HomePageController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: FBColors.whiteColor,
+      appBar: AppBar(
+        automaticallyImplyLeading: false,
+        title: ProfileAndNotification(),
+      ),
       body: _homeBody(),
     );
   }
@@ -30,12 +35,10 @@ class HomePage extends GetView<HomePageController> {
       child: ListView(
         children: [
           Padding(
-            padding: const EdgeInsets.all(25.0),
+            padding: const EdgeInsets.all(15.0),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
-                ProfileAndNotification(),
-                verticalSpace(20),
                 FundWalletCard(),
                 verticalSpace(20),
                 QuickLink(),
@@ -69,20 +72,28 @@ class ProfileAndNotification extends StatelessWidget {
               decoration: BoxDecoration(
                 shape: BoxShape.circle,
                 border: Border.all(
-                  color: Colors.orange, // Border color
-                  width: 1.0, // Border width
+                  color: FBColors.orangeColor,
+                  width: 1.0,
                 ),
               ),
-              child: IconButton(
-                onPressed: () {
+              child: GestureDetector(
+                onTap: () {
                   // Instantiate the ProfilePageController before navigating
                   Get.put(ProfileController());
                   Get.to(() => ProfileScreen());
                 },
-                icon: Icon(Icons.person),
-                iconSize: 15,
+                child: ClipOval(
+                  child: Image.network(
+                    kUrl,
+                   // 'https://picsum.photos/200/200',
+                    fit: BoxFit.cover,
+                    width: 40,
+                    height: 40,
+                  ),
+                ),
               ),
             ),
+
             horizontalSpace(5),
             Text(
               'Hi, Rachael',
@@ -90,67 +101,21 @@ class ProfileAndNotification extends StatelessWidget {
             ),
           ],
         ),
-        IconButton(
-          onPressed: () {
-            // Instantiate the ProfilePageController before navigating
-            //  Get.put(ProfileController());
-            //     Get.to(() => ProfileScreen());
-          },
-          icon: Icon(Icons.notifications),
-          iconSize: 25,
-          color: FBColors.blackColor,
-        ),
+        
+        Assets.images.notification.svg(),
+        
       ],
     );
+  
   }
 }
-
-
-
-
-
-
-//Information coming from the server.
-class TransactionsData extends StatelessWidget {
-  const TransactionsData({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Row(
-      // mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      children: [
-        Assets.images.phone.image(width: 80, height: 40),
-        horizontalSpace(7),
-        Column(
-          children: [
-            Text(
-              'Airtime Purchase',
-              style: FBText.fBTextBlackBoldMidMedium,
-            ),
-            verticalSpace(7),
-            Text(
-              'Sep 5th, 18;25',
-              style: FBText.fBTextBlacklittle,
-            ),
-          ],
-        ),
-        horizontalSpace(40),
-        Text(
-          '-200',
-          style: FBText.fBTextBlackBoldMidMedium,
-        )
-      ],
-    );
-  }
-}
-
 
 class CustomTextButton extends StatelessWidget {
   final String text;
   final Widget? leading;
   final Widget? trailing;
   final VoidCallback? onTap;
-  final Color? color; // Optional color parameter
+  final Color? color;
 
   const CustomTextButton({
     Key? key,
@@ -158,7 +123,7 @@ class CustomTextButton extends StatelessWidget {
     this.leading,
     this.trailing,
     this.onTap,
-    this.color, // Allow users to pass a color
+    this.color, 
   }) : super(key: key);
 
   @override
@@ -172,7 +137,8 @@ class CustomTextButton extends StatelessWidget {
           Text(
             text,
             style: FBText.fBTextOrangeSmall.copyWith(
-              color: color ?? Colors.orange, // Default to orange if color is not provided
+              color: color ??
+                  Colors.orange, 
             ),
           ),
           horizontalSpace(5),

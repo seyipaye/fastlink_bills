@@ -21,7 +21,8 @@ class FundWalletCard extends StatelessWidget {
       decoration: BoxDecoration(
           shape: BoxShape.rectangle,
           borderRadius: BorderRadius.circular(8),
-          color: FBColors.whiteColor),
+          color: Color(0xFFFFFBFB)
+),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         //mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -40,7 +41,7 @@ class FundWalletCard extends StatelessWidget {
                   verticalSpace(20),
                   VisibilityToggleText(
                     text: '10000' ,
-                    textStyle: FBText.fBTextBlackBoldMidMedium,
+                    textStyle: FBText.fBTextBlackBoldMidMedium16,
                   ),
                 ],
               ),
@@ -48,6 +49,8 @@ class FundWalletCard extends StatelessWidget {
                 width: 130,
                 height: 30,
                 child: FBButton(
+                  fontSize: 14,
+                  fontWeight: FontWeight.w500,
                   title: 'Fund wallet',
                   leading: Icon(
                     Icons.add,

@@ -6,6 +6,7 @@ import 'package:fastlink_app/presentation/modules/wallet/card_payment/fund_with_
 import 'package:fastlink_app/presentation/modules/wallet/card_payment/fund_with_card/fund_with_card_controller.dart';
 import 'package:fastlink_app/presentation/modules/wallet/transfer_payment/kyc/kyc_controller.dart';
 import 'package:fastlink_app/presentation/modules/wallet/transfer_payment/kyc/kyc_screen.dart';
+import 'package:fastlink_app/presentation/utils/styles/color.dart';
 import 'package:fastlink_app/presentation/utils/styles/text_size.dart';
 import 'package:fastlink_app/presentation/widgets/app_card.dart';
 import 'package:fastlink_app/presentation/widgets/app_text_form_field.dart';
@@ -36,6 +37,7 @@ class FundWalletScreen extends GetView<FundWalletController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: FBColors.whiteColor,
       appBar: AppBar(
         title: Text('Fund Wallet'),
       ),
@@ -59,30 +61,36 @@ class PaymentMethod extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       height: 400,
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          PaymentWidget(
-            image: Assets.images.bank.image(),
-            bigDescription: 'Bank Transfer',
-            smallDescription: 'Fund your wallet via mobile or internet\n banking at no cost.',
-            onTap: () {
-               // Instantiate the ProfilePageController before navigating
-                  Get.put(KycController());
-                  Get.to(() => KycScreen());
-            },
-          ),
-           PaymentWidget(
-            image: Assets.images.card.image(),
-            bigDescription: 'Debit Card',
-            smallDescription: 'Fund wallet directly from your bank\n card or account at 0.4% ',
-            onTap: () {
-               // Instantiate the ProfilePageController before navigating
-                  Get.put(FundWithCardController());
-                  Get.to(() => FundWithCardScreen());
-            },
-          ),
-        ],
+      child: Padding(
+        padding: const EdgeInsets.only(left: 40, right: 40),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            verticalSpace(50),
+            PaymentWidget(
+              image: Assets.images.bankSvg.svg(),
+              bigDescription: 'Bank Transfer',
+              smallDescription: 'Fund your wallet via mobile or \ninternet banking at no cost.',
+              onTap: () {
+                 // Instantiate the ProfilePageController before navigating
+                    Get.put(KycController());
+                    Get.to(() => KycScreen());
+              },
+            ),
+            verticalSpace(20),
+             PaymentWidget(
+              image: Assets.images.cardSvg.svg(),
+              bigDescription: 'Debit Card',
+              smallDescription: 'Fund wallet directly from your bank\n card or account at 0.4% ',
+              onTap: () {
+                 // Instantiate the ProfilePageController before navigating
+                    Get.put(FundWithCardController());
+                    Get.to(() => FundWithCardScreen());
+              },
+            ),
+                       
+          ],
+        ),
       ),
     );
   }
@@ -106,25 +114,38 @@ class PaymentWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: onTap,
-      child: Padding(
-        padding: const EdgeInsets.all(30.0),
+      child: Container(
+        decoration: BoxDecoration(
+          color: FBColors.whiteColor,
+          borderRadius: BorderRadius.circular(10),
+          border: Border.all(color: Color(0xFFC2C6C8), width: 0.0),
+        ),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
+                        horizontalSpace(5),
+
             image,
-            horizontalSpace(30),
+            //SizedBox(width: 16),
+           horizontalSpace(20),
             Expanded( 
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start, 
+                //mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
+                                    verticalSpace(10),
+
                   Text(
                     bigDescription,
                     style: FBText.fBTextBlackBoldMiddMedium
                   ),
+                  verticalSpace(7),
                   Text(
                     smallDescription,
                     style: FBText.fBTextBlacklittle,
                   ),
+                                    verticalSpace(10),
+
                 ],
               ),
             ),
@@ -133,6 +154,7 @@ class PaymentWidget extends StatelessWidget {
               size: 16,
               color: Colors.black,
             ),
+            horizontalSpace(5)
           ],
         ),
       ),

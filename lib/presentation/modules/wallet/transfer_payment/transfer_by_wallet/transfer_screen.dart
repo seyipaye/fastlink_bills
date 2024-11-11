@@ -13,6 +13,7 @@ class TransferScreen extends GetView<TransferController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: FBColors.whiteColor,
       appBar: AppBar(
         title: Text('Fund Wallet by Transfer'),
       ),
@@ -137,15 +138,21 @@ class TransferDetailsWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Row(
+      mainAxisAlignment: MainAxisAlignment.start,
       children: [
         Text(
           firstText,
           style: FBText.fbLightBlactText,
         ),
-        horizontalSpace(20),
-        Text(
-          secondText,
-          style: FBText.fBTextBlackBoldMidMedium,
+        horizontalSpace(50),
+        Expanded(
+          child: Padding(
+            padding: const EdgeInsets.only(left: 40),
+            child: Text(
+              secondText,
+              style: FBText.fBTextBlackBoldMidMedium16,
+            ),
+          ),
         ),
         if (showIcon)
           Padding(

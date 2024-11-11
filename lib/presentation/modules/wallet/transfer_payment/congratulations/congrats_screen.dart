@@ -38,7 +38,7 @@ class CongratsScreen extends GetView<CongratsController> {
                 "You’ve successfully completed your KYC by adding your BVN. Your wallet is now active, and you're ready to start funding it and making transactions with ease!",
                 style: FBText.fBTextBlackSmall,
               ),
-              verticalSpace(100),
+              verticalSpace(250),
               SizedBox(
                 width: 340,
                 height: 50,

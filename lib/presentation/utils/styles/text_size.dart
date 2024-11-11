@@ -10,8 +10,11 @@ TextStyle(fontSize: 32, color: FBColors.blackColor, fontWeight: FontWeight.w500)
 static TextStyle fBTextBlackBold =
 TextStyle(fontSize: 20, color: FBColors.blackColor, fontWeight: FontWeight.w500);
 
-static TextStyle fBTextBlackBoldMidMedium =
+static TextStyle fBTextBlackBoldMidMedium16 =
 TextStyle(fontSize: 16, color: FBColors.blackColor, fontWeight: FontWeight.w600);
+
+static TextStyle fBTextBlackBold12 =
+TextStyle(fontSize: 12, color: FBColors.blackColor, fontWeight: FontWeight.w600);
 
 static TextStyle fBTextBlackBoldMiddMedium =
 TextStyle(fontSize: 14, color: FBColors.blackColor, fontWeight: FontWeight.w600);

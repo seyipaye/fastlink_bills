@@ -14,6 +14,7 @@ class CardDetailsScreen extends GetView<CardDetailsController> {
    @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: FBColors.whiteColor,
       appBar: AppBar(
         title: Text('Add card details'),
       ),
@@ -78,7 +79,7 @@ class CardDetailsScreen extends GetView<CardDetailsController> {
           
                 ],
               ),
-              verticalSpace(30),
+              verticalSpace(50),
               SizedBox(
                 width: 350,
                 height: 50,

@@ -14,6 +14,7 @@ class KycScreen extends GetView<KycController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: FBColors.whiteColor,
       appBar: AppBar(
         title: Text('Fund Wallet by Transfer'),
       ),
@@ -35,7 +36,7 @@ class KycScreen extends GetView<KycController> {
                 style: FBText.fBTextBlackMedium,
               ),
             ),
-            verticalSpace(300),
+            verticalSpace(500),
             SizedBox(
               width: 340,
               height: 50,

@@ -16,6 +16,7 @@ class FundWithCardScreen extends GetView<FundWithCardController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       appBar: AppBar(
         title: Text('Fund Wallet with Card'),
       ),
@@ -31,7 +32,7 @@ class FundWithCardScreen extends GetView<FundWithCardController> {
               //onSaved: (val) => controller.email = val!.trim(),
               //validator: Validator.isNotEmpty,
             ),
-            verticalSpace(40),
+            verticalSpace(60),
             SizedBox(
               width: 340,
               height: 50,

@@ -2,6 +2,7 @@ import 'package:fastlink_app/presentation/modules/home/home_page.dart';
 import 'package:fastlink_app/presentation/modules/transaction/transaction_controller.dart';
 import 'package:fastlink_app/presentation/utils/styles/text_size.dart';
 import 'package:fastlink_app/presentation/widgets/spacer.dart';
+import 'package:fastlink_app/presentation/widgets/transaction_tab.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -21,7 +22,8 @@ class TransactionScreen extends GetView<TransactionController> {
           children: [
           MonthandIcon(nameOfMonth: 'Sep'),
           verticalSpace(30),
-            TransactionsData()
+            //TransactionsData()
+            TransactionList(transactions: [],),
           ],
         ),
       ),

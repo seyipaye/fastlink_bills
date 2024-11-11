@@ -44,10 +44,16 @@ class $AssetsImagesGen {
       const AssetGenImage('assets/images/announcenmt.png');
 
   /// File path: assets/images/bank.png
-  AssetGenImage get bank => const AssetGenImage('assets/images/bank.png');
+  AssetGenImage get bankPng => const AssetGenImage('assets/images/bank.png');
+
+  /// File path: assets/images/bank.svg
+  SvgGenImage get bankSvg => const SvgGenImage('assets/images/bank.svg');
 
   /// File path: assets/images/card.png
-  AssetGenImage get card => const AssetGenImage('assets/images/card.png');
+  AssetGenImage get cardPng => const AssetGenImage('assets/images/card.png');
+
+  /// File path: assets/images/card.svg
+  SvgGenImage get cardSvg => const SvgGenImage('assets/images/card.svg');
 
   /// File path: assets/images/cellphone_sound.png
   AssetGenImage get cellphoneSound =>
@@ -71,6 +77,14 @@ class $AssetsImagesGen {
   /// File path: assets/images/high_speed.png
   AssetGenImage get highSpeed =>
       const AssetGenImage('assets/images/high_speed.png');
+
+  /// File path: assets/images/notification.svg
+  SvgGenImage get notification =>
+      const SvgGenImage('assets/images/notification.svg');
+
+  /// File path: assets/images/notificationB.svg
+  SvgGenImage get notificationB =>
+      const SvgGenImage('assets/images/notificationB.svg');
 
   /// File path: assets/images/password.png
   AssetGenImage get password =>
@@ -97,14 +111,18 @@ class $AssetsImagesGen {
         a404,
         androidPrompt,
         announcenmt,
-        bank,
-        card,
+        bankPng,
+        bankSvg,
+        cardPng,
+        cardSvg,
         cellphoneSound,
         fastLinkLogo,
         fastLinkLogoCompact,
         greenMark,
         hands,
         highSpeed,
+        notification,
+        notificationB,
         password,
         phone,
         plus,

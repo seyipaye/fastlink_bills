@@ -15,6 +15,7 @@ class FundWalletResultScreen extends GetView<FundWalletResultController> {
    @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: FBColors.whiteColor,
       // appBar: AppBar(
       //   title: Text('Add card details'),
       // ),

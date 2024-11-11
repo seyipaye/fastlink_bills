@@ -17,6 +17,7 @@ class IdentityScreen extends GetView<IdentityController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: FBColors.whiteColor,
       appBar: AppBar(
         title: Text('Fund Wallet by Transfer'),
       ),
@@ -95,7 +96,7 @@ class BvnText extends StatelessWidget {
         Icon(
           Icons.circle,
           color: Colors.black,
-          size: 10.0,
+          size: 3.0,
         ),
         horizontalSpace(10),
         Flexible(

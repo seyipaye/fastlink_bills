@@ -10,6 +10,7 @@ import 'package:fastlink_app/presentation/widgets/spacer.dart';
 import 'package:fastlink_app/presentation/widgets/transaction_tab.dart';
 import 'package:fastlink_app/resources/assets.gen.dart';
 import 'package:flutter/material.dart';
+import 'package:gap/gap.dart';
 import 'package:get/get.dart';
 import 'home_controller.dart';
 
@@ -23,6 +24,12 @@ class HomePage extends GetView<HomePageController> {
       appBar: AppBar(
         automaticallyImplyLeading: false,
         title: ProfileAndNotification(),
+        actions: [
+          IconButton(
+            onPressed: () {},
+            icon: Assets.images.notification.svg(),
+          )
+        ],
       ),
       body: _homeBody(),
     );
@@ -32,24 +39,22 @@ class HomePage extends GetView<HomePageController> {
     return RefreshIndicator(
       key: controller.refreshIndicatorKey,
       onRefresh: controller.refresh,
-      child: ListView(
-        children: [
-          Padding(
-            padding: const EdgeInsets.all(15.0),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children: [
-                FundWalletCard(),
-                verticalSpace(20),
-                QuickLink(),
-                verticalSpace(20),
-                TransactionTab(),
-                verticalSpace(40),
-                ReferralTab()
-              ],
-            ),
+      child: SafeArea(
+        child: SingleChildScrollView(
+          padding: const EdgeInsets.all(20),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: [
+              FundWalletCard(),
+              Gap(20),
+              QuickLink(),
+              verticalSpace(20),
+              TransactionTab(),
+              verticalSpace(40),
+              ReferralTab()
+            ],
           ),
-        ],
+        ),
       ),
     );
   }
@@ -85,7 +90,7 @@ class ProfileAndNotification extends StatelessWidget {
                 child: ClipOval(
                   child: Image.network(
                     kUrl,
-                   // 'https://picsum.photos/200/200',
+                    // 'https://picsum.photos/200/200',
                     fit: BoxFit.cover,
                     width: 40,
                     height: 40,
@@ -93,7 +98,6 @@ class ProfileAndNotification extends StatelessWidget {
                 ),
               ),
             ),
-
             horizontalSpace(5),
             Text(
               'Hi, Rachael',
@@ -101,12 +105,8 @@ class ProfileAndNotification extends StatelessWidget {
             ),
           ],
         ),
-        
-        Assets.images.notification.svg(),
-        
       ],
     );
-  
   }
 }
 
@@ -123,7 +123,7 @@ class CustomTextButton extends StatelessWidget {
     this.leading,
     this.trailing,
     this.onTap,
-    this.color, 
+    this.color,
   }) : super(key: key);
 
   @override
@@ -137,8 +137,7 @@ class CustomTextButton extends StatelessWidget {
           Text(
             text,
             style: FBText.fBTextOrangeSmall.copyWith(
-              color: color ??
-                  Colors.orange, 
+              color: color ?? Colors.orange,
             ),
           ),
           horizontalSpace(5),

@@ -1,8 +1,9 @@
-
 import 'package:fastlink_app/presentation/utils/styles/text_size.dart';
+import 'package:fastlink_app/presentation/widgets/app_card.dart';
 import 'package:fastlink_app/presentation/widgets/spacer.dart';
 import 'package:fastlink_app/resources/assets.gen.dart';
 import 'package:flutter/material.dart';
+import 'package:gap/gap.dart';
 
 class QuickLink extends StatelessWidget {
   const QuickLink({super.key});
@@ -16,7 +17,7 @@ class QuickLink extends StatelessWidget {
           'Quick Links',
           style: FBText.fBTextBlackBoldMedium,
         ),
-        verticalSpace(3),
+        Gap(8),
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
@@ -41,26 +42,26 @@ class QuickLink extends StatelessWidget {
   }
 }
 
-Column buildActionButton({
+Widget buildActionButton({
   required String text,
   required VoidCallback onPressed,
   required Widget image,
 }) {
-  return Column(
-    children: [
-      RawMaterialButton(
-        onPressed: onPressed,
-        elevation: 0.0,
-        shape: const CircleBorder(),
-        fillColor: Colors.transparent,
-        padding: EdgeInsets.zero,
-        child: image,
-      ),
-      Text(
-        text,
-        style: TextStyle(fontSize: 12),
-        textAlign: TextAlign.center,
-      ),
-    ],
+  return AppMaterial(
+    padding: EdgeInsets.all(8),
+    onTap: onPressed,
+    color: Colors.transparent,
+    elevation: 0,
+    boxShadow: [],
+    child: Column(
+      children: [
+        image,
+        Text(
+          text,
+          style: TextStyle(fontSize: 12),
+          textAlign: TextAlign.center,
+        ),
+      ],
+    ),
   );
 }

@@ -11,44 +11,44 @@ class TransactionScreen extends GetView<TransactionController> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(appBar: AppBar(
-      title: Text('Transactions'),
-    ),
-    body: SingleChildScrollView(
-      child: Padding(
-        padding: const EdgeInsets.all(20.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-          MonthandIcon(nameOfMonth: 'Sep'),
-          verticalSpace(30),
-            //TransactionsData()
-            TransactionList(transactions: [],),
-          ],
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Transactions'),
+      ),
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: const EdgeInsets.all(20.0),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              MonthandIcon(nameOfMonth: 'Sep'),
+              verticalSpace(30),
+              //TransactionsData()
+              TransactionList(
+                transactions: [],
+              ),
+            ],
+          ),
         ),
       ),
-    ),
     );
   }
 }
 
-
-
-
 class MonthandIcon extends StatelessWidget {
   String nameOfMonth;
-   MonthandIcon({
-    required this.nameOfMonth,
-    super.key});
+  MonthandIcon({required this.nameOfMonth, super.key});
 
   @override
   Widget build(BuildContext context) {
     return Row(
       children: [
-        Text(nameOfMonth,
-        style: FBText.fBTextBlackBoldMedium,
+        Text(
+          nameOfMonth,
+          style: FBText.fBTextBlackBoldMedium,
         ),
         Icon(Icons.arrow_drop_down_sharp)
-    ],);
+      ],
+    );
   }
 }

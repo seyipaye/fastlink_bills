@@ -11,7 +11,7 @@ ApiResponse _$ApiResponseFromJson(Map<String, dynamic> json) => ApiResponse(
       status: json['status'] as bool?,
       message: json['message'] as String?,
       data: json['data'],
-      statusCode: json['statusCode'] as int?,
+      statusCode: (json['statusCode'] as num?)?.toInt(),
     )..success = json['success'] as bool?;
 
 Map<String, dynamic> _$ApiResponseToJson(ApiResponse instance) =>

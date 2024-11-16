@@ -10,8 +10,8 @@ class OfflinePaymentController extends GetxController {
   final formKey = GlobalKey<FormState>();
 
   Rx<User> get user => AuthRepository.instance.user;
-  final CurrencyTextInputFormatter formatter = CurrencyTextInputFormatter(
-      locale: 'en_NG', decimalDigits: 0, symbol: '₦');
+  // final CurrencyTextInputFormatter formatter = CurrencyTextInputFormatter(
+  //     locale: 'en_NG', decimalDigits: 0, symbol: '₦');
   late String wallet_id;
   num amount = 0;
   String offlineData = 'processing...';
@@ -22,7 +22,7 @@ class OfflinePaymentController extends GetxController {
   }
 
   void generateCode() {
-    amount = formatter.getUnformattedValue();
+   // amount = formatter.getUnformattedValue();
 
     FocusManager.instance.primaryFocus?.unfocus();
 

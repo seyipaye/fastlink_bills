@@ -37,8 +37,8 @@ class OfflinePaymentScreen extends GetView<OfflinePaymentController> {
                     ),
                     
                     textAlign: TextAlign.center,
-                    initialValue: controller.formatter.format('0'),
-                    inputFormatters: <TextInputFormatter>[controller.formatter],
+                   // initialValue: controller.formatter.format('0'),
+                   // inputFormatters: <TextInputFormatter>[controller.formatter],
                     keyboardType: TextInputType.number,
                   ),
                 ],

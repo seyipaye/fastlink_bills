@@ -39,7 +39,7 @@ DebitCard _$DebitCardFromJson(Map<String, dynamic> json) => DebitCard(
       json['bank'] as String,
       json['signature'] as String,
       json['country_code'] as String,
-      json['id'] as int,
+      (json['id'] as num).toInt(),
       json['card_type'] as String,
       json['user_email'] as String,
       json['exp_month'] as String,

@@ -1,4 +1,6 @@
 import 'package:fastlink_app/domain/repositories/auth_repo.dart';
+import 'package:fastlink_app/presentation/modules/home/home_controller.dart';
+import 'package:fastlink_app/presentation/modules/home/home_page.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
@@ -107,7 +109,13 @@ class LoginScreen extends GetView<LoginController> {
                           shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(100)),
                         ),
-                        onPressed: controller.onLoginPressed,
+                        onPressed: (){
+                          // Instantiate the HomePageController before navigating
+                          //
+                          Get.put(HomePageController());
+                          Get.to(() => HomePage());
+                        }
+                        //controller.onLoginPressed,
                       ),
                       SizedBox(height: AppSize.s8),
                       if (AuthRepository.instance.isAuthenticated)

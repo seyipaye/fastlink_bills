@@ -40,8 +40,8 @@ class FundWalletController extends GetxController {
 
   Rx<User> get user => AuthRepository.instance.user;
 
-  final CurrencyTextInputFormatter formatter =
-      CurrencyTextInputFormatter(locale: 'en_NG', decimalDigits: 0, symbol: '');
+  // final CurrencyTextInputFormatter formatter =
+  //     CurrencyTextInputFormatter(locale: 'en_NG', decimalDigits: 0, symbol: '');
 
   final paymentResponse = Rxn<FundwalletResponse>();
 
@@ -84,8 +84,8 @@ class FundWalletController extends GetxController {
   }
 
   Future<void> proceed_to_pay() async {
-    if (formatter.getUnformattedValue() != 0)
-      amount.value = formatter.getUnformattedValue();
+    // if (formatter.getUnformattedValue() != 0)
+    //   amount.value = formatter.getUnformattedValue();
 
     FocusManager.instance.primaryFocus?.unfocus();
 
@@ -402,7 +402,7 @@ class FundWalletController extends GetxController {
   }
 
   void onTextChanged(String value) {
-    if (formatter.getUnformattedValue() != 0)
-      amount.value = formatter.getUnformattedValue();
+    // if (formatter.getUnformattedValue() != 0)
+    //   amount.value = formatter.getUnformattedValue();
   }
 }

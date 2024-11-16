@@ -1,3 +1,5 @@
+import 'package:fastlink_app/presentation/modules/wallet/card_payment/card_details/card_details_screen.dart';
+import 'package:fastlink_app/presentation/modules/wallet/card_payment/card_details/card_screen_controller.dart';
 import 'package:fastlink_app/presentation/widgets/app_card.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
@@ -14,7 +16,7 @@ class CardsScreen extends GetView<CardsSelectionController> {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
-        title: Text('Card Tansaction'),
+        title: Text('Fund Wallet with Card'),
       ),
       body: Padding(
         padding: EdgeInsets.all(20),
@@ -39,7 +41,10 @@ class CardsScreen extends GetView<CardsSelectionController> {
                 ),
                 TextButton(
                   onPressed: () {
-                    Get.back(result: 'card');
+                    //Get.back(result: 'card');
+                    // Instantiate the ProfilePageController before navigating
+                  Get.put(CardDetailsController());
+                  Get.to(() => CardDetailsScreen());
                   },
                   child: Text(
                     'Use a new card',

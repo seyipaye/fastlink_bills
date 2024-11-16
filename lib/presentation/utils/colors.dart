@@ -9,6 +9,9 @@ class AppColors {
 
   static const Color dashboardBlack = Color(0xFF1D1D1D);
 
+    static const Color lightBlue = Color(0xFFFCFDFE);
+
+
   static const Color backgroundColor = Color(0xFFF6F6FB);
 
   static const Color whiteColor = Color(0xFFFFFFFF);

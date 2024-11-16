@@ -10,7 +10,7 @@ User _$UserFromJson(Map<String, dynamic> json) => User(
       email: json['email'] as String?,
       phone: json['phone'] as String?,
       username: json['username'] as String?,
-      id: json['id'] as int,
+      id: (json['id'] as num).toInt(),
       balance: (json['balance'] as num).toDouble(),
       data_cap: (json['data_cap'] as num?)?.toDouble(),
       data_used: (json['data_used'] as num?)?.toDouble(),
@@ -68,8 +68,9 @@ Map<String, dynamic> _$TokenToJson(Token instance) => <String, dynamic>{
 UserData _$UserDataFromJson(Map<String, dynamic> json) => UserData(
       data_cap: (json['data_cap'] as num).toDouble(),
       data_used: (json['data_used'] as num).toDouble(),
-      free_data_attempts_left: json['free_data_attempts_left'] as int?,
-      free_data_attempts_max: json['free_data_attempts_max'] as int?,
+      free_data_attempts_left:
+          (json['free_data_attempts_left'] as num?)?.toInt(),
+      free_data_attempts_max: (json['free_data_attempts_max'] as num?)?.toInt(),
       from_date: json['from_date'] == null
           ? null
           : DateTime.parse(json['from_date'] as String),

@@ -6,10 +6,26 @@ import 'package:fastlink_app/presentation/modules/auth/change_password/change_pa
 import 'package:fastlink_app/presentation/modules/data/purchase_plan/purchase_plan_controller.dart';
 import 'package:fastlink_app/presentation/modules/data/purchase_plan/purchase_plan_screen.dart';
 import 'package:fastlink_app/presentation/modules/profile/profile_screen.dart';
+import 'package:fastlink_app/presentation/modules/transaction/transaction_controller.dart';
+import 'package:fastlink_app/presentation/modules/transaction/transaction_screen.dart';
+import 'package:fastlink_app/presentation/modules/wallet/card_payment/card_details/card_details_screen.dart';
+import 'package:fastlink_app/presentation/modules/wallet/card_payment/card_details/card_screen_controller.dart';
 import 'package:fastlink_app/presentation/modules/wallet/card_payment/cards_controller.dart';
 import 'package:fastlink_app/presentation/modules/wallet/card_payment/cards_screen.dart';
+import 'package:fastlink_app/presentation/modules/wallet/card_payment/fund_with_card/fund_wallet_card.dart';
+import 'package:fastlink_app/presentation/modules/wallet/card_payment/fund_with_card/fund_with_card_controller.dart';
 import 'package:fastlink_app/presentation/modules/wallet/fund_wallet/fund_wallet_controller.dart';
 import 'package:fastlink_app/presentation/modules/wallet/fund_wallet/fund_wallet_screen.dart';
+import 'package:fastlink_app/presentation/modules/wallet/fund_wallet_response/fund_wallet_controller.dart';
+import 'package:fastlink_app/presentation/modules/wallet/fund_wallet_response/fund_wallet_result_screen.dart';
+import 'package:fastlink_app/presentation/modules/wallet/transfer_payment/congratulations/congrats_controller.dart';
+import 'package:fastlink_app/presentation/modules/wallet/transfer_payment/congratulations/congrats_screen.dart';
+import 'package:fastlink_app/presentation/modules/wallet/transfer_payment/identity/identity_controller.dart';
+import 'package:fastlink_app/presentation/modules/wallet/transfer_payment/identity/identity_screen.dart';
+import 'package:fastlink_app/presentation/modules/wallet/transfer_payment/kyc/kyc_controller.dart';
+import 'package:fastlink_app/presentation/modules/wallet/transfer_payment/kyc/kyc_screen.dart';
+import 'package:fastlink_app/presentation/modules/wallet/transfer_payment/transfer_by_wallet/transfer_controller.dart';
+import 'package:fastlink_app/presentation/modules/wallet/transfer_payment/transfer_by_wallet/transfer_screen.dart';
 import 'package:fastlink_app/presentation/modules/wallet/verify_payment/verify_payment_controller.dart';
 import 'package:fastlink_app/presentation/modules/wallet/verify_payment/verify_payment_screen.dart';
 import 'package:get/get.dart';
@@ -65,6 +81,13 @@ class Routes {
   static const wallet = '/wallet';
   static const transactions = '/transactions';
   static const earnings = '/earnings';
+  static const fundWalletWithCard = '/fund-card';
+  static const cardDetails = '/card-details';
+  static const fundWalletResult = '/fund-Wallet-Result';
+  static const transferKyc = '/transfer-kyc';
+  static const identity = '/identity';
+  static const congrats = '/congrats';
+  static const transfer = '/transfer';
 
   static const withdrawal = '/withdrawal';
 
@@ -170,6 +193,69 @@ class AppPages {
       middlewares: [EnsureAuthMiddleware()],
     ),
 
+      //Fund Wallet With Card.
+       GetPage(
+      name: Routes.fundWalletWithCard,
+      page: () => FundWithCardScreen(),
+      binding: BindingsBuilder(() {
+        Get.put(FundWithCardController());
+      }),
+      middlewares: [EnsureAuthMiddleware()],
+    ), 
+    // Card Details
+    GetPage(
+      name: Routes.cardDetails,
+      page: () => CardDetailsScreen(),
+      binding: BindingsBuilder(() {
+        Get.put(CardDetailsController());
+      }),
+      middlewares: [EnsureAuthMiddleware()],
+    ), 
+    //fundWalletResult
+    GetPage(
+      name: Routes.fundWalletResult,
+      page: () => FundWalletResultScreen(),
+      binding: BindingsBuilder(() {
+        Get.put(FundWalletResultController());
+      }),
+      middlewares: [EnsureAuthMiddleware()],
+    ), 
+    //Transfer
+     GetPage(
+      name: Routes.transferKyc,
+      page: () => KycScreen(),
+      binding: BindingsBuilder(() {
+        Get.put(KycController());
+      }),
+      middlewares: [EnsureAuthMiddleware()],
+    ), 
+    //identity
+     GetPage(
+      name: Routes.identity,
+      page: () => IdentityScreen(),
+      binding: BindingsBuilder(() {
+        Get.put(IdentityController());
+      }),
+      middlewares: [EnsureAuthMiddleware()],
+    ), 
+    //congrats
+     GetPage(
+      name: Routes.congrats,
+      page: () => CongratsScreen(),
+      binding: BindingsBuilder(() {
+        Get.put(CongratsController());
+      }),
+      middlewares: [EnsureAuthMiddleware()],
+    ), 
+    //transfer
+     GetPage(
+      name: Routes.transfer,
+      page: () => TransferScreen(),
+      binding: BindingsBuilder(() {
+        Get.put(TransferController());
+      }),
+      middlewares: [EnsureAuthMiddleware()],
+    ), 
     GetPage(
       name: Routes.cards,
       page: () => CardsScreen(),
@@ -178,7 +264,15 @@ class AppPages {
       }),
       middlewares: [EnsureAuthMiddleware()],
     ),
-
+    //Transaction
+    GetPage(
+      name: Routes.transactions,
+      page: () => TransactionScreen(),
+      binding: BindingsBuilder(() {
+        Get.put(TransactionController());
+      }),
+      middlewares: [EnsureAuthMiddleware()],
+    ),
     //   GetPage(
     //     name: Routes.fave,
     //     page: () => FavouriteScreen(),

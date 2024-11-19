@@ -13,7 +13,7 @@ class ReferralTab extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.all(20),
+      padding: EdgeInsets.all(10),
       decoration: BoxDecoration(
         color: AppColors.lightBlue,
         borderRadius: BorderRadius.circular(16),
@@ -29,9 +29,15 @@ class ReferralTab extends StatelessWidget {
               style: FBText.fBTextBlackBoldMedium,
             ),
             Gap(8),
-            Text(
-                'Each referral helps you save on your bills - \n because every penny counts!',
-                style: FBText.fBTextBlacklittle),
+          FittedBox(
+            fit: BoxFit.scaleDown,
+            child: Text(
+              'Each referral helps you save on your bills-\n because every penny counts!',
+              style: FBText.fBTextBlacklittle,
+              textAlign: TextAlign.start, 
+            ),
+          ),
+
             // RichText(
             //   text: TextSpan(
             //     children: [

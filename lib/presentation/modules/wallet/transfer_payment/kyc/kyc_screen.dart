@@ -6,6 +6,7 @@ import 'package:fastlink_app/presentation/utils/styles/fb_button.dart';
 import 'package:fastlink_app/presentation/utils/styles/text_size.dart';
 import 'package:fastlink_app/presentation/widgets/spacer.dart';
 import 'package:flutter/material.dart';
+import 'package:gap/gap.dart';
 import 'package:get/get.dart';
 
 class KycScreen extends GetView<KycController> {
@@ -23,8 +24,7 @@ class KycScreen extends GetView<KycController> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-                        verticalSpace(15),
-
+            verticalSpace(15),
             Text(
               'Complete your KYC',
               style: FBText.fBTextOrangeBig,
@@ -36,16 +36,16 @@ class KycScreen extends GetView<KycController> {
                 style: FBText.fBTextBlackMedium,
               ),
             ),
-            verticalSpace(500),
+            Gap(400),
             SizedBox(
-              width: 340,
+              // width: 340,
               height: 50,
               child: FBButton(
                 title: 'Proceed',
                 textColor: FBColors.whiteColor,
                 color: FBColors.orangeColor,
-                onTap: (){
-                   // Instantiate the ProfilePageController before navigating
+                onTap: () {
+                  // Instantiate the ProfilePageController before navigating
                   Get.put(IdentityController());
                   Get.to(() => IdentityScreen());
                 },

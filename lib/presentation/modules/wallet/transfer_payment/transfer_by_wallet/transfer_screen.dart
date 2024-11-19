@@ -4,6 +4,7 @@ import 'package:fastlink_app/presentation/utils/styles/fb_button.dart';
 import 'package:fastlink_app/presentation/utils/styles/text_size.dart';
 import 'package:fastlink_app/presentation/widgets/spacer.dart';
 import 'package:flutter/material.dart';
+import 'package:gap/gap.dart';
 import 'package:get/get.dart';
 import 'package:flutter/services.dart';
 
@@ -60,7 +61,7 @@ class TransferScreen extends GetView<TransferController> {
               ),
               verticalSpace(320),
               SizedBox(
-                width: 340,
+                //width: 340,
                 height: 50,
                 child: FBButton(
                   title: 'I’ve sent the money',
@@ -76,52 +77,6 @@ class TransferScreen extends GetView<TransferController> {
     );
   }
 }
-
-// class TransferDetailsWidget extends StatelessWidget {
-//   final String firstText;
-//   final String secondText;
-//   final bool showIcon;
-
-//   TransferDetailsWidget({
-//     required this.firstText,
-//     required this.secondText,
-//     this.showIcon = false,
-//     super.key,
-//   });
-
-//   @override
-//   Widget build(BuildContext context) {
-//     return Row(
-//       children: [
-//         Text(
-//           firstText,
-//           style: FBText.fbLightBlactText,
-//         ),
-//         horizontalSpace(20),
-//         Text(
-//           secondText,
-//           style: FBText.fbLightBlactText,
-//         ),
-//         if (showIcon)
-//           Padding(
-//             padding: const EdgeInsets.only(left: 8.0),
-//             child: GestureDetector(
-//               onTap: () {
-//                 Clipboard.setData(ClipboardData(text: secondText));
-//                 ScaffoldMessenger.of(context).showSnackBar(
-//                   SnackBar(content: Text("Copied to clipboard!")),
-//                 );
-//               },
-//               child: Icon(
-//                 Icons.copy,
-//                 color: FBColors.orangeColor,
-//               ),
-//             ),
-//           ),
-//       ],
-//     );
-//   }
-// }
 
 class TransferDetailsWidget extends StatelessWidget {
   final String firstText;
@@ -144,23 +99,19 @@ class TransferDetailsWidget extends StatelessWidget {
           firstText,
           style: FBText.fbLightBlactText,
         ),
-        horizontalSpace(50),
-        Expanded(
-          child: Padding(
-            padding: const EdgeInsets.only(left: 40),
-            child: Text(
-              secondText,
-              style: FBText.fBTextBlackBoldMidMedium16,
-            ),
-          ),
+        Gap(30),
+        Text(
+          secondText,
+          style: FBText.fBTextBlackBoldMidMedium16,
+          textAlign: TextAlign.end,
         ),
         if (showIcon)
           Padding(
             padding: const EdgeInsets.only(left: 8.0),
             child: GestureDetector(
               onTap: () {
-                Clipboard.setData(ClipboardData(text: secondText,
-                
+                Clipboard.setData(ClipboardData(
+                  text: secondText,
                 ));
                 _showCustomCopyDialog();
               },
@@ -192,7 +143,7 @@ class TransferDetailsWidget extends StatelessWidget {
           children: [
             Align(
               child: Transform.translate(
-                offset: Offset(-100, 0.0), 
+                offset: Offset(-100, 0.0),
                 child: IconButton(
                   icon: Icon(Icons.close, color: Colors.black),
                   onPressed: () => Get.back(),
@@ -208,7 +159,7 @@ class TransferDetailsWidget extends StatelessWidget {
             //  ),
             Text("Account Number copied to clipboard",
                 style: FBText.fBTextBlackSmall),
-                verticalSpace(10),
+            verticalSpace(10),
             SizedBox(
               width: 250,
               height: 48,

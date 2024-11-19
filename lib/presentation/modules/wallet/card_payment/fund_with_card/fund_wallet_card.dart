@@ -7,6 +7,7 @@ import 'package:fastlink_app/presentation/utils/styles/fb_button.dart';
 import 'package:fastlink_app/presentation/widgets/app_text_form_field.dart';
 import 'package:fastlink_app/presentation/widgets/spacer.dart';
 import 'package:flutter/material.dart';
+import 'package:gap/gap.dart';
 import 'package:get/get.dart';
 import 'package:get/get_state_manager/src/simple/get_view.dart';
 
@@ -32,9 +33,9 @@ class FundWithCardScreen extends GetView<FundWithCardController> {
               //onSaved: (val) => controller.email = val!.trim(),
               //validator: Validator.isNotEmpty,
             ),
-            verticalSpace(60),
+            Gap(60),
             SizedBox(
-              width: 340,
+              //width: 340,
               height: 50,
               child: FBButton(
                 title: 'Proceed',

@@ -8,10 +8,11 @@ import 'package:fastlink_app/presentation/utils/styles/text_size.dart';
 import 'package:fastlink_app/presentation/widgets/app_text_form_field.dart';
 import 'package:fastlink_app/presentation/widgets/spacer.dart';
 import 'package:flutter/material.dart';
+import 'package:gap/gap.dart';
 import 'package:get/get.dart';
 
 class CardDetailsScreen extends GetView<CardDetailsController> {
-   @override
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: FBColors.whiteColor,
@@ -20,11 +21,10 @@ class CardDetailsScreen extends GetView<CardDetailsController> {
       ),
       body: Padding(
         padding: const EdgeInsets.all(30.0),
-        child: ListView(
-          children:[
-            Column(
+        child: SingleChildScrollView(
+          child: Column(
             children: [
-               AppTextFormField(
+              AppTextFormField(
                 //textEditingController: controller.emailText,
                 label: 'Card Number',
                 //autofillHints: [AutofillHints.email],
@@ -32,36 +32,36 @@ class CardDetailsScreen extends GetView<CardDetailsController> {
                 //onSaved: (val) => controller.email = val!.trim(),
                 //validator: Validator.isNotEmpty,
               ),
-              verticalSpace(30),
+              Gap(30),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
                   SizedBox(
                     width: 140,
-                    child:AppTextFormField(
-                    //textEditingController: controller.emailText,
-                    label: 'Expiry Date',
-                    //autofillHints: [AutofillHints.email],
-                    hintText: '08 / 76',
-                    //onSaved: (val) => controller.email = val!.trim(),
-                    //validator: Validator.isNotEmpty,
-                  ),
+                    child: AppTextFormField(
+                      //textEditingController: controller.emailText,
+                      label: 'Expiry Date',
+                      //autofillHints: [AutofillHints.email],
+                      hintText: '08 / 76',
+                      //onSaved: (val) => controller.email = val!.trim(),
+                      //validator: Validator.isNotEmpty,
+                    ),
                   ),
                   horizontalSpace(5),
-                   SizedBox(
+                  SizedBox(
                     width: 140,
-                    child:AppTextFormField(
-                    //textEditingController: controller.emailText,
-                    label: 'CVV',
-                    //autofillHints: [AutofillHints.email],
-                    hintText: '123',
-                    //onSaved: (val) => controller.email = val!.trim(),
-                    //validator: Validator.isNotEmpty,
-                  ),
+                    child: AppTextFormField(
+                      //textEditingController: controller.emailText,
+                      label: 'CVV',
+                      //autofillHints: [AutofillHints.email],
+                      hintText: '123',
+                      //onSaved: (val) => controller.email = val!.trim(),
+                      //validator: Validator.isNotEmpty,
+                    ),
                   ),
                 ],
               ),
-              verticalSpace(30),
+              Gap(30),
               AppTextFormField(
                 //textEditingController: controller.emailText,
                 label: 'PIN',
@@ -70,36 +70,34 @@ class CardDetailsScreen extends GetView<CardDetailsController> {
                 //onSaved: (val) => controller.email = val!.trim(),
                 //validator: Validator.isNotEmpty,
               ),
-              verticalSpace(30),
+              Gap(30),
               Row(
                 children: [
-                  Text('Save card data for future payments',
-                  style: FBText.fBTextBlackMedium,
+                  Text(
+                    'Save card data for future payments',
+                    style: FBText.fBTextBlackMedium,
                   ),
-          
                 ],
               ),
-              verticalSpace(50),
+              Gap(50),
               SizedBox(
                 width: 350,
                 height: 50,
-                child: FBButton(title: 'Confirm',
-                textColor: FBColors.whiteColor,
-                color: FBColors.orangeColor,
-                onTap: (){
-                   // Instantiate the ProfilePageController before navigating
-                  Get.put(FundWalletResultController());
-                  Get.to(() => FundWalletResultScreen());
-                },
+                child: FBButton(
+                  title: 'Confirm',
+                  textColor: FBColors.whiteColor,
+                  color: FBColors.orangeColor,
+                  onTap: () {
+                    // Instantiate the ProfilePageController before navigating
+                    Get.put(FundWalletResultController());
+                    Get.to(() => FundWalletResultScreen());
+                  },
                 ),
               )
             ],
           ),
-        
-          ]
-           
         ),
       ),
     );
-}
+  }
 }

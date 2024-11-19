@@ -29,7 +29,7 @@ class KycScreen extends GetView<KycController> {
               'Complete your KYC',
               style: FBText.fBTextOrangeBig,
             ),
-            verticalSpace(6),
+            verticalSpace(20),
             Flexible(
               child: Text(
                 'To ensure a secure and seamless experience, we are required by law to verify your identity before you can fund your wallet by transfer. ',

@@ -18,21 +18,21 @@ class TransferScreen extends GetView<TransferController> {
       appBar: AppBar(
         title: Text('Fund Wallet by Transfer'),
       ),
-      body: SingleChildScrollView(
-        child: Padding(
-          padding: const EdgeInsets.all(30.0),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                'Account Details',
-                style: FBText.fBTextOrangeBigMedium,
-              ),
-              verticalSpace(10),
-              Text(
-                  'Fund your Wallet by making a direct transfer to the account details below.'),
-              verticalSpace(50),
-              Column(
+      body: Padding(
+        padding: const EdgeInsets.all(30.0),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              'Account Details',
+              style: FBText.fBTextOrangeBigMedium,
+            ),
+            verticalSpace(10),
+            Text(
+                'Fund your Wallet by making a direct transfer to the account details below.'),
+            verticalSpace(50),
+            Expanded(
+              child: Column(
                 children: [
                   TransferDetailsWidget(
                     firstText: 'Account Number:',
@@ -59,19 +59,18 @@ class TransferScreen extends GetView<TransferController> {
                   ),
                 ],
               ),
-              verticalSpace(320),
-              SizedBox(
-                //width: 340,
-                height: 50,
-                child: FBButton(
-                  title: 'I’ve sent the money',
-                  textColor: FBColors.whiteColor,
-                  color: FBColors.orangeColor,
-                  onTap: () {},
-                ),
+            ),
+            SizedBox(
+              //width: 340,
+              height: 50,
+              child: FBButton(
+                title: 'I’ve sent the money',
+                textColor: FBColors.whiteColor,
+                color: FBColors.orangeColor,
+                onTap: () {},
               ),
-            ],
-          ),
+            ),
+          ],
         ),
       ),
     );
@@ -93,13 +92,13 @@ class TransferDetailsWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Row(
-      mainAxisAlignment: MainAxisAlignment.start,
       children: [
-        Text(
-          firstText,
-          style: FBText.fbLightBlactText,
+        Expanded(
+          child: Text(
+            firstText,
+            style: FBText.fbLightBlactText,
+          ),
         ),
-        Gap(30),
         Text(
           secondText,
           style: FBText.fBTextBlackBoldMidMedium16,

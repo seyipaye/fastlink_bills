@@ -1,3 +1,4 @@
+import 'package:fastlink_app/presentation/utils/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
@@ -34,6 +35,7 @@ class AppTextFormField extends StatelessWidget {
     this.expands = false,
     this.maxLengthEnforcement,
     this.autofillHints,
+    this.style,
   }) : super(key: key);
 
   final String? initialValue;
@@ -63,6 +65,7 @@ class AppTextFormField extends StatelessWidget {
   final TextInputAction? textInputAction;
   final MaxLengthEnforcement? maxLengthEnforcement;
   final Iterable<String>? autofillHints;
+  final TextStyle? style;
 
   @override
   Widget build(BuildContext context) {
@@ -70,6 +73,7 @@ class AppTextFormField extends StatelessWidget {
       autofillHints: autofillHints,
       autovalidateMode: autovalidateMode,
       minLines: minLines,
+      style: style,
       expands: expands,
       keyboardType: moneyInput ? TextInputType.number : textInputType,
       onChanged: onChanged,
@@ -111,11 +115,9 @@ class AppTextFormField extends StatelessWidget {
             children: [
               Text(
                 label ?? '',
-                style: kLabelStyle(context).copyWith(fontFamily: 'Cabin'),
+                style: kLabelStyle(),
               ),
-              const SizedBox(
-                height: AppMargin.m10,
-              ),
+              gap8,
               _textFormField,
             ],
           );

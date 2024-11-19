@@ -30,7 +30,6 @@ import 'fund_wallet_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-
 class FundWalletScreen extends GetView<FundWalletController> {
   FundWalletScreen({Key? key}) : super(key: key);
 
@@ -47,121 +46,87 @@ class FundWalletScreen extends GetView<FundWalletController> {
 
   Widget _fundWalletView() {
     return ListView(
+      padding: EdgeInsets.only(left: 20, right: 20, top: 20),
       children: [
-        PaymentMethod(),
-      ],
-    );
-  }
-}
-
-class PaymentMethod extends StatelessWidget {
-  const PaymentMethod({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      height: 400,
-      child: Padding(
-        padding: const EdgeInsets.only(left: 40, right: 40),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            verticalSpace(50),
-            PaymentWidget(
-              image: Assets.images.bankSvg.svg(),
-              bigDescription: 'Bank Transfer',
-              smallDescription: 'Fund your wallet via mobile or \ninternet banking at no cost.',
-              onTap: () {
-                 // Instantiate the ProfilePageController before navigating
-                    Get.put(KycController());
-                    Get.to(() => KycScreen());
-              },
-            ),
-            verticalSpace(20),
-             PaymentWidget(
-              image: Assets.images.cardSvg.svg(),
-              bigDescription: 'Debit Card',
-              smallDescription: 'Fund wallet directly from your bank\n card or account at 0.4% ',
-              onTap: () {
-                 // Instantiate the ProfilePageController before navigating
-                    Get.put(FundWithCardController());
-                    Get.to(() => FundWithCardScreen());
-              },
-            ),
-                       
-          ],
+        PaymentWidget(
+          image: Assets.images.bankSvg.svg(),
+          bigDescription: 'Bank Transfer',
+          smallDescription:
+              'Fund your wallet via mobile or internet \nbanking at no cost.',
+          onTap: () {
+            // Instantiate the ProfilePageController before navigating
+            Get.put(KycController());
+            Get.to(() => KycScreen());
+          },
         ),
-      ),
+        verticalSpace(20),
+        PaymentWidget(
+          image: Assets.images.cardSvg.svg(),
+          bigDescription: 'Debit Card',
+          smallDescription:
+              'Fund wallet directly from your bank card \nor account at 0.4% ',
+          onTap: () {
+            // Instantiate the ProfilePageController before navigating
+            Get.put(FundWithCardController());
+            Get.to(() => FundWithCardScreen());
+          },
+        ),
+      ],
     );
   }
 }
 
 class PaymentWidget extends StatelessWidget {
   final String bigDescription;
-  final String smallDescription; 
+  final String smallDescription;
   final Widget image;
   final VoidCallback? onTap;
 
   const PaymentWidget({
     Key? key,
     required this.bigDescription,
-    required this.smallDescription, 
+    required this.smallDescription,
     required this.image,
     required this.onTap,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
+    return AppMaterial(
       onTap: onTap,
-      child: Container(
-        decoration: BoxDecoration(
-          color: FBColors.whiteColor,
-          borderRadius: BorderRadius.circular(10),
-          border: Border.all(color: Color(0xFFC2C6C8), width: 0.0),
-        ),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.start,
-          children: [
-                        horizontalSpace(5),
-
-            image,
-            //SizedBox(width: 16),
-           horizontalSpace(20),
-            Expanded( 
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start, 
-                //mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                                    verticalSpace(10),
-
-                  Text(
-                    bigDescription,
-                    style: FBText.fBTextBlackBoldMiddMedium
-                  ),
-                  verticalSpace(7),
-                  Text(
-                    smallDescription,
-                    style: FBText.fBTextBlacklittle,
-                  ),
-                                    verticalSpace(10),
-
-                ],
-              ),
+      elevation: 0,
+      radius: 10,
+      padding: EdgeInsets.all(20),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.start,
+        children: [
+          image,
+          //SizedBox(width: 16),
+          gap20,
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              //mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                Text(bigDescription, style: FBText.fBTextBlackBold12),
+                gap8,
+                Text(
+                  smallDescription,
+                  style: FBText.fBTextBlacklittle,
+                ),
+              ],
             ),
-            const Icon(
-              Icons.arrow_forward_ios,
-              size: 16,
-              color: Colors.black,
-            ),
-            horizontalSpace(5)
-          ],
-        ),
+          ),
+          const Icon(
+            Icons.arrow_forward_ios,
+            size: 16,
+            color: Colors.black,
+          ),
+        ],
       ),
     );
   }
 }
-
 
 class PaymentErrorPage extends StatelessWidget {
   @override

@@ -1,9 +1,14 @@
+import 'package:fastlink_app/core/extentions.dart';
+import 'package:fastlink_app/presentation/utils/constants.dart';
 import 'package:fastlink_app/presentation/utils/styles/text_size.dart';
 import 'package:fastlink_app/presentation/widgets/app_card.dart';
 import 'package:fastlink_app/presentation/widgets/spacer.dart';
 import 'package:fastlink_app/resources/assets.gen.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
+import 'package:get/get.dart';
+
+import '../../core/app_routes.dart';
 
 class QuickLink extends StatelessWidget {
   const QuickLink({super.key});
@@ -13,31 +18,53 @@ class QuickLink extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text(
-          'Quick Links',
-          style: FBText.fBTextBlackBoldMedium,
-        ),
-        Gap(8),
+        HeaderText('Quick Links'),
+        gap16,
         Row(
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             buildActionButton(
-                image: Assets.images.phone.image(),
-                text: 'Buy Airtime',
-                onPressed: () {}),
-            horizontalSpace(10),
+              image: Assets.icons.phone.svg(),
+              text: 'Buy Airtime',
+              onPressed: () {
+                Get.toNamed(Routes.buyAirtime);
+              },
+            ),
             buildActionButton(
-                image: Assets.images.cellphoneSound.image(),
-                text: 'Buy Data',
-                onPressed: () {}),
-            horizontalSpace(10),
+              image: Assets.icons.cellphoneSound.svg(),
+              text: 'Buy Data',
+              onPressed: () {},
+            ),
             buildActionButton(
-                image: Assets.images.announcenmt.image(),
-                text: 'Refer and Earn',
-                onPressed: () {}),
+              image: Assets.icons.fastlinkWifi.svg(),
+              text: 'Fastlink Wifi',
+              onPressed: () {},
+            ),
+            buildActionButton(
+              image: Assets.icons.announce.svg(),
+              text: 'Refer and Earn',
+              onPressed: () {},
+            ),
           ],
         )
       ],
+    );
+  }
+}
+
+class HeaderText extends StatelessWidget {
+  const HeaderText(
+    this.text, {
+    super.key,
+  });
+
+  final String text;
+
+  @override
+  Widget build(BuildContext context) {
+    return Text(
+      text,
+      style: FBText.fBTextBlackBoldMedium,
     );
   }
 }
@@ -52,15 +79,14 @@ Widget buildActionButton({
     onTap: onPressed,
     color: Colors.transparent,
     elevation: 0,
-    boxShadow: [],
     child: Column(
       children: [
         image,
+        gap8,
         Text(
           text,
-          style: TextStyle(fontSize: 12),
           textAlign: TextAlign.center,
-        ),
+        ).applyStyle(fontSize: 12, bold: true),
       ],
     ),
   );

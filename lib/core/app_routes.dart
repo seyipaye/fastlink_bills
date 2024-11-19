@@ -1,3 +1,4 @@
+import 'package:fastlink_app/presentation/modules/airtime/buy_airtime/buy_airtime_screen.dart';
 import 'package:fastlink_app/presentation/modules/auth/password/reset_password_screen.dart';
 import 'package:fastlink_app/presentation/modules/home/account/account_page.dart';
 import 'package:fastlink_app/presentation/modules/auth/password/new_password_screen.dart';
@@ -32,6 +33,7 @@ import 'package:get/get.dart';
 
 import '../domain/repositories/app_repo.dart';
 import '../middleware/app_middleware.dart';
+import '../presentation/modules/airtime/buy_airtime/buy_airtime_controller.dart';
 import '../presentation/modules/auth/login/login_controller.dart';
 import '../presentation/modules/auth/login/login_screen.dart';
 import '../presentation/modules/auth/otp/otp_controller.dart';
@@ -69,6 +71,8 @@ class Routes {
 
   // Home
   static const home = '/home';
+  static const buyAirtime = '/buy-airtime';
+
   static const buyData = '/buy-data';
   static const dataPlan = '/data-plan';
   static const purchasePlan = '/purchase-plan';
@@ -152,12 +156,18 @@ class AppPages {
       page: () => OnBoardingScreen(),
     ),
     GetPage(
+      name: Routes.buyAirtime,
+      page: () => BuyAirtimeScreen(),
+      binding: BindingsBuilder(() {
+        Get.put(BuyAirtimeController());
+      }),
+    ),
+    GetPage(
       name: Routes.buyData,
       page: () => BuyDataScreen(),
       binding: BindingsBuilder(() {
         Get.put(BuyDataController());
       }),
-      middlewares: [EnsureAuthMiddleware()],
     ),
     GetPage(
       name: Routes.dataPlan,
@@ -165,7 +175,6 @@ class AppPages {
       binding: BindingsBuilder(() {
         Get.put(DataPlanController());
       }),
-      middlewares: [EnsureAuthMiddleware()],
     ),
     GetPage(
       name: Routes.purchasePlan,
@@ -173,7 +182,6 @@ class AppPages {
       binding: BindingsBuilder(() {
         Get.put(PurchasePlanController());
       }),
-      middlewares: [EnsureAuthMiddleware()],
     ),
     GetPage(
       name: Routes.fundWallet,
@@ -181,7 +189,7 @@ class AppPages {
       binding: BindingsBuilder(() {
         Get.put(FundWalletController());
       }),
-      middlewares: [EnsureAuthMiddleware()],
+      // middlewares: [EnsureAuthMiddleware()],
     ),
 
     GetPage(
@@ -190,18 +198,18 @@ class AppPages {
       binding: BindingsBuilder(() {
         Get.put(VerifyPaymentController());
       }),
-      middlewares: [EnsureAuthMiddleware()],
+      // middlewares: [EnsureAuthMiddleware()],
     ),
 
-      //Fund Wallet With Card.
-       GetPage(
+    //Fund Wallet With Card.
+    GetPage(
       name: Routes.fundWalletWithCard,
       page: () => FundWithCardScreen(),
       binding: BindingsBuilder(() {
         Get.put(FundWithCardController());
       }),
-      middlewares: [EnsureAuthMiddleware()],
-    ), 
+      // middlewares: [EnsureAuthMiddleware()],
+    ),
     // Card Details
     GetPage(
       name: Routes.cardDetails,
@@ -209,8 +217,8 @@ class AppPages {
       binding: BindingsBuilder(() {
         Get.put(CardDetailsController());
       }),
-      middlewares: [EnsureAuthMiddleware()],
-    ), 
+      // middlewares: [EnsureAuthMiddleware()],
+    ),
     //fundWalletResult
     GetPage(
       name: Routes.fundWalletResult,
@@ -218,51 +226,51 @@ class AppPages {
       binding: BindingsBuilder(() {
         Get.put(FundWalletResultController());
       }),
-      middlewares: [EnsureAuthMiddleware()],
-    ), 
+      // middlewares: [EnsureAuthMiddleware()],
+    ),
     //Transfer
-     GetPage(
+    GetPage(
       name: Routes.transferKyc,
       page: () => KycScreen(),
       binding: BindingsBuilder(() {
         Get.put(KycController());
       }),
-      middlewares: [EnsureAuthMiddleware()],
-    ), 
+      // middlewares: [EnsureAuthMiddleware()],
+    ),
     //identity
-     GetPage(
+    GetPage(
       name: Routes.identity,
       page: () => IdentityScreen(),
       binding: BindingsBuilder(() {
         Get.put(IdentityController());
       }),
-      middlewares: [EnsureAuthMiddleware()],
-    ), 
+      // middlewares: [EnsureAuthMiddleware()],
+    ),
     //congrats
-     GetPage(
+    GetPage(
       name: Routes.congrats,
       page: () => CongratsScreen(),
       binding: BindingsBuilder(() {
         Get.put(CongratsController());
       }),
-      middlewares: [EnsureAuthMiddleware()],
-    ), 
+      // middlewares: [EnsureAuthMiddleware()],
+    ),
     //transfer
-     GetPage(
+    GetPage(
       name: Routes.transfer,
       page: () => TransferScreen(),
       binding: BindingsBuilder(() {
         Get.put(TransferController());
       }),
-      middlewares: [EnsureAuthMiddleware()],
-    ), 
+      // middlewares: [EnsureAuthMiddleware()],
+    ),
     GetPage(
       name: Routes.cards,
       page: () => CardsScreen(),
       binding: BindingsBuilder(() {
         Get.put(CardsSelectionController());
       }),
-      middlewares: [EnsureAuthMiddleware()],
+      // middlewares: [EnsureAuthMiddleware()],
     ),
     //Transaction
     GetPage(
@@ -271,7 +279,7 @@ class AppPages {
       binding: BindingsBuilder(() {
         Get.put(TransactionController());
       }),
-      middlewares: [EnsureAuthMiddleware()],
+      // middlewares: [EnsureAuthMiddleware()],
     ),
     //   GetPage(
     //     name: Routes.fave,
@@ -287,7 +295,7 @@ class AppPages {
       binding: BindingsBuilder(() {
         Get.put(LoginController());
       }),
-      middlewares: [EnsureNotVerifyingOTPMiddleware()],
+      // middlewares: [EnsureNotVerifyingOTPMiddleware()],
     ),
 
     GetPage(
@@ -296,7 +304,7 @@ class AppPages {
       binding: BindingsBuilder(() {
         Get.put(PasswordController());
       }),
-      middlewares: [EnsureNotVerifyingOTPMiddleware()],
+      // middlewares: [EnsureNotVerifyingOTPMiddleware()],
     ),
 
     GetPage(
@@ -306,10 +314,10 @@ class AppPages {
         Get.put(PasswordController());
         Get.put(OtpController());
       }),
-      middlewares: [
-        EnsureNotSettingNewPasswordMiddleware(),
-        EnsureVerifyingOTPMiddleware()
-      ],
+      // middlewares: [
+      //   EnsureNotSettingNewPasswordMiddleware(),
+      //   EnsureVerifyingOTPMiddleware()
+      // ],
     ),
 
     GetPage(
@@ -319,7 +327,7 @@ class AppPages {
         Get.put(PasswordController());
       }),
       middlewares: [
-        EnsureSettingNewPasswordMiddleware(),
+        // EnsureSettingNewPasswordMiddleware(),
       ],
     ),
 
@@ -370,7 +378,7 @@ class AppPages {
         Get.put(HomePageController());
         Get.put(AccountPageController());
       }),
-      middlewares: [EnsureAuthMiddleware()],
+      // middlewares: [EnsureAuthMiddleware()],
     ),
     // for the accountpage.
     GetPage(

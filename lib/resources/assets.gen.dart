@@ -15,18 +15,53 @@ import 'package:vector_graphics/vector_graphics.dart' as _vg;
 class $AssetsIconsGen {
   const $AssetsIconsGen();
 
+  /// File path: assets/icons/announce.svg
+  SvgGenImage get announce => const SvgGenImage('assets/icons/announce.svg');
+
   /// File path: assets/icons/bullet.png
   AssetGenImage get bullet => const AssetGenImage('assets/icons/bullet.png');
+
+  /// File path: assets/icons/cellphone_sound.svg
+  SvgGenImage get cellphoneSound =>
+      const SvgGenImage('assets/icons/cellphone_sound.svg');
+
+  /// File path: assets/icons/down_icon.svg
+  SvgGenImage get downIcon => const SvgGenImage('assets/icons/down_icon.svg');
+
+  /// File path: assets/icons/fastlink_wifi.svg
+  SvgGenImage get fastlinkWifi =>
+      const SvgGenImage('assets/icons/fastlink_wifi.svg');
+
+  /// File path: assets/icons/mtn_icon.svg
+  SvgGenImage get mtnIcon => const SvgGenImage('assets/icons/mtn_icon.svg');
+
+  /// File path: assets/icons/notification.svg
+  SvgGenImage get notification =>
+      const SvgGenImage('assets/icons/notification.svg');
 
   /// File path: assets/icons/payment_icon.svg
   SvgGenImage get paymentIcon =>
       const SvgGenImage('assets/icons/payment_icon.svg');
 
+  /// File path: assets/icons/phone.svg
+  SvgGenImage get phone => const SvgGenImage('assets/icons/phone.svg');
+
   /// File path: assets/icons/trash.png
   AssetGenImage get trash => const AssetGenImage('assets/icons/trash.png');
 
   /// List of all assets
-  List<dynamic> get values => [bullet, paymentIcon, trash];
+  List<dynamic> get values => [
+        announce,
+        bullet,
+        cellphoneSound,
+        downIcon,
+        fastlinkWifi,
+        mtnIcon,
+        notification,
+        paymentIcon,
+        phone,
+        trash
+      ];
 }
 
 class $AssetsImagesGen {
@@ -78,9 +113,9 @@ class $AssetsImagesGen {
   AssetGenImage get highSpeed =>
       const AssetGenImage('assets/images/high_speed.png');
 
-  /// File path: assets/images/notification.svg
-  SvgGenImage get notification =>
-      const SvgGenImage('assets/images/notification.svg');
+  /// File path: assets/images/mtn_logo.png
+  AssetGenImage get mtnLogo =>
+      const AssetGenImage('assets/images/mtn_logo.png');
 
   /// File path: assets/images/notificationB.svg
   SvgGenImage get notificationB =>
@@ -121,7 +156,7 @@ class $AssetsImagesGen {
         greenMark,
         hands,
         highSpeed,
-        notification,
+        mtnLogo,
         notificationB,
         password,
         phone,

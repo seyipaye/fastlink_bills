@@ -60,7 +60,6 @@ class TransferScreen extends GetView<TransferController> {
                 ],
               ),
             ),
-            //verticalSpace(320),
             SizedBox(
               //width: 340,
               height: 50,
@@ -93,7 +92,6 @@ class TransferDetailsWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Row(
-      mainAxisAlignment: MainAxisAlignment.start,
       children: [
         Expanded(
           child: Text(
@@ -101,7 +99,6 @@ class TransferDetailsWidget extends StatelessWidget {
             style: FBText.fbLightBlactText,
           ),
         ),
-        //Gap(30),
         Text(
           secondText,
           style: FBText.fBTextBlackBoldMidMedium16,

@@ -28,22 +28,19 @@ class KycScreen extends GetView<KycController> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  verticalSpace(15),
+                   verticalSpace(15),
               Text(
                 'Complete your KYC',
                 style: FBText.fBTextOrangeBig,
               ),
-              verticalSpace(6),
-              Flexible(
-                child: Text(
-                  'To ensure a secure and seamless experience, we are required by law to verify your identity before you can fund your wallet by transfer. ',
-                  style: FBText.fBTextBlackMedium,
-                ),
+              verticalSpace(20),
+              Text(
+                'To ensure a secure and seamless experience, we are required by law to verify your identity before you can fund your wallet by transfer. ',
+                style: FBText.fBTextBlackMedium,
               ),
-                ],
-              ),
+              ],),
             ),
-            
+           
             //Gap(400),
             SizedBox(
               // width: 340,

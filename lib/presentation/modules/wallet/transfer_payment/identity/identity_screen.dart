@@ -22,27 +22,27 @@ class IdentityScreen extends GetView<IdentityController> {
       ),
       body: Padding(
         padding: const EdgeInsets.all(30.0),
-        child: SingleChildScrollView(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Gap(5),
-              Text(
-                'Proof of Identity',
-                style: FBText.fBTextOrangeBig,
-              ),
-              Gap(6),
-              Text(
-                'Please provide your Bank Verification Number (BVN). Your BVN allows us to verify your account and protect you from fraud.',
-                style: FBText.fBTextBlackBoldMedium,
-              ),
-              Gap(50),
-              AppTextFormField(
-                label: 'BVN',
-                hintText: 'Enter 12 digits BVN',
-              ),
-              Gap(80),
-              Column(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Gap(5),
+            Text(
+              'Proof of Identity',
+              style: FBText.fBTextOrangeBig,
+            ),
+            Gap(6),
+            Text(
+              'Please provide your Bank Verification Number (BVN). Your BVN allows us to verify your account and protect you from fraud.',
+              style: FBText.fBTextBlackBoldMedium,
+            ),
+            Gap(50),
+            AppTextFormField(
+              label: 'BVN',
+              hintText: 'Enter 12 digits BVN',
+            ),
+            Gap(80),
+            Expanded(
+              child: Column(
                 children: [
                   BvnText(
                     description:
@@ -60,23 +60,23 @@ class IdentityScreen extends GetView<IdentityController> {
                   ),
                 ],
               ),
-              Gap(100),
-              SizedBox(
-                // width: 340,
-                height: 50,
-                child: FBButton(
-                  title: 'Proceed',
-                  textColor: FBColors.whiteColor,
-                  color: FBColors.orangeColor,
-                  onTap: () {
-                    // Instantiate the ProfilePageController before navigating
-                    Get.put(CongratsController());
-                    Get.to(() => CongratsScreen());
-                  },
-                ),
-              )
-            ],
-          ),
+            ),
+            //Gap(100),
+            SizedBox(
+              // width: 340,
+              height: 50,
+              child: FBButton(
+                title: 'Proceed',
+                textColor: FBColors.whiteColor,
+                color: FBColors.orangeColor,
+                onTap: () {
+                  // Instantiate the ProfilePageController before navigating
+                  Get.put(CongratsController());
+                  Get.to(() => CongratsScreen());
+                },
+              ),
+            )
+          ],
         ),
       ),
     );

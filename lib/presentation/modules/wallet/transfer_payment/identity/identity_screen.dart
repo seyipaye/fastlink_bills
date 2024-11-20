@@ -101,7 +101,7 @@ class BvnText extends StatelessWidget {
         Flexible(
           child: Text(
             description,
-            style: FBText.fBTextBlackSmall,
+            style: FBText.fBTextBlackBoldMedium,
           ),
         )
       ],

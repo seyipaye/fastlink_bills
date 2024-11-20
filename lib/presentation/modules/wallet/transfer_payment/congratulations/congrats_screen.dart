@@ -17,13 +17,14 @@ class CongratsScreen extends GetView<CongratsController> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: FBColors.whiteColor,
-      body: SingleChildScrollView(
-        // Wrap in SingleChildScrollView for scrollability
-        child: Padding(
-          padding: const EdgeInsets.all(30.0),
-          child: Column(
-            children: [
-              Gap(150),
+      body: Padding(
+        padding: const EdgeInsets.all(30.0),
+        child: Column(
+          children: [
+            Expanded(
+              child: Column(
+                children: [
+                   Gap(150),
               Assets.images.hands.image(),
               Gap(40),
               Text(
@@ -35,28 +36,31 @@ class CongratsScreen extends GetView<CongratsController> {
                 'Your Wallet is now activated.',
                 style: FBText.fBTextBlackSmall,
               ),
-              Gap(30),
+              Gap(20),
               Text(
                 "You’ve successfully completed your KYC by adding your BVN. Your wallet is now active, and you're ready to start funding it and making transactions with ease!",
-                style: FBText.fBTextBlackSmall,
+                style: FBText.fBTextBlackBoldMedium,
               ),
-              Gap(100),
-              SizedBox(
-                //width: 340,
-                height: 50,
-                child: FBButton(
-                  title: 'Continue',
-                  textColor: FBColors.whiteColor,
-                  color: FBColors.orangeColor,
-                  onTap: () {
-                    // Instantiate the ProfilePageController before navigating
-                    Get.put(TransferController());
-                    Get.to(() => TransferScreen());
-                  },
-                ),
+                ],
               ),
-            ],
-          ),
+            ),
+           
+           // Gap(100),
+            SizedBox(
+              //width: 340,
+              height: 50,
+              child: FBButton(
+                title: 'Continue',
+                textColor: FBColors.whiteColor,
+                color: FBColors.orangeColor,
+                onTap: () {
+                  // Instantiate the ProfilePageController before navigating
+                  Get.put(TransferController());
+                  Get.to(() => TransferScreen());
+                },
+              ),
+            ),
+          ],
         ),
       ),
     );

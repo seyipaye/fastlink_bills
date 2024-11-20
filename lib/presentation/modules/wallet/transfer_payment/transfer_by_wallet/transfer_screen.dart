@@ -18,21 +18,21 @@ class TransferScreen extends GetView<TransferController> {
       appBar: AppBar(
         title: Text('Fund Wallet by Transfer'),
       ),
-      body: SingleChildScrollView(
-        child: Padding(
-          padding: const EdgeInsets.all(30.0),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                'Account Details',
-                style: FBText.fBTextOrangeBigMedium,
-              ),
-              verticalSpace(10),
-              Text(
-                  'Fund your Wallet by making a direct transfer to the account details below.'),
-              verticalSpace(50),
-              Column(
+      body: Padding(
+        padding: const EdgeInsets.all(30.0),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              'Account Details',
+              style: FBText.fBTextOrangeBigMedium,
+            ),
+            verticalSpace(10),
+            Text(
+                'Fund your Wallet by making a direct transfer to the account details below.'),
+            verticalSpace(50),
+            Expanded(
+              child: Column(
                 children: [
                   TransferDetailsWidget(
                     firstText: 'Account Number:',
@@ -59,19 +59,19 @@ class TransferScreen extends GetView<TransferController> {
                   ),
                 ],
               ),
-              verticalSpace(320),
-              SizedBox(
-                //width: 340,
-                height: 50,
-                child: FBButton(
-                  title: 'I’ve sent the money',
-                  textColor: FBColors.whiteColor,
-                  color: FBColors.orangeColor,
-                  onTap: () {},
-                ),
+            ),
+            //verticalSpace(320),
+            SizedBox(
+              //width: 340,
+              height: 50,
+              child: FBButton(
+                title: 'I’ve sent the money',
+                textColor: FBColors.whiteColor,
+                color: FBColors.orangeColor,
+                onTap: () {},
               ),
-            ],
-          ),
+            ),
+          ],
         ),
       ),
     );
@@ -95,11 +95,13 @@ class TransferDetailsWidget extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.start,
       children: [
-        Text(
-          firstText,
-          style: FBText.fbLightBlactText,
+        Expanded(
+          child: Text(
+            firstText,
+            style: FBText.fbLightBlactText,
+          ),
         ),
-        Gap(30),
+        //Gap(30),
         Text(
           secondText,
           style: FBText.fBTextBlackBoldMidMedium16,
@@ -125,21 +127,60 @@ class TransferDetailsWidget extends StatelessWidget {
     );
   }
 
+  // void _showCustomCopyDialog() {
+  //   Get.defaultDialog(
+  //     barrierDismissible: false,
+  //     //title: "ikjkjk",
+  //     content:
+  //       Container(
+  //         decoration: BoxDecoration(
+  //           borderRadius: BorderRadius.circular(16),
+  //         ),
+  //         child: Padding(
+  //           padding: const EdgeInsets.only(left: 10, right: 10),
+  //           child: Column(
+  //             children: [
+  //               Align(
+  //             child: Transform.translate(
+  //               offset: Offset(-100, 0.0),
+  //               child: IconButton(
+  //                 icon: Icon(Icons.close, color: Colors.black),
+  //                 onPressed: () => Get.back(),
+  //               ),
+  //             ),
+  //           ),
+  //           Text("Account Number copied to clipboard",
+  //               style: FBText.fBTextBlackMedium),
+  //               SizedBox(
+  //             //width: 250,
+  //             height: 48,
+  //             child: FBButton(
+  //               title: 'Okay',
+  //               color: FBColors.orangeColor,
+  //               textColor: FBColors.whiteColor,
+  //               onTap: () => Get.back(),
+  //             ),
+  //           ),
+  //             ],
+  //           ),
+  //         ),
+  //       ),
+
+  //   );
+  // }
   void _showCustomCopyDialog() {
-    Get.defaultDialog(
-      barrierDismissible: false,
-      title: "",
-      content: Container(
-        width: 320,
-        height: 220,
-        padding: EdgeInsets.all(20),
-        decoration: BoxDecoration(
-          color: Colors.white,
-          borderRadius: BorderRadius.circular(8),
-        ),
+  Get.defaultDialog(
+    barrierDismissible: false,
+    title: '',
+    content: Container(
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(16),
+      ),
+      child: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 10), 
         child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          //mainAxisSize: MainAxisSize.min,
+          mainAxisAlignment: MainAxisAlignment.start, 
+          crossAxisAlignment: CrossAxisAlignment.start, 
           children: [
             Align(
               child: Transform.translate(
@@ -150,18 +191,10 @@ class TransferDetailsWidget extends StatelessWidget {
                 ),
               ),
             ),
-
-            //  Align(
-            //    child: IconButton(
-            //         icon: Icon(Icons.close, color: Colors.black),
-            //         onPressed: () => Get.back(),
-            //       ),
-            //  ),
             Text("Account Number copied to clipboard",
-                style: FBText.fBTextBlackSmall),
-            verticalSpace(10),
+                style: FBText.fBTextBlackMedium),
+                Gap(10),
             SizedBox(
-              width: 250,
               height: 48,
               child: FBButton(
                 title: 'Okay',
@@ -173,6 +206,8 @@ class TransferDetailsWidget extends StatelessWidget {
           ],
         ),
       ),
-    );
-  }
+    ),
+  );
+}
+
 }

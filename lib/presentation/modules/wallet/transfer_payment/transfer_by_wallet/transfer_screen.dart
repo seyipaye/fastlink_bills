@@ -170,6 +170,7 @@ class TransferDetailsWidget extends StatelessWidget {
     barrierDismissible: false,
     title: '',
     content: Container(
+      color: FBColors.whiteColor,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(16),
       ),

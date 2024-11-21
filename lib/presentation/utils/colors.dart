@@ -9,8 +9,7 @@ class AppColors {
 
   static const Color dashboardBlack = Color(0xFF1D1D1D);
 
-    static const Color lightBlue = Color(0xFFFCFDFE);
-
+  static const Color lightBlue = Color(0xFFFCFDFE);
 
   static const Color backgroundColor = Color(0xFFF6F6FB);
 
@@ -31,7 +30,7 @@ class AppColors {
 
   static const Color buttonText = Color(0xFF4E4B66);
 
-  static const Color text = Color(0xFF14142B);
+  static const Color text = Color(0xFF292A2C);
 
   static const Color offset = Color(0x14323247);
 

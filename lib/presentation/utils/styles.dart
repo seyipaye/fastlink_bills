@@ -6,7 +6,7 @@ import 'constants.dart';
 TextStyle _getTextStyle(double fontSize, FontWeight fontWeight, Color color,
     {double letterSpacing = .75, double? height}) {
   return TextStyle(
-      fontFamily: kPoppins,
+      fontFamily: kRaleway,
       fontSize: fontSize,
       color: color,
       height: height,

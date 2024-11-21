@@ -1,6 +1,9 @@
 import 'package:fastlink_app/constants/constants.dart';
+import 'package:fastlink_app/core/extentions.dart';
 import 'package:fastlink_app/presentation/modules/data/profile/profile_controller.dart';
 import 'package:fastlink_app/presentation/modules/data/profile/profile_screen.dart';
+import 'package:fastlink_app/presentation/utils/colors.dart';
+import 'package:fastlink_app/presentation/utils/constants.dart';
 import 'package:fastlink_app/presentation/utils/styles/color.dart';
 import 'package:fastlink_app/presentation/utils/styles/text_size.dart';
 import 'package:fastlink_app/presentation/widgets/fund_wallet_card.dart';
@@ -23,11 +26,11 @@ class HomePage extends GetView<HomePageController> {
       backgroundColor: FBColors.whiteColor,
       appBar: AppBar(
         automaticallyImplyLeading: false,
-        title: ProfileAndNotification(),
+        title: AvatarAndGreeting(),
         actions: [
           IconButton(
             onPressed: () {},
-            icon: Assets.images.notification.svg(),
+            icon: Assets.icons.notification.svg(),
           )
         ],
       ),
@@ -46,11 +49,11 @@ class HomePage extends GetView<HomePageController> {
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
               FundWalletCard(),
-              Gap(20),
+              gap20,
               QuickLink(),
-              verticalSpace(20),
+              gap20,
               TransactionTab(),
-              verticalSpace(40),
+              gap24,
               ReferralTab()
             ],
           ),
@@ -60,8 +63,8 @@ class HomePage extends GetView<HomePageController> {
   }
 }
 
-class ProfileAndNotification extends StatelessWidget {
-  const ProfileAndNotification({super.key});
+class AvatarAndGreeting extends StatelessWidget {
+  const AvatarAndGreeting({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -70,14 +73,15 @@ class ProfileAndNotification extends StatelessWidget {
       children: [
         Row(
           mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Container(
-              width: 40,
-              height: 40,
+              width: 30,
+              height: 30,
               decoration: BoxDecoration(
                 shape: BoxShape.circle,
                 border: Border.all(
-                  color: FBColors.orangeColor,
+                  color: AppColors.primary,
                   width: 1.0,
                 ),
               ),
@@ -90,19 +94,15 @@ class ProfileAndNotification extends StatelessWidget {
                 child: ClipOval(
                   child: Image.network(
                     kUrl,
-                    // 'https://picsum.photos/200/200',
                     fit: BoxFit.cover,
-                    width: 40,
-                    height: 40,
+                    width: 29,
+                    height: 29,
                   ),
                 ),
               ),
             ),
-            horizontalSpace(5),
-            Text(
-              'Hi, Rachael',
-              style: FBText.fBTextBlackBold,
-            ),
+            gap8,
+            Text('Hi, Rachael').applyStyle(fontSize: 20),
           ],
         ),
       ],

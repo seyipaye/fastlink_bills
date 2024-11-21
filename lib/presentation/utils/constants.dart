@@ -1,8 +1,16 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
+import 'package:gap/gap.dart';
 import 'colors.dart';
 import 'values.dart';
+
+const gap4 = const Gap(4);
+const gap8 = const Gap(8);
+const gap16 = const Gap(16);
+const gap20 = const Gap(20);
+const gap24 = const Gap(24);
+const gap32 = const Gap(32);
 
 double kLineHeight(double height, {double fontSize = 1}) => height / fontSize;
 

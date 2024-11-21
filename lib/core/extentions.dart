@@ -1,4 +1,6 @@
+import 'package:fastlink_app/presentation/utils/strings.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import '../presentation/utils/constants.dart';
 import 'package:get/get.dart';
@@ -80,6 +82,34 @@ extension ImageIcon2 on ImageIcon {
       size: size,
       color: color,
       semanticLabel: semanticLabel,
+    );
+  }
+}
+
+extension AddTextstyle on Text {
+  Widget applyStyle({
+    final double fontSize = 14,
+    final bool bold = false,
+    final Color? color = Colors.black,
+    final double lineHeight = 20,
+    final FontWeight? fontWeight,
+    final double? letterSpacing,
+  }) {
+    return DefaultTextStyle(
+      style: TextStyle(
+          fontFamily: kRaleway,
+          fontSize: fontSize.sp,
+          fontWeight:
+              (bold == true) ? FontWeight.w600 : fontWeight ?? FontWeight.w400,
+          color: color,
+          letterSpacing: letterSpacing,
+          height: kLineHeight(
+            lineHeight,
+            fontSize: fontSize.sp,
+          )
+          // fontWeight: (bold == true) ? FontWeight.w600 : FontWeight.w400,
+          ),
+      child: this,
     );
   }
 }

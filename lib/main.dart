@@ -1,6 +1,7 @@
 // import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:pwa_install/pwa_install.dart';
 
@@ -103,7 +104,6 @@ Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
   // await _initializeFirebase();
-  
 
   await _initializeUser();
 
@@ -113,8 +113,6 @@ Future<void> main() async {
   });
 
   runApp(const MyApp());
-
-
 }
 
 class MyApp extends StatefulWidget {
@@ -133,6 +131,13 @@ class _MyAppState extends State<MyApp> {
 
   @override
   Widget build(BuildContext context) {
+    ScreenUtil.init(
+      context,
+      designSize: const Size(375, 877),
+      minTextAdapt: true,
+      splitScreenMode: true,
+    );
+
     return GetMaterialApp(
       title: 'FastLink Internet',
       debugShowCheckedModeBanner: false,

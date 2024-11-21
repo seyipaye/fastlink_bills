@@ -69,7 +69,7 @@ class AppMaterial extends StatelessWidget {
     Key? key,
     this.color = Colors.white,
     this.child,
-    this.radius = 16.0,
+    this.radius = 10.0,
     this.blurRadius = 16.0,
     this.boxShadow,
     this.border,
@@ -103,7 +103,16 @@ class AppMaterial extends StatelessWidget {
               height: height,
               width: width,
               alignment: alignment,
-              decoration: decoration,
+              decoration: decoration ??
+                  (elevation == 0
+                      ? BoxDecoration(
+                          borderRadius: BorderRadius.circular(radius),
+                          border: Border.all(
+                            color: Color(0xFFC2C6C8),
+                            width: 0.0,
+                          ),
+                        )
+                      : decoration),
               child: child,
             ),
           ),

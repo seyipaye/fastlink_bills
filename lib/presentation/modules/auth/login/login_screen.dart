@@ -1,3 +1,4 @@
+import 'package:fastlink_app/core/extentions.dart';
 import 'package:fastlink_app/domain/repositories/auth_repo.dart';
 import 'package:fastlink_app/presentation/modules/home/home_controller.dart';
 import 'package:fastlink_app/presentation/modules/home/home_page.dart';
@@ -49,12 +50,11 @@ class LoginScreen extends GetView<LoginController> {
           key: controller.formKey,
           child: FlexibleScrollViewColumn(
             children: [
-              Gap(20),
-              Text(
-                'Welcome back!',
-                style: Get.textTheme.headlineSmall,
-                textAlign: TextAlign.center,
-              ),
+              gap32,
+              gap32,
+              Text('Login').applyStyle(fontSize: 24, bold: true),
+              gap16,
+              Text('Welcome back. Please enter your details'),
               Expanded(
                 child: Container(
                   alignment: Alignment.center,
@@ -65,28 +65,30 @@ class LoginScreen extends GetView<LoginController> {
                     children: [
                       AppTextFormField(
                         textEditingController: controller.emailText,
-                        label: 'Email Address or Username',
+                        label: 'Email Address',
                         autofillHints: [AutofillHints.email],
-                        hintText: 'e.g alexushud@gmail.com or stella',
+                        hintText: 'e.g alexushud@gmail.com',
                         onSaved: (val) => controller.email = val!.trim(),
                         validator: Validator.isNotEmpty,
                       ),
                       spacer(),
-                      Obx(() => AppTextFormField(
-                            textEditingController: controller.passText,
-                            label: 'Password',
-                            autofillHints: [AutofillHints.password],
-                            hintText: 'Enter your password',
-                            obscureText: controller.hidePassword.value,
-                            validator: Validator.isPassword,
-                            onSaved: (val) => controller.password = val!.trim(),
-                            suffixIcon: IconButton(
-                              icon: controller.hidePassword.value
-                                  ? Icon(Icons.visibility_off)
-                                  : Icon(Icons.remove_red_eye),
-                              onPressed: controller.hidePasswordPressed,
-                            ),
-                          )),
+                      GetX<LoginController>(
+                        builder: (_) => AppTextFormField(
+                          textEditingController: controller.passText,
+                          label: 'Password',
+                          autofillHints: [AutofillHints.password],
+                          hintText: 'Enter your password',
+                          obscureText: controller.hidePassword.value,
+                          validator: Validator.isPassword,
+                          onSaved: (val) => controller.password = val!.trim(),
+                          suffixIcon: IconButton(
+                            icon: controller.hidePassword.value
+                                ? Icon(Icons.visibility_off)
+                                : Icon(Icons.remove_red_eye),
+                            onPressed: controller.hidePasswordPressed,
+                          ),
+                        ),
+                      ),
                       SizedBox(height: 8),
                       Align(
                         alignment: Alignment.centerRight,
@@ -104,19 +106,19 @@ class LoginScreen extends GetView<LoginController> {
                       ),
                       SizedBox(height: 8),
                       ElevatedButton(
-                        child: Text('Log In'),
-                        style: ElevatedButton.styleFrom(
-                          shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(100)),
-                        ),
-                        onPressed: (){
-                          // Instantiate the HomePageController before navigating
-                          //
-                          Get.put(HomePageController());
-                          Get.to(() => HomePage());
-                        }
-                        //controller.onLoginPressed,
-                      ),
+                          child: Text('Log In'),
+                          style: ElevatedButton.styleFrom(
+                            shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(100)),
+                          ),
+                          onPressed: () {
+                            // Instantiate the HomePageController before navigating
+                            //
+                            Get.put(HomePageController());
+                            Get.to(() => HomePage());
+                          }
+                          //controller.onLoginPressed,
+                          ),
                       SizedBox(height: AppSize.s8),
                       if (AuthRepository.instance.isAuthenticated)
                         Column(

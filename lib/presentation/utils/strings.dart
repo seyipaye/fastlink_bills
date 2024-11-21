@@ -17,8 +17,7 @@ class AppStrings {
 
 const String kUrl = 'https://picsum.photos/200/200';
 
-const String kPoppins = 'Poppins';
-const String kRoboto = 'Poppins';
+const String kRaleway = 'Raleway';
 
 const int kCripsExpiryTime = 1; // In hours
 

@@ -7,7 +7,7 @@ import 'styles.dart';
 
 kGetInputBorder(Color color) => OutlineInputBorder(
       borderRadius: BorderRadius.all(
-        Radius.circular(16),
+        Radius.circular(8),
       ),
       borderSide: BorderSide(color: color),
     );
@@ -19,9 +19,9 @@ ThemeData getLightTheme() {
     //   accentColor: AppColors.primary,
     //   errorColor: AppColors.red,
     // ),
-    fontFamily: kPoppins,
+    fontFamily: kRaleway,
     brightness: Brightness.light,
-    // useMaterial3: useMaterial3,
+    useMaterial3: true,
 
     colorScheme: ColorScheme.fromSeed(seedColor: AppColors.primary),
 
@@ -35,7 +35,7 @@ ThemeData getLightTheme() {
       ),
     ),
     //splashColor: Colors.black.withOpacity(0.2),
-    scaffoldBackgroundColor: AppColors.scaffold_bg,
+    scaffoldBackgroundColor: Colors.white,
     drawerTheme: DrawerThemeData(scrimColor: AppColors.scrim),
     // textTheme: GoogleFonts.poppinsTextTheme(),
     // textTheme: textTheme.copyWith(
@@ -51,7 +51,6 @@ ThemeData getLightTheme() {
     dialogTheme: DialogTheme(
       shape: kRoundedRectangularBorder(),
     ),
-    useMaterial3: true,
     appBarTheme: AppBarTheme(
       elevation: 0,
       centerTitle: true,
@@ -61,13 +60,14 @@ ThemeData getLightTheme() {
     iconTheme: IconThemeData(size: 20),
     elevatedButtonTheme: ElevatedButtonThemeData(
       style: ElevatedButton.styleFrom(
-        foregroundColor: Colors.white, minimumSize: Size(239, 48), backgroundColor: AppColors.primary,
-        elevation: 2,
+        foregroundColor: Colors.white,
+        minimumSize: Size(239, 48),
+        backgroundColor: AppColors.primary,
+        elevation: 0,
         textStyle: TextStyle(
-          fontFamily: kPoppins,
+          fontFamily: kRaleway,
           fontSize: 16,
           fontWeight: FontWeight.w600,
-          letterSpacing: 1,
         ),
         shape: kRoundedRectangularBorder(),
       ),
@@ -76,7 +76,7 @@ ThemeData getLightTheme() {
         style: TextButton.styleFrom(
       minimumSize: Size(0, 48),
       textStyle: TextStyle(
-          fontFamily: kPoppins,
+          fontFamily: kRaleway,
           fontSize: 16,
           fontWeight: FontWeight.w600,
           letterSpacing: 1,
@@ -88,7 +88,7 @@ ThemeData getLightTheme() {
       style: OutlinedButton.styleFrom(
         minimumSize: Size(0, 48),
         textStyle: TextStyle(
-          fontFamily: kPoppins,
+          fontFamily: kRaleway,
           fontSize: 16,
           fontWeight: FontWeight.w600,
           letterSpacing: 1,
@@ -114,13 +114,13 @@ ThemeData getLightTheme() {
       //backgroundColor: Colors.white,
       elevation: 10,
       surfaceTintColor: Colors.white,
-      iconTheme: MaterialStateProperty.resolveWith((states) {
-        if (states.contains(MaterialState.selected)) {
+      iconTheme: WidgetStateProperty.resolveWith((states) {
+        if (states.contains(WidgetState.selected)) {
           return IconThemeData(size: 20, color: AppColors.primary);
         }
         return IconThemeData(size: 20, color: AppColors.buttonText);
       }),
-      labelTextStyle: MaterialStateProperty.all(
+      labelTextStyle: WidgetStateProperty.all(
           getBodyMediumStyle(color: AppColors.buttonText)),
     ),
   );
@@ -145,9 +145,10 @@ ThemeData getDarkTheme() {
     iconTheme: IconThemeData(size: 20, color: Colors.white),
     elevatedButtonTheme: ElevatedButtonThemeData(
         style: ElevatedButton.styleFrom(
-      foregroundColor: Colors.white, minimumSize: Size(0, 48),
+      foregroundColor: Colors.white,
+      minimumSize: Size(0, 48),
       textStyle: TextStyle(
-        fontFamily: kPoppins,
+        fontFamily: kRaleway,
         fontSize: 16,
         fontWeight: FontWeight.w600,
         letterSpacing: 1,
@@ -158,7 +159,7 @@ ThemeData getDarkTheme() {
         style: TextButton.styleFrom(
       minimumSize: Size(0, 48),
       textStyle: TextStyle(
-        fontFamily: kPoppins,
+        fontFamily: kRaleway,
         fontSize: 16,
         fontWeight: FontWeight.w600,
         letterSpacing: 1,
@@ -168,9 +169,10 @@ ThemeData getDarkTheme() {
     )),
     outlinedButtonTheme: OutlinedButtonThemeData(
       style: OutlinedButton.styleFrom(
-        foregroundColor: AppColors.buttonText, minimumSize: Size(0, 48),
+        foregroundColor: AppColors.buttonText,
+        minimumSize: Size(0, 48),
         textStyle: TextStyle(
-          fontFamily: kPoppins,
+          fontFamily: kRaleway,
           fontSize: 16,
           fontWeight: FontWeight.w600,
           letterSpacing: 1,

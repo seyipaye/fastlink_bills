@@ -45,48 +45,33 @@ class FundWalletScreen extends GetView<FundWalletController> {
   }
 
   Widget _fundWalletView() {
-    return SafeArea(child: SingleChildScrollView(child: PaymentMethod()));
-  }
-}
-
-class PaymentMethod extends StatelessWidget {
-  const PaymentMethod({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      child: Padding(
-        padding: const EdgeInsets.all(20.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Gap(20),
-            PaymentWidget(
-              image: Assets.images.bankSvg.svg(),
-              bigDescription: 'Bank Transfer',
-              smallDescription:
-                  'Fund your wallet via mobile or internet\n banking at no cost.',
-              onTap: () {
-                // Instantiate the ProfilePageController before navigating
-                Get.put(KycController());
-                Get.to(() => KycScreen());
-              },
-            ),
-            Gap(16),
-            PaymentWidget(
-              image: Assets.images.cardSvg.svg(),
-              bigDescription: 'Debit Card',
-              smallDescription:
-                  'Fund wallet directly from your bank card\n or account at 0.4% ',
-              onTap: () {
-                // Instantiate the ProfilePageController before navigating
-                Get.put(FundWithCardController());
-                Get.to(() => FundWithCardScreen());
-              },
-            ),
-          ],
+    return ListView(
+      padding: EdgeInsets.only(left: 20, right: 20, top: 20),
+      children: [
+        PaymentWidget(
+          image: Assets.images.bankSvg.svg(),
+          bigDescription: 'Bank Transfer',
+          smallDescription:
+              'Fund your wallet via mobile or internet \nbanking at no cost.',
+          onTap: () {
+            // Instantiate the ProfilePageController before navigating
+            Get.put(KycController());
+            Get.to(() => KycScreen());
+          },
         ),
-      ),
+        verticalSpace(20),
+        PaymentWidget(
+          image: Assets.images.cardSvg.svg(),
+          bigDescription: 'Debit Card',
+          smallDescription:
+              'Fund wallet directly from your bank card \nor account at 0.4% ',
+          onTap: () {
+            // Instantiate the ProfilePageController before navigating
+            Get.put(FundWithCardController());
+            Get.to(() => FundWithCardScreen());
+          },
+        ),
+      ],
     );
   }
 }
@@ -107,49 +92,37 @@ class PaymentWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
+    return AppMaterial(
       onTap: onTap,
-      child: Container(
-        decoration: BoxDecoration(
-          color: FBColors.whiteColor,
-          borderRadius: BorderRadius.circular(10),
-          //border: Border.all(color: Color(0xFFC2C6C8), width: 0.0),
-        ),
-        child: Padding(
-          padding: const EdgeInsets.only(left: 20),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.start,
-            children: [
-              image,
-              Gap(20),
-              Expanded(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Gap(10),
-                    Text(
-                      bigDescription,
-                      style: FBText.fBTextBlackBold12,
-                      textAlign: TextAlign.start,
-                    ),
-                    Gap(4),
-                    Text(
-                      smallDescription,
-                      style: FBText.fBTextBlacklittle,
-                    ),
-                    Gap(10),
-                  ],
+      elevation: 0,
+      radius: 10,
+      padding: EdgeInsets.all(20),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.start,
+        children: [
+          image,
+          //SizedBox(width: 16),
+          gap20,
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              //mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                Text(bigDescription, style: FBText.fBTextBlackBold12),
+                gap8,
+                Text(
+                  smallDescription,
+                  style: FBText.fBTextBlacklittle,
                 ),
-              ),
-              const Icon(
-                Icons.arrow_forward_ios,
-                size: 16,
-                color: Colors.black,
-              ),
-              Gap(5)
-            ],
+              ],
+            ),
           ),
-        ),
+          const Icon(
+            Icons.arrow_forward_ios,
+            size: 16,
+            color: Colors.black,
+          ),
+        ],
       ),
     );
   }

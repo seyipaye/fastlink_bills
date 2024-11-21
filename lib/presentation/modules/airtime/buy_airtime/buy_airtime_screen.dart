@@ -35,67 +35,8 @@ class BuyAirtimeScreen extends GetView<BuyAirtimeController> {
             crossAxisAlignment: CrossAxisAlignment.stretch,
             mainAxisSize: MainAxisSize.min,
             children: [
-              // Container(
-              //   margin: EdgeInsets.all(20),
-              //   alignment: Alignment.center,
-              //   child: Column(
-              //     children: [
-              //       Text('Enter Amount'),
-              //       Gap(10),
-              //       TextFormField(
-              //         decoration: InputDecoration(
-              //           border: InputBorder.none,
-              //           enabledBorder: InputBorder.none,
-              //           focusedBorder: InputBorder.none,
-              //           errorBorder: InputBorder.none,
-              //           disabledBorder: InputBorder.none,
-              //         ),
-              //         style: GoogleFonts.getFont(
-              //           'Roboto',
-              //           fontSize: 35,
-              //           fontWeight: FontWeight.w500,
-              //           letterSpacing: 1.5,
-              //         ),
-              //         textAlign: TextAlign.center,
-              //         initialValue: controller.formatter.format('0'),
-              //         inputFormatters: <TextInputFormatter>[controller.formatter],
-              //         keyboardType: TextInputType.number,
-              //       ),
-              //     ],
-              //   ),
-              // ),
-              Container(
-                height: 70,
-                child: Row(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    IconButton(
-                      onPressed: () {},
-                      icon: Row(
-                        children: [
-                          Assets.images.mtnLogo.image(width: 32, height: 32),
-                          // Icon(
-                          //   Icons.import_contacts,
-                          // ),
-                          gap8,
-                          Assets.icons.downIcon.svg(),
-                        ],
-                      ),
-                    ),
-                    gap8,
-                    Expanded(
-                      child: AppTextFormField(
-                        // textEditingController: controller.emailText,
-                        // label: 'Email Address',
-                        autofillHints: [AutofillHints.telephoneNumber],
-                        hintText: 'Enter Phone Number',
-                        // onSaved: (val) => controller.email = val!.trim(),
-                        // validator: Validator.isNotEmpty,
-                      ),
-                    ),
-                  ],
-                ),
-              ),
+              
+              NetworkSelector(),
               gap8,
               HeaderText('Enter or Select amount'),
               gap20,
@@ -153,3 +94,45 @@ class BuyAirtimeScreen extends GetView<BuyAirtimeController> {
     );
   }
 }
+
+
+//A widget for selecting network.
+ class NetworkSelector extends StatelessWidget {
+  const NetworkSelector({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+                height: 70,
+                child: Row(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    IconButton(
+                      onPressed: () {},
+                      icon: Row(
+                        children: [
+                          Assets.images.mtnLogo.image(width: 32, height: 32),
+                          // Icon(
+                          //   Icons.import_contacts,
+                          // ),
+                          gap8,
+                          Assets.icons.downIcon.svg(),
+                        ],
+                      ),
+                    ),
+                    gap8,
+                    Expanded(
+                      child: AppTextFormField(
+                        // textEditingController: controller.emailText,
+                        // label: 'Email Address',
+                        autofillHints: [AutofillHints.telephoneNumber],
+                        hintText: 'Enter Phone Number',
+                        // onSaved: (val) => controller.email = val!.trim(),
+                        // validator: Validator.isNotEmpty,
+                      ),
+                    ),
+                  ],
+                ),
+              );
+  }
+} 

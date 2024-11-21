@@ -1,7 +1,11 @@
 import 'package:fastlink_app/core/app_routes.dart';
+import 'package:fastlink_app/core/extentions.dart';
+import 'package:fastlink_app/presentation/modules/airtime/buy_airtime/buy_airtime_screen.dart';
 import 'package:fastlink_app/presentation/modules/data/buy_data/buy_data_controller.dart';
 import 'package:fastlink_app/presentation/utils/constants.dart';
+import 'package:fastlink_app/presentation/utils/styles/text_size.dart';
 import 'package:fastlink_app/presentation/widgets/indicators.dart';
+import 'package:fastlink_app/presentation/widgets/quick_link.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:get/get.dart';
@@ -25,137 +29,41 @@ class BuyDataScreen extends GetView<BuyDataController> {
         child: SingleChildScrollView(
           padding: EdgeInsets.all(20),
           child: Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              // Container(
-              //   margin: EdgeInsets.all(20),
-              //   alignment: Alignment.center,
-              //   child: Column(
-              //     children: [
-              //       Text('Enter Amount'),
-              //       Gap(10),
-              //       TextFormField(
-              //         decoration: InputDecoration(
-              //           border: InputBorder.none,
-              //           enabledBorder: InputBorder.none,
-              //           focusedBorder: InputBorder.none,
-              //           errorBorder: InputBorder.none,
-              //           disabledBorder: InputBorder.none,
-              //         ),
-              //         style: GoogleFonts.getFont(
-              //           'Roboto',
-              //           fontSize: 35,
-              //           fontWeight: FontWeight.w500,
-              //           letterSpacing: 1.5,
-              //         ),
-              //         textAlign: TextAlign.center,
-              //         initialValue: controller.formatter.format('0'),
-              //         inputFormatters: <TextInputFormatter>[controller.formatter],
-              //         keyboardType: TextInputType.number,
-              //       ),
-              //     ],
-              //   ),
-              // ),
               Container(
                 alignment: Alignment.centerLeft,
                 child: Text(
-                  'Your Current Plan',
-                  style: Get.textTheme.titleSmall,
+                  'Mobile Data Bundles',
+                  style: FBText.fBTextOrangeBigMedium,
                 ),
               ),
-              AppMaterial(
-                padding: EdgeInsets.all(20),
-                margin: EdgeInsets.fromLTRB(0, 20, 0, 20),
-                color: AppColors.blue,
-                child: DefaultTextStyle(
-                  style: TextStyle(color: Colors.white),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Obx(() => Text(controller.user.value.profile)),
-                          Image.asset(
-                            'assets/images/fast_link_logo_compact.png',
-                            width: 60,
-                          )
-                        ],
-                      ),
-                      Gap(8),
-                      Obx(
-                        () => Text(
-                          '${controller.user_plan.value?.data_value ?? ''} ${controller.user_plan.value?.data_unit.toUpperCase() ?? ''}',
-                          style: Get.textTheme.headlineLarge
-                              ?.apply(color: Colors.white),
-                        ),
-                      ),
-                      Gap(10),
-                      Obx(
-                        () => Text(
-                            'Valid for ${controller.user_plan.value?.days_to_use ?? 90} days'),
-                      ),
-                      Gap(6),
-                      GetX<BuyDataController>(
-                        builder: (_) {
-                          return Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              MoneyText(
-                                controller.user_plan.value?.price ?? 0,
-                                style: Get.textTheme.titleLarge
-                                    ?.apply(color: Colors.white),
-                              ),
-                              if (controller.user_plan.value?.renewable ??
-                                  false)
-                                TextButton(
-                                  child: Row(
-                                    children: [
-                                      Text(
-                                        'Re-purchase plan ',
-                                        style: Get.textTheme.bodySmall
-                                            ?.apply(color: Colors.white),
-                                      ),
-                                      Icon(
-                                        Icons.north_east,
-                                        size: 12,
-                                        color: Colors.white,
-                                      )
-                                    ],
-                                  ),
-                                  style: ElevatedButton.styleFrom(
-                                    minimumSize: Size(0, 31),
-                                    shape: RoundedRectangleBorder(
-                                        borderRadius:
-                                            BorderRadius.circular(100)),
-                                  ),
-                                  onPressed: () {
-                                    Get.toNamed(
-                                      Routes.purchasePlan,
-                                      arguments: (
-                                        plan: controller.user_plan.value,
-                                        discounts: controller.discounts.value,
-                                      ),
-                                    );
-                                  },
-                                ),
-                            ],
-                          );
-                        },
-                      ),
-                    ],
-                  ),
-                ),
+              NetworkSelector(),
+              gap8,
+              HeaderText('Select data bundle'),
+              gap20,
+              GridView.count(
+                shrinkWrap: true,
+                primary: false,
+                crossAxisSpacing: 20,
+                mainAxisSpacing: 10,
+                crossAxisCount: 3,
+                childAspectRatio: 3 / 3,
+                children: List.generate(
+                  9,
+                  (_) => AppMaterial(
+                    elevation: 0,
+                    padding: const EdgeInsets.all(8),
+                    alignment: Alignment.center,
+                    onTap: () {},
+                    // color: Colors.teal[100],
+                    child: DataBundle(),
+                    
+              ),
+              ),
               ),
               Gap(20),
-              Container(
-                alignment: Alignment.centerLeft,
-                child: Text(
-                  'Our Data Plans',
-                  style: Get.textTheme.titleSmall,
-                ),
-              ),
-              Gap(20),
+
               Obx(
                 () => controller.plan_categories.value == null
                     ? Padding(
@@ -170,96 +78,6 @@ class BuyDataScreen extends GetView<BuyDataController> {
                         itemBuilder: (context, index) {
                           final plan_category =
                               controller.plan_categories.value![index];
-
-                          /*  return AppMaterial(
-                            height: 220, //220
-                            // width: 200,
-                            margin: EdgeInsets.only(top: 38),
-                            clipBehavior: Clip.antiAlias,
-                            decoration: BoxDecoration(
-                              image: DecorationImage(
-                                  image: AssetImage(
-                                      'assets/images/high_speed.png'),
-                                  fit: BoxFit.cover),
-                            ),
-                            onTap: () {}, // onPressed,
-                            // color: Colors.red,
-                            child: Align(
-                              alignment: Alignment.bottomCenter,
-                              child: Container(
-                                height: 110,
-                                width: double.maxFinite,
-                                color: Colors.black54,
-                                padding:
-                                    const EdgeInsets.fromLTRB(12, 10, 12, 5),
-                                child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Text(
-                                      'High-Speed Monthly Plans',
-                                      style: Get.textTheme.titleSmall?.copyWith(
-                                        color: Colors.white,
-                                        fontWeight: FontWeight.w800,
-                                      ),
-                                    ),
-                                    Expanded(
-                                      child: Text(
-                                        'Stream videos without worrying about of data',
-                                        style:
-                                            Get.textTheme.labelSmall?.copyWith(
-                                          color: Colors.white,
-                                          // fontWeight: FontWeight.w800,
-                                        ),
-                                      ),
-                                    ),
-                                    Row(
-                                      children: [
-                                        Circle(color: Colors.white),
-                                        Gap(10),
-                                        Text(
-                                          'Limited to 5MB/S',
-                                          style: Get.textTheme.labelSmall
-                                              ?.copyWith(
-                                            color: Colors.white,
-                                            // fontWeight: FontWeight.w800,
-                                          ),
-                                        )
-                                      ],
-                                    ),
-                                    Row(
-                                      children: [
-                                        Circle(color: Colors.white),
-                                        Gap(10),
-                                        Text(
-                                          '2 Simultaneous connections',
-                                          style: Get.textTheme.labelSmall
-                                              ?.copyWith(
-                                            color: Colors.white,
-                                            // fontWeight: FontWeight.w800,
-                                          ),
-                                        )
-                                      ],
-                                    ),
-                                    Row(
-                                      children: [
-                                        Circle(color: Colors.white),
-                                        Gap(10),
-                                        Text(
-                                          'Pocket Friendly',
-                                          style: Get.textTheme.labelSmall
-                                              ?.copyWith(
-                                            color: Colors.white,
-                                            // fontWeight: FontWeight.w800,
-                                          ),
-                                        )
-                                      ],
-                                    )
-                                  ],
-                                ),
-                              ),
-                            ),
-                          );
- */
                           return AppMaterial(
                             margin: EdgeInsets.only(bottom: 20),
                             clipBehavior: Clip.antiAlias,
@@ -382,5 +200,29 @@ class BuyDataScreen extends GetView<BuyDataController> {
         Gap(10)
       ],
     );
+  }
+}
+
+
+class DataBundle extends StatelessWidget {
+  const DataBundle({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Text(
+            "1GB",
+            style: FBText.fBTextBlackBoldMidMedium16
+          ),
+          Text(
+            "30 days",
+            style: FBText.fBTextBlackBoldMediumGrey
+          ),
+          Text(
+            "₦600",
+            style: FBText.fBTextOrangeSmall,
+        )]);
   }
 }

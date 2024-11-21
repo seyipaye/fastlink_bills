@@ -33,7 +33,9 @@ class QuickLink extends StatelessWidget {
             buildActionButton(
               image: Assets.icons.cellphoneSound.svg(),
               text: 'Buy Data',
-              onPressed: () {},
+              onPressed: () {
+                Get.toNamed(Routes.buyData);
+              },
             ),
             buildActionButton(
               image: Assets.icons.fastlinkWifi.svg(),

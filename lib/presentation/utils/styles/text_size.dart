@@ -5,6 +5,9 @@ class FBText {
   static TextStyle fBTextBlackBigBold = TextStyle(
       fontSize: 32, color: FBColors.blackColor, fontWeight: FontWeight.w500);
 
+      static TextStyle fBTextBlackBigBold24 = TextStyle(
+      fontSize: 24, color: FBColors.blackColor, fontWeight: FontWeight.w500);
+
   static TextStyle fBTextBlackBold = TextStyle(
       fontSize: 20, color: FBColors.blackColor, fontWeight: FontWeight.w500);
 
@@ -19,6 +22,9 @@ class FBText {
 
   static TextStyle fBTextBlackBoldMedium = TextStyle(
       fontSize: 14, color: FBColors.blackColor, fontWeight: FontWeight.w600);
+
+      static TextStyle fBTextBlackBoldMediumGrey = TextStyle(
+      fontSize: 14, color: FBColors.greyColor, fontWeight: FontWeight.w600);
 
   static TextStyle fBTextBlackMedium = TextStyle(
       fontSize: 16, color: FBColors.blackColor, fontWeight: FontWeight.w500);

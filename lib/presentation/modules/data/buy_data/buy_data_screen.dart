@@ -3,6 +3,8 @@ import 'package:fastlink_app/core/extentions.dart';
 import 'package:fastlink_app/presentation/modules/airtime/buy_airtime/buy_airtime_screen.dart';
 import 'package:fastlink_app/presentation/modules/data/buy_data/buy_data_controller.dart';
 import 'package:fastlink_app/presentation/utils/constants.dart';
+import 'package:fastlink_app/presentation/utils/styles/color.dart';
+import 'package:fastlink_app/presentation/utils/styles/fb_button.dart';
 import 'package:fastlink_app/presentation/utils/styles/text_size.dart';
 import 'package:fastlink_app/presentation/widgets/indicators.dart';
 import 'package:fastlink_app/presentation/widgets/quick_link.dart';
@@ -209,20 +211,65 @@ class DataBundle extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Text(
-            "1GB",
-            style: FBText.fBTextBlackBoldMidMedium16
-          ),
-          Text(
-            "30 days",
-            style: FBText.fBTextBlackBoldMediumGrey
-          ),
-          Text(
-            "₦600",
-            style: FBText.fBTextOrangeSmall,
-        )]);
+    return GestureDetector(
+      onTap: (){
+         _confirmPaymentDialog();
+      },
+      child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Text(
+              "1GB",
+              style: FBText.fBTextBlackBoldMidMedium16
+            ),
+            Text(
+              "30 days",
+              style: FBText.fBTextBlackBoldMediumGrey
+            ),
+            Text(
+              "₦600",
+              style: FBText.fBTextOrangeSmall,
+          )]),
+    );
   }
 }
+
+void _confirmPaymentDialog() {
+  Get.defaultDialog(
+    barrierDismissible: false,
+    //leading:
+    title: '',
+    content: Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 10), 
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.start, 
+        crossAxisAlignment: CrossAxisAlignment.start, 
+        children: [
+          Align(
+            child: Transform.translate(
+              offset: Offset(-100, 0.0),
+              child: IconButton(
+                icon: Icon(Icons.close, color: Colors.black),
+                onPressed: () => Get.back(),
+              ),
+            ),
+          ),
+          Text("Account Number copied to clipboard",
+              style: FBText.fBTextBlackMedium),
+              Gap(10),
+          SizedBox(
+            height: 48,
+            child: FBButton(
+              title: 'Okay',
+              color: FBColors.orangeColor,
+              textColor: FBColors.whiteColor,
+              onTap: () => Get.back(),
+            ),
+          ),
+        ],
+      ),
+    ),
+  );
+}
+
+

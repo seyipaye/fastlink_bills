@@ -32,9 +32,6 @@ class $AssetsIconsGen {
   SvgGenImage get fastlinkWifi =>
       const SvgGenImage('assets/icons/fastlink_wifi.svg');
 
-  /// File path: assets/icons/mtn_icon.svg
-  SvgGenImage get mtnIcon => const SvgGenImage('assets/icons/mtn_icon.svg');
-
   /// File path: assets/icons/notification.svg
   SvgGenImage get notification =>
       const SvgGenImage('assets/icons/notification.svg');
@@ -56,7 +53,6 @@ class $AssetsIconsGen {
         cellphoneSound,
         downIcon,
         fastlinkWifi,
-        mtnIcon,
         notification,
         paymentIcon,
         phone,

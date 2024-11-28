@@ -60,28 +60,45 @@ class AppElevatedButton extends StatelessWidget {
     required this.text,
     required this.onPressed,
     this.icon,
+    this.height = 56,
     this.width = 56,
+    this.foregroundColor = Colors.white,
+    this.backgroundColor = AppColors.primary,
+    this.fontSize = 16,
   });
 
   final String text;
-  final String? icon;
+  final Widget? icon;
   final VoidCallback onPressed;
-  final double width;
+  final double width; // 0 to shrink not in Expanded
+  final double height; // 0 to shrink
+
+  final Color foregroundColor;
+  final Color backgroundColor;
+
+  final double fontSize;
 
   @override
   Widget build(BuildContext context) {
     return ElevatedButton(
       style: ElevatedButton.styleFrom(
-        elevation: 0,
-        shape: kRoundedRectangularBorder(radius: 10),
-        fixedSize: Size(0, width),
-      ),
+          elevation: 0,
+          shape: kRoundedRectangularBorder(radius: 10),
+          minimumSize: Size(width, height),
+          backgroundColor: backgroundColor),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          if (icon != null) SvgPicture.asset(icon!),
+          if (icon != null) icon!,
           if (icon != null) const Gap(8),
-          Text(text),
+          Text(
+            text,
+            style: TextStyle(
+              color: foregroundColor,
+              fontSize: fontSize,
+              fontWeight: FontWeight.w600,
+            ),
+          ),
         ],
       ),
       onPressed: onPressed,
@@ -130,13 +147,13 @@ class AppIconButton2 extends StatelessWidget {
     super.key,
     this.width,
     this.iconWidth = 24,
-    required this.assetName,
+    required this.icon,
     this.onPressed,
   });
 
   final double? width;
   final double iconWidth;
-  final String assetName;
+  final Widget icon;
   final VoidCallback? onPressed;
 
   @override
@@ -147,14 +164,11 @@ class AppIconButton2 extends StatelessWidget {
       height: width ?? iconWidth + 20,
       width: width ?? iconWidth + 20,
       child: IconButton(
-        iconSize: 10,
+        iconSize: 20,
         style: IconButton.styleFrom(
           padding: EdgeInsets.zero,
         ),
-        icon: Image.asset(
-          assetName,
-          width: iconWidth,
-        ),
+        icon: icon,
         onPressed: onPressed,
       ),
     );

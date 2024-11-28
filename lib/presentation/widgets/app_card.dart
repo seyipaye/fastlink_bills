@@ -64,6 +64,7 @@ class AppMaterial extends StatelessWidget {
   final List<BoxShadow>? boxShadow;
   final VoidCallback? onTap;
   final BoxDecoration? decoration;
+  final bool showOutline;
 
   const AppMaterial({
     Key? key,
@@ -82,6 +83,7 @@ class AppMaterial extends StatelessWidget {
     this.elevation = 13.0,
     this.clipBehavior = Clip.none,
     this.decoration,
+    this.showOutline = true,
   }) : super(key: key);
   @override
   Widget build(BuildContext context) {
@@ -104,7 +106,7 @@ class AppMaterial extends StatelessWidget {
               width: width,
               alignment: alignment,
               decoration: decoration ??
-                  (elevation == 0
+                  (showOutline
                       ? BoxDecoration(
                           borderRadius: BorderRadius.circular(radius),
                           border: Border.all(

@@ -1,22 +1,16 @@
 import 'package:clipboard/clipboard.dart';
+import 'package:fastlink_app/core/app_routes.dart';
 import 'package:fastlink_app/core/extentions.dart';
 import 'package:fastlink_app/data/user/user.dart';
 import 'package:fastlink_app/presentation/modules/wallet/card_payment/cards_controller.dart';
-import 'package:fastlink_app/presentation/modules/wallet/card_payment/fund_with_card/fund_wallet_card.dart';
-import 'package:fastlink_app/presentation/modules/wallet/card_payment/fund_with_card/fund_with_card_controller.dart';
-import 'package:fastlink_app/presentation/modules/wallet/transfer_payment/kyc/kyc_controller.dart';
-import 'package:fastlink_app/presentation/modules/wallet/transfer_payment/kyc/kyc_screen.dart';
 import 'package:fastlink_app/presentation/utils/styles/color.dart';
-import 'package:fastlink_app/presentation/utils/styles/text_size.dart';
 import 'package:fastlink_app/presentation/widgets/app_card.dart';
 import 'package:fastlink_app/presentation/widgets/app_text_form_field.dart';
-import 'package:fastlink_app/presentation/widgets/spacer.dart';
 import 'package:fastlink_app/resources/assets.gen.dart';
 import 'package:pwa_install/pwa_install.dart' as pwa;
 
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:gap/gap.dart';
 import 'package:get/get.dart';
@@ -24,11 +18,8 @@ import 'package:url_launcher/url_launcher.dart';
 
 import '../../../utils/colors.dart';
 import '../../../utils/constants.dart';
-import '../../../widgets/column_pro.dart';
+import '../../../widgets/app_buttons.dart';
 import 'fund_wallet_controller.dart';
-
-import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 
 class FundWalletScreen extends GetView<FundWalletController> {
   FundWalletScreen({Key? key}) : super(key: key);
@@ -40,35 +31,45 @@ class FundWalletScreen extends GetView<FundWalletController> {
       appBar: AppBar(
         title: Text('Fund Wallet'),
       ),
-      body: _fundWalletView(),
+      body: _fundWalletBody(),
     );
   }
 
-  Widget _fundWalletView() {
+  Widget _fundWalletBody() {
     return ListView(
       padding: EdgeInsets.only(left: 20, right: 20, top: 20),
       children: [
-        PaymentWidget(
-          image: Assets.images.bankSvg.svg(),
-          bigDescription: 'Bank Transfer',
-          smallDescription:
-              'Fund your wallet via mobile or internet \nbanking at no cost.',
-          onTap: () {
-            // Instantiate the ProfilePageController before navigating
-            Get.put(KycController());
-            Get.to(() => KycScreen());
-          },
+        BankTransferItem(),
+        gap20,
+        Row(
+          children: [
+            Expanded(
+                child: Divider(
+              color: Colors.black,
+              thickness: 0.5,
+            )),
+            gap24,
+            Text(
+              'OR',
+              style: TextStyle(
+                fontWeight: FontWeight.w600,
+              ),
+            ),
+            gap24,
+            Expanded(
+                child: Divider(
+              color: Colors.black,
+              thickness: 0.5,
+            )),
+          ],
         ),
-        verticalSpace(20),
+        gap20,
         PaymentWidget(
           image: Assets.images.cardSvg.svg(),
-          bigDescription: 'Debit Card',
-          smallDescription:
-              'Fund wallet directly from your bank card \nor account at 0.4% ',
+          title: 'Debit Card',
+          text: 'Fee: 0.4% ',
           onTap: () {
-            // Instantiate the ProfilePageController before navigating
-            Get.put(FundWithCardController());
-            Get.to(() => FundWithCardScreen());
+            Get.toNamed(Routes.inputAmount);
           },
         ),
       ],
@@ -76,16 +77,126 @@ class FundWalletScreen extends GetView<FundWalletController> {
   }
 }
 
+class BankTransferItem extends StatelessWidget {
+  const BankTransferItem({
+    super.key,
+  });
+
+  Widget _buildRow({
+    required value,
+    required title,
+  }) {
+    return Row(
+      children: [
+        SizedBox(
+          child: Text(title).applyStyle(fontSize: 12),
+          width: 110,
+        ),
+        gap8,
+        value,
+      ],
+    );
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return AppMaterial(
+      // elevation: 0,
+      radius: 10,
+      child: Column(
+        children: [
+          Padding(
+            padding: const EdgeInsets.all(20),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                Assets.images.bankSvg.svg(),
+                //SizedBox(width: 16),
+                gap20,
+                Expanded(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text('Bank Transfer').applyStyle(bold: true),
+                      Text('Fee: Free').applyStyle(bold: true, fontSize: 12),
+                    ],
+                  ),
+                ),
+              ],
+            ),
+          ),
+          kDivider,
+          Padding(
+            padding: const EdgeInsets.all(20),
+            child: Column(
+              children: [
+                _buildRow(
+                  title: 'Acount Number',
+                  value: Text('0123456789').applyStyle(
+                    fontSize: 20,
+                    bold: true,
+                  ),
+                ),
+                gap8,
+                _buildRow(
+                  title: 'Bank Name:',
+                  value: Text('Guaranty Trust Bank (GTB)').applyStyle(
+                    bold: true,
+                  ),
+                ),
+                gap8,
+                _buildRow(
+                  title: 'Account Name: ',
+                  value: Text('FASTLINK-Rachael').applyStyle(
+                    bold: true,
+                  ),
+                ),
+                gap16,
+                Row(
+                  children: [
+                    Expanded(
+                      child: AppElevatedButton(
+                        height: 33,
+                        text: 'Share',
+                        fontSize: 12,
+                        foregroundColor: AppColors.primary,
+                        backgroundColor: AppColors.light_primary,
+                        icon: Assets.icons.share.svg(height: 12),
+                        onPressed: () {},
+                      ),
+                    ),
+                    gap24,
+                    Expanded(
+                      child: AppElevatedButton(
+                        height: 33,
+                        text: 'Copy',
+                        fontSize: 12,
+                        foregroundColor: Colors.white,
+                        icon: Assets.icons.copy.svg(height: 12),
+                        onPressed: () {},
+                      ),
+                    ),
+                  ],
+                )
+              ],
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
 class PaymentWidget extends StatelessWidget {
-  final String bigDescription;
-  final String smallDescription;
+  final String title;
+  final String text;
   final Widget image;
   final VoidCallback? onTap;
 
   const PaymentWidget({
     Key? key,
-    required this.bigDescription,
-    required this.smallDescription,
+    required this.title,
+    required this.text,
     required this.image,
     required this.onTap,
   }) : super(key: key);
@@ -101,19 +212,13 @@ class PaymentWidget extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
           image,
-          //SizedBox(width: 16),
           gap20,
           Expanded(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
-              //mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
-                Text(bigDescription, style: FBText.fBTextBlackBold12),
-                gap8,
-                Text(
-                  smallDescription,
-                  style: FBText.fBTextBlacklittle,
-                ),
+                Text(title).applyStyle(bold: true),
+                Text(text).applyStyle(bold: true, fontSize: 12),
               ],
             ),
           ),
@@ -588,126 +693,6 @@ class PaymentMethodBottomSheet extends StatelessWidget {
               },
             ),
             Gap(20),
-          ],
-        ),
-      ),
-    );
-  }
-}
-
-class CardSelectionBottomSheet extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      color: Colors.white,
-      padding: EdgeInsets.fromLTRB(16, 36, 16, 35),
-      child: SafeArea(
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: [
-            Text(
-              'Card Tansaction',
-              style: Get.theme.appBarTheme.titleTextStyle,
-              textAlign: TextAlign.center,
-            ),
-            Gap(36),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      'Saved cards',
-                      style: Get.textTheme.titleSmall,
-                    ),
-                    Text(
-                      'List of all cards you saved',
-                      style: Get.textTheme.bodySmall,
-                    ),
-                  ],
-                ),
-                TextButton(
-                  onPressed: () {
-                    Get.back(result: 'new_card');
-                  },
-                  child: Text(
-                    'Use a new card',
-                    style: Get.textTheme.labelMedium
-                        ?.apply(color: AppColors.primary),
-                  ),
-                )
-              ],
-            ),
-            Expanded(
-              child: GetX<CardsSelectionController>(
-                init: CardsSelectionController(),
-                builder: (controller) => controller.cards.value == null
-                    ? Center(
-                        child: CircularProgressIndicator(),
-                      )
-                    : controller.cards.value?.isEmpty ?? false
-                        ? Center(
-                            child: Text(
-                              'Oops, no saved card. \nkindly add a new card up there',
-                              textAlign: TextAlign.center,
-                            ),
-                          )
-                        : ListView.builder(
-                            itemCount: controller.cards.value!.length,
-                            shrinkWrap: true,
-                            padding: EdgeInsets.only(top: 20),
-                            physics: NeverScrollableScrollPhysics(),
-                            itemBuilder: (context, index) {
-                              final debitCard = controller.cards.value![index];
-
-                              return Padding(
-                                padding: EdgeInsetsDirectional.only(top: 20),
-                                child: OutlineMaterial(
-                                  padding: EdgeInsets.symmetric(
-                                    vertical: 10,
-                                    horizontal: 15,
-                                  ),
-                                  onTap: () {
-                                    Get.back(result: debitCard);
-                                  },
-                                  child: Row(
-                                    children: [
-                                      Expanded(
-                                        child: Column(
-                                          crossAxisAlignment:
-                                              CrossAxisAlignment.start,
-                                          children: [
-                                            Text(
-                                              '${debitCard.card_type.capitalize!} XXXX ${debitCard.last4}',
-                                              style: Get.textTheme.labelMedium,
-                                            ),
-                                            Text(
-                                              'Expires ${debitCard.exp_month}/${debitCard.exp_year}',
-                                              style: Get.textTheme.labelSmall,
-                                            )
-                                          ],
-                                        ),
-                                      ),
-                                      IconButton(
-                                        onPressed: () {
-                                          controller.delete_card(debitCard.id);
-                                        },
-                                        icon: Image.asset(
-                                          'assets/icons/trash.png',
-                                          height: 20,
-                                        ),
-                                      )
-                                    ],
-                                  ),
-                                ),
-                              );
-                            },
-                          ),
-              ),
-            ),
-            Gap(36),
           ],
         ),
       ),

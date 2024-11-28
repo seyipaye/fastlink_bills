@@ -97,23 +97,23 @@ class FundWalletController extends GetxController {
       //'card' or 'others'
       final paymentMethod = await Get.bottomSheet(PaymentMethodBottomSheet());
 
-      if (paymentMethod == 'card') {
-        // Take user to Card Screen
+      // if (paymentMethod == 'card') {
+      //   // Take user to Card Screen
 
-        // Get.toNamed(Routes.cards, arguments: amount.value);
-        final result = await Get.bottomSheet(CardSelectionBottomSheet());
+      //   // Get.toNamed(Routes.cards, arguments: amount.value);
+      //   final result = await Get.bottomSheet(CardSelectionBottomSheet());
 
-        if (result is DebitCard) {
-          charge_card(result);
-          return;
-        } else if (result == 'new_card') {
-          type = 'card';
-        } else {
-          type = null;
-        }
-      } else if (paymentMethod == null) {
-        return;
-      }
+      //   if (result is DebitCard) {
+      //     charge_card(result);
+      //     return;
+      //   } else if (result == 'new_card') {
+      //     type = 'card';
+      //   } else {
+      //     type = null;
+      //   }
+      // } else if (paymentMethod == null) {
+      //   return;
+      // }
 
       showLoadingState;
 

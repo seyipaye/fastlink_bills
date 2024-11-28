@@ -13,8 +13,8 @@ import 'package:fastlink_app/presentation/modules/wallet/card_payment/card_detai
 import 'package:fastlink_app/presentation/modules/wallet/card_payment/card_details/card_screen_controller.dart';
 import 'package:fastlink_app/presentation/modules/wallet/card_payment/cards_controller.dart';
 import 'package:fastlink_app/presentation/modules/wallet/card_payment/cards_screen.dart';
-import 'package:fastlink_app/presentation/modules/wallet/card_payment/fund_with_card/fund_wallet_card.dart';
-import 'package:fastlink_app/presentation/modules/wallet/card_payment/fund_with_card/fund_with_card_controller.dart';
+import 'package:fastlink_app/presentation/modules/wallet/card_payment/amount/amount_screen.dart';
+import 'package:fastlink_app/presentation/modules/wallet/card_payment/amount/amount_controller.dart';
 import 'package:fastlink_app/presentation/modules/wallet/fund_wallet/fund_wallet_controller.dart';
 import 'package:fastlink_app/presentation/modules/wallet/fund_wallet/fund_wallet_screen.dart';
 import 'package:fastlink_app/presentation/modules/wallet/fund_wallet_response/fund_wallet_controller.dart';
@@ -85,7 +85,7 @@ class Routes {
   static const wallet = '/wallet';
   static const transactions = '/transactions';
   static const earnings = '/earnings';
-  static const fundWalletWithCard = '/fund-card';
+  static const inputAmount = '/fund-card';
   static const cardDetails = '/card-details';
   static const fundWalletResult = '/fund-Wallet-Result';
   static const transferKyc = '/transfer-kyc';
@@ -203,13 +203,14 @@ class AppPages {
 
     //Fund Wallet With Card.
     GetPage(
-      name: Routes.fundWalletWithCard,
-      page: () => FundWithCardScreen(),
+      name: Routes.inputAmount,
+      page: () => AmmountScreen(),
       binding: BindingsBuilder(() {
-        Get.put(FundWithCardController());
+        Get.put(AmountController());
       }),
       // middlewares: [EnsureAuthMiddleware()],
     ),
+
     // Card Details
     GetPage(
       name: Routes.cardDetails,

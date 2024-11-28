@@ -34,6 +34,8 @@ class AppColors {
 
   static const Color offset = Color(0x14323247);
 
+  static const Color light_primary = Color(0xFFFDEFEF);
+
   // static const MaterialColor primary = Color(0xFFE0371D);
 
   static const MaterialColor primary = MaterialColor(

@@ -103,6 +103,11 @@ kMoneyTextStyle({
       color: color,
     );
 
+const kDivider = const Divider(
+  color: AppColors.outline,
+  thickness: 0.5,
+);
+
 get kDropDownIcon => ImageIcon(
       AssetImage('assets/icons/angle_down.png'),
     );

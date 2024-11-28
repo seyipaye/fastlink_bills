@@ -124,54 +124,83 @@ class TransferDetailsWidget extends StatelessWidget {
     );
   }
 
-  void _showCustomCopyDialog() {
-    Get.defaultDialog(
-      barrierDismissible: false,
-      title: "",
-      content: Container(
-        width: 320,
-        height: 220,
-        padding: EdgeInsets.all(20),
-        decoration: BoxDecoration(
-          color: Colors.white,
-          borderRadius: BorderRadius.circular(8),
-        ),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          //mainAxisSize: MainAxisSize.min,
-          children: [
-            Align(
-              child: Transform.translate(
-                offset: Offset(-100, 0.0),
-                child: IconButton(
-                  icon: Icon(Icons.close, color: Colors.black),
-                  onPressed: () => Get.back(),
-                ),
-              ),
-            ),
+  // void _showCustomCopyDialog() {
+  //   Get.defaultDialog(
+  //     barrierDismissible: false,
+  //     //title: "ikjkjk",
+  //     content:
+  //       Container(
+  //         decoration: BoxDecoration(
+  //           borderRadius: BorderRadius.circular(16),
+  //         ),
+  //         child: Padding(
+  //           padding: const EdgeInsets.only(left: 10, right: 10),
+  //           child: Column(
+  //             children: [
+  //               Align(
+  //             child: Transform.translate(
+  //               offset: Offset(-100, 0.0),
+  //               child: IconButton(
+  //                 icon: Icon(Icons.close, color: Colors.black),
+  //                 onPressed: () => Get.back(),
+  //               ),
+  //             ),
+  //           ),
+  //           Text("Account Number copied to clipboard",
+  //               style: FBText.fBTextBlackMedium),
+  //               SizedBox(
+  //             //width: 250,
+  //             height: 48,
+  //             child: FBButton(
+  //               title: 'Okay',
+  //               color: FBColors.orangeColor,
+  //               textColor: FBColors.whiteColor,
+  //               onTap: () => Get.back(),
+  //             ),
+  //           ),
+  //             ],
+  //           ),
+  //         ),
+  //       ),
 
-            //  Align(
-            //    child: IconButton(
-            //         icon: Icon(Icons.close, color: Colors.black),
-            //         onPressed: () => Get.back(),
-            //       ),
-            //  ),
-            Text("Account Number copied to clipboard",
-                style: FBText.fBTextBlackSmall),
-            verticalSpace(10),
-            SizedBox(
-              width: 250,
-              height: 48,
-              child: FBButton(
-                title: 'Okay',
-                color: FBColors.orangeColor,
-                textColor: FBColors.whiteColor,
-                onTap: () => Get.back(),
+  //   );
+  // }
+  void _showCustomCopyDialog() {
+  Get.defaultDialog(
+    barrierDismissible: false,
+    //leading:
+    title: '',
+    content: Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 10), 
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.start, 
+        crossAxisAlignment: CrossAxisAlignment.start, 
+        children: [
+          Align(
+            child: Transform.translate(
+              offset: Offset(-100, 0.0),
+              child: IconButton(
+                icon: Icon(Icons.close, color: Colors.black),
+                onPressed: () => Get.back(),
               ),
             ),
-          ],
-        ),
+          ),
+          Text("Account Number copied to clipboard",
+              style: FBText.fBTextBlackMedium),
+              Gap(10),
+          SizedBox(
+            height: 48,
+            child: FBButton(
+              title: 'Okay',
+              color: FBColors.orangeColor,
+              textColor: FBColors.whiteColor,
+              onTap: () => Get.back(),
+            ),
+          ),
+        ],
       ),
-    );
-  }
+    ),
+  );
+}
+
 }

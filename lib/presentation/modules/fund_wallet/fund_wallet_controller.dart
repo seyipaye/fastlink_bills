@@ -8,11 +8,11 @@ import 'package:fastlink_app/core/extentions.dart';
 import 'package:pwa_install/pwa_install.dart' as pwa;
 import 'package:url_launcher/url_launcher.dart';
 
-import '../../../../core/app_routes.dart';
-import '../../../../data/user/user.dart';
-import '../../../../data/wallet/wallet.dart';
-import '../../../../domain/repositories/auth_repo.dart';
-import '../../../utils/constants.dart';
+import '../../../core/app_routes.dart';
+import '../../../data/user/user.dart';
+import '../../../data/wallet/wallet.dart';
+import '../../../domain/repositories/auth_repo.dart';
+import '../../utils/constants.dart';
 import 'fund_wallet_screen.dart';
 import 'package:http/http.dart' as http;
 // import 'package:html/parser.dart' show parse;

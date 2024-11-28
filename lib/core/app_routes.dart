@@ -9,26 +9,24 @@ import 'package:fastlink_app/presentation/modules/data/purchase_plan/purchase_pl
 import 'package:fastlink_app/presentation/modules/profile/profile_screen.dart';
 import 'package:fastlink_app/presentation/modules/transaction/transaction_controller.dart';
 import 'package:fastlink_app/presentation/modules/transaction/transaction_screen.dart';
-import 'package:fastlink_app/presentation/modules/wallet/card_payment/card_details/card_details_screen.dart';
-import 'package:fastlink_app/presentation/modules/wallet/card_payment/card_details/card_screen_controller.dart';
-import 'package:fastlink_app/presentation/modules/wallet/card_payment/cards_controller.dart';
-import 'package:fastlink_app/presentation/modules/wallet/card_payment/cards_screen.dart';
-import 'package:fastlink_app/presentation/modules/wallet/card_payment/amount/amount_screen.dart';
-import 'package:fastlink_app/presentation/modules/wallet/card_payment/amount/amount_controller.dart';
-import 'package:fastlink_app/presentation/modules/wallet/fund_wallet/fund_wallet_controller.dart';
-import 'package:fastlink_app/presentation/modules/wallet/fund_wallet/fund_wallet_screen.dart';
-import 'package:fastlink_app/presentation/modules/wallet/fund_wallet_response/fund_wallet_controller.dart';
-import 'package:fastlink_app/presentation/modules/wallet/fund_wallet_response/fund_wallet_result_screen.dart';
-import 'package:fastlink_app/presentation/modules/wallet/transfer_payment/congratulations/congrats_controller.dart';
-import 'package:fastlink_app/presentation/modules/wallet/transfer_payment/congratulations/congrats_screen.dart';
-import 'package:fastlink_app/presentation/modules/wallet/transfer_payment/identity/identity_controller.dart';
-import 'package:fastlink_app/presentation/modules/wallet/transfer_payment/identity/identity_screen.dart';
-import 'package:fastlink_app/presentation/modules/wallet/transfer_payment/kyc/kyc_controller.dart';
-import 'package:fastlink_app/presentation/modules/wallet/transfer_payment/kyc/kyc_screen.dart';
-import 'package:fastlink_app/presentation/modules/wallet/transfer_payment/transfer_by_wallet/transfer_controller.dart';
-import 'package:fastlink_app/presentation/modules/wallet/transfer_payment/transfer_by_wallet/transfer_screen.dart';
-import 'package:fastlink_app/presentation/modules/wallet/verify_payment/verify_payment_controller.dart';
-import 'package:fastlink_app/presentation/modules/wallet/verify_payment/verify_payment_screen.dart';
+import 'package:fastlink_app/presentation/modules/fund_wallet/card_payment/card_details/card_details_screen.dart';
+import 'package:fastlink_app/presentation/modules/fund_wallet/card_payment/card_details/card_screen_controller.dart';
+import 'package:fastlink_app/presentation/modules/fund_wallet/card_payment/cards_controller.dart';
+import 'package:fastlink_app/presentation/modules/fund_wallet/card_payment/cards_screen.dart';
+import 'package:fastlink_app/presentation/modules/fund_wallet/card_payment/amount/amount_screen.dart';
+import 'package:fastlink_app/presentation/modules/fund_wallet/card_payment/amount/amount_controller.dart';
+import 'package:fastlink_app/presentation/modules/fund_wallet/fund_wallet_controller.dart';
+import 'package:fastlink_app/presentation/modules/fund_wallet/fund_wallet_screen.dart';
+import 'package:fastlink_app/presentation/modules/fund_wallet/fund_wallet_response/fund_wallet_controller.dart';
+import 'package:fastlink_app/presentation/modules/fund_wallet/fund_wallet_response/fund_wallet_result_screen.dart';
+import 'package:fastlink_app/presentation/modules/fund_wallet/bank_transfer/congratulations/congrats_controller.dart';
+import 'package:fastlink_app/presentation/modules/fund_wallet/bank_transfer/pages/congrats_screen.dart';
+import 'package:fastlink_app/presentation/modules/fund_wallet/bank_transfer/identity/identity_controller.dart';
+import 'package:fastlink_app/presentation/modules/fund_wallet/bank_transfer/pages/identity_page.dart';
+import 'package:fastlink_app/presentation/modules/fund_wallet/bank_transfer/bank_transfer_controller.dart';
+import 'package:fastlink_app/presentation/modules/fund_wallet/bank_transfer/bank_transfer_screen.dart';
+import 'package:fastlink_app/presentation/modules/fund_wallet/bank_transfer/account_display/transfer_controller.dart';
+import 'package:fastlink_app/presentation/modules/fund_wallet/bank_transfer/account_display/transfer_screen.dart';
 import 'package:get/get.dart';
 
 import '../domain/repositories/app_repo.dart';
@@ -49,11 +47,6 @@ import '../presentation/modules/home/account/account_controller.dart';
 import '../presentation/modules/home/home_controller.dart';
 import '../presentation/modules/home/home_screen.dart';
 import '../presentation/modules/onboarding/onboarding_screen.dart';
-import '../presentation/modules/payment/offline_payment/offline_payment_controller.dart.dart';
-import '../presentation/modules/payment/offline_payment/offline_payment_screen.dart';
-import '../presentation/modules/payment/offline_payment/qr_code_screen.dart';
-import '../presentation/modules/payment/top-up/top_up_controller.dart';
-import '../presentation/modules/payment/top-up/top_up_screen.dart';
 
 class Routes {
   // Auth
@@ -88,8 +81,7 @@ class Routes {
   static const inputAmount = '/fund-card';
   static const cardDetails = '/card-details';
   static const fundWalletResult = '/fund-Wallet-Result';
-  static const transferKyc = '/transfer-kyc';
-  static const identity = '/identity';
+  static const bankTransfer = '/bank-transfer';
   static const congrats = '/congrats';
   static const transfer = '/transfer';
 
@@ -192,15 +184,6 @@ class AppPages {
       // middlewares: [EnsureAuthMiddleware()],
     ),
 
-    GetPage(
-      name: Routes.verifyPayment,
-      page: () => VerifyPaymentScreen(),
-      binding: BindingsBuilder(() {
-        Get.put(VerifyPaymentController());
-      }),
-      // middlewares: [EnsureAuthMiddleware()],
-    ),
-
     //Fund Wallet With Card.
     GetPage(
       name: Routes.inputAmount,
@@ -231,26 +214,17 @@ class AppPages {
     ),
     //Transfer
     GetPage(
-      name: Routes.transferKyc,
-      page: () => KycScreen(),
+      name: Routes.bankTransfer,
+      page: () => BankTransferScreen(),
       binding: BindingsBuilder(() {
-        Get.put(KycController());
-      }),
-      // middlewares: [EnsureAuthMiddleware()],
-    ),
-    //identity
-    GetPage(
-      name: Routes.identity,
-      page: () => IdentityScreen(),
-      binding: BindingsBuilder(() {
-        Get.put(IdentityController());
+        Get.put(BankTransferController());
       }),
       // middlewares: [EnsureAuthMiddleware()],
     ),
     //congrats
     GetPage(
       name: Routes.congrats,
-      page: () => CongratsScreen(),
+      page: () => CongratulationsPage(),
       binding: BindingsBuilder(() {
         Get.put(CongratsController());
       }),

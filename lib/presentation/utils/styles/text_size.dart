@@ -1,3 +1,4 @@
+import 'package:fastlink_app/presentation/utils/colors.dart';
 import 'package:fastlink_app/presentation/utils/styles/color.dart';
 import 'package:flutter/material.dart';
 
@@ -5,7 +6,7 @@ class FBText {
   static TextStyle fBTextBlackBigBold = TextStyle(
       fontSize: 32, color: FBColors.blackColor, fontWeight: FontWeight.w500);
 
-      static TextStyle fBTextBlackBigBold24 = TextStyle(
+  static TextStyle fBTextBlackBigBold24 = TextStyle(
       fontSize: 24, color: FBColors.blackColor, fontWeight: FontWeight.w500);
 
   static TextStyle fBTextBlackBold = TextStyle(
@@ -23,11 +24,11 @@ class FBText {
   static TextStyle fBTextBlackBoldMedium = TextStyle(
       fontSize: 14, color: FBColors.blackColor, fontWeight: FontWeight.w600);
 
-      static TextStyle fBTextBlackBoldMediumGrey = TextStyle(
+  static TextStyle fBTextBlackBoldMediumGrey = TextStyle(
       fontSize: 14, color: FBColors.greyColor, fontWeight: FontWeight.w600);
 
   static TextStyle fBTextBlackMedium = TextStyle(
-      fontSize: 16, color: FBColors.blackColor, fontWeight: FontWeight.w500);
+      fontSize: 16, color: FBColors.blackColor, fontWeight: FontWeight.w600);
 
   static TextStyle fBTextBlackSmall = TextStyle(
       fontSize: 12, color: FBColors.blackColor, fontWeight: FontWeight.w500);
@@ -48,7 +49,7 @@ class FBText {
       fontSize: 10, color: FBColors.whiteColor, fontWeight: FontWeight.w500);
 
   static TextStyle fBTextOrangeBig = TextStyle(
-      fontSize: 20, color: FBColors.orangeColor, fontWeight: FontWeight.w600);
+      fontSize: 20, color: AppColors.primary, fontWeight: FontWeight.w600);
 
   static TextStyle fBTextOrangeBigMedium = TextStyle(
       fontSize: 15, color: FBColors.orangeColor, fontWeight: FontWeight.w600);

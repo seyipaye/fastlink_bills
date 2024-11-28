@@ -13,7 +13,7 @@ import '../../../widgets/app_card.dart';
 import '../../../widgets/app_text_form_field.dart';
 import '../../../widgets/app_buttons.dart';
 import '../../../widgets/money_text_view.dart';
-import '../../../widgets/quick_link.dart';
+import '../../home/home_page.dart';
 import 'buy_airtime_controller.dart';
 
 const limited_time_offer = true;
@@ -35,7 +35,6 @@ class BuyAirtimeScreen extends GetView<BuyAirtimeController> {
             crossAxisAlignment: CrossAxisAlignment.stretch,
             mainAxisSize: MainAxisSize.min,
             children: [
-              
               NetworkSelector(),
               gap8,
               HeaderText('Enter or Select amount'),
@@ -95,44 +94,43 @@ class BuyAirtimeScreen extends GetView<BuyAirtimeController> {
   }
 }
 
-
 //A widget for selecting network.
- class NetworkSelector extends StatelessWidget {
+class NetworkSelector extends StatelessWidget {
   const NetworkSelector({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Container(
-                height: 70,
-                child: Row(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    IconButton(
-                      onPressed: () {},
-                      icon: Row(
-                        children: [
-                          Assets.images.mtnLogo.image(width: 32, height: 32),
-                          // Icon(
-                          //   Icons.import_contacts,
-                          // ),
-                          gap8,
-                          Assets.icons.downIcon.svg(),
-                        ],
-                      ),
-                    ),
-                    gap8,
-                    Expanded(
-                      child: AppTextFormField(
-                        // textEditingController: controller.emailText,
-                        // label: 'Email Address',
-                        autofillHints: [AutofillHints.telephoneNumber],
-                        hintText: 'Enter Phone Number',
-                        // onSaved: (val) => controller.email = val!.trim(),
-                        // validator: Validator.isNotEmpty,
-                      ),
-                    ),
-                  ],
-                ),
-              );
+      height: 70,
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          IconButton(
+            onPressed: () {},
+            icon: Row(
+              children: [
+                Assets.images.mtnLogo.image(width: 32, height: 32),
+                // Icon(
+                //   Icons.import_contacts,
+                // ),
+                gap8,
+                Assets.icons.downIcon.svg(),
+              ],
+            ),
+          ),
+          gap8,
+          Expanded(
+            child: AppTextFormField(
+              // textEditingController: controller.emailText,
+              // label: 'Email Address',
+              autofillHints: [AutofillHints.telephoneNumber],
+              hintText: 'Enter Phone Number',
+              // onSaved: (val) => controller.email = val!.trim(),
+              // validator: Validator.isNotEmpty,
+            ),
+          ),
+        ],
+      ),
+    );
   }
-} 
+}

@@ -1,5 +1,5 @@
 import 'package:fastlink_app/core/extentions.dart';
-import 'package:fastlink_app/presentation/modules/wallet/card_payment/amount/amount_controller.dart';
+import 'package:fastlink_app/presentation/modules/fund_wallet/card_payment/amount/amount_controller.dart';
 import 'package:fastlink_app/presentation/utils/constants.dart';
 import 'package:fastlink_app/presentation/utils/styles/color.dart';
 import 'package:fastlink_app/presentation/utils/styles/fb_button.dart';

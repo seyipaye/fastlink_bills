@@ -1,4 +1,4 @@
-import 'package:fastlink_app/presentation/modules/wallet/transfer_payment/transfer_by_wallet/transfer_controller.dart';
+import 'package:fastlink_app/presentation/modules/fund_wallet/bank_transfer/account_display/transfer_controller.dart';
 import 'package:fastlink_app/presentation/utils/styles/color.dart';
 import 'package:fastlink_app/presentation/utils/styles/fb_button.dart';
 import 'package:fastlink_app/presentation/utils/styles/text_size.dart';

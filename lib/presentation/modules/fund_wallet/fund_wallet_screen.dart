@@ -16,10 +16,10 @@ import 'package:gap/gap.dart';
 import 'package:get/get.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-import '../../../utils/colors.dart';
-import '../../../utils/constants.dart';
-import '../../../widgets/app_buttons.dart';
-import '../../fund_wallet/fund_wallet_controller.dart';
+import '../../utils/colors.dart';
+import '../../utils/constants.dart';
+import '../../widgets/app_buttons.dart';
+import 'fund_wallet_controller.dart';
 
 class FundWalletScreen extends GetView<FundWalletController> {
   FundWalletScreen({Key? key}) : super(key: key);
@@ -162,7 +162,9 @@ class BankTransferItem extends StatelessWidget {
                         foregroundColor: AppColors.primary,
                         backgroundColor: AppColors.light_primary,
                         icon: Assets.icons.share.svg(height: 12),
-                        onPressed: () {},
+                        onPressed: () {
+                          Get.toNamed(Routes.bankTransfer);
+                        },
                       ),
                     ),
                     gap24,

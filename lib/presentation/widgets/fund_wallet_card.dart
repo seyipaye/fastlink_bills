@@ -54,7 +54,7 @@ class FundWalletCard extends StatelessWidget {
               leading: Icon(
                 Icons.add,
                 color: FBColors.whiteColor,
-              ),
+              ), 
               color: FBColors.orangeColor,
               textColor: FBColors.whiteColor,
               onTap: () {

@@ -32,9 +32,6 @@ class $AssetsIconsGen {
   SvgGenImage get fastlinkWifi =>
       const SvgGenImage('assets/icons/fastlink_wifi.svg');
 
-  /// File path: assets/icons/mtn_icon.svg
-  SvgGenImage get mtnIcon => const SvgGenImage('assets/icons/mtn_icon.svg');
-
   /// File path: assets/icons/notification.svg
   SvgGenImage get notification =>
       const SvgGenImage('assets/icons/notification.svg');
@@ -56,7 +53,6 @@ class $AssetsIconsGen {
         cellphoneSound,
         downIcon,
         fastlinkWifi,
-        mtnIcon,
         notification,
         paymentIcon,
         phone,
@@ -138,6 +134,10 @@ class $AssetsImagesGen {
   /// File path: assets/images/wallet.png
   AssetGenImage get wallet => const AssetGenImage('assets/images/wallet.png');
 
+  /// File path: assets/images/wallet_image.png
+  AssetGenImage get walletImage =>
+      const AssetGenImage('assets/images/wallet_image.png');
+
   /// File path: assets/images/write.png
   AssetGenImage get write => const AssetGenImage('assets/images/write.png');
 
@@ -163,6 +163,7 @@ class $AssetsImagesGen {
         plus,
         superSpeed,
         wallet,
+        walletImage,
         write
       ];
 }

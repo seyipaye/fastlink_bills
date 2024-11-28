@@ -8,6 +8,7 @@ import 'package:fastlink_app/presentation/utils/styles/fb_button.dart';
 import 'package:fastlink_app/presentation/utils/styles/text_size.dart';
 import 'package:fastlink_app/presentation/widgets/indicators.dart';
 import 'package:fastlink_app/presentation/widgets/quick_link.dart';
+import 'package:fastlink_app/resources/assets.gen.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:get/get.dart';
@@ -60,12 +61,10 @@ class BuyDataScreen extends GetView<BuyDataController> {
                     onTap: () {},
                     // color: Colors.teal[100],
                     child: DataBundle(),
-                    
-              ),
-              ),
+                  ),
+                ),
               ),
               Gap(20),
-
               Obx(
                 () => controller.plan_categories.value == null
                     ? Padding(
@@ -205,71 +204,154 @@ class BuyDataScreen extends GetView<BuyDataController> {
   }
 }
 
-
 class DataBundle extends StatelessWidget {
   const DataBundle({super.key});
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: (){
-         _confirmPaymentDialog();
+      onTap: () {
+        _showPersistentBottomSheet(context);
       },
-      child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Text(
-              "1GB",
-              style: FBText.fBTextBlackBoldMidMedium16
-            ),
-            Text(
-              "30 days",
-              style: FBText.fBTextBlackBoldMediumGrey
-            ),
-            Text(
-              "₦600",
-              style: FBText.fBTextOrangeSmall,
-          )]),
+      child: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
+        Text("1GB", style: FBText.fBTextBlackBoldMidMedium16),
+        Text("30 days", style: FBText.fBTextBlackBoldMediumGrey),
+        Text(
+          "₦600",
+          style: FBText.fBTextOrangeSmall,
+        )
+      ]),
     );
   }
 }
 
-void _confirmPaymentDialog() {
-  Get.defaultDialog(
-    barrierDismissible: false,
-    //leading:
-    title: '',
-    content: Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 10), 
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.start, 
-        crossAxisAlignment: CrossAxisAlignment.start, 
-        children: [
-          Align(
-            child: Transform.translate(
-              offset: Offset(-100, 0.0),
-              child: IconButton(
+void _showPersistentBottomSheet(BuildContext context) {
+  Scaffold.of(context).showBottomSheet(
+    (BuildContext context) {
+      return Container(
+        color: 
+        FBColors.whiteColor,
+        height: 487,
+        width: 370,
+        child: Padding(
+          padding: const EdgeInsets.all(20),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisSize: MainAxisSize.min,
+            children: <Widget>[
+              IconButton(
                 icon: Icon(Icons.close, color: Colors.black),
                 onPressed: () => Get.back(),
               ),
-            ),
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Center(
+                    child: Text(
+                      'N600.00',
+                      style: FBText.fBTextBlackBold,
+                      textAlign: TextAlign.center,
+                    ),
+                  ),
+                  Gap(10),
+                  ConfirmPaymentsDetailsWidget(
+                    firstText: 'Product',
+                    secondText: 'MobileData',
+                    showImage: true,
+                  ),
+                  Gap(5),
+                  ConfirmPaymentsDetailsWidget(
+                    firstText: 'Amount',
+                    secondText: 'N 600.00',
+                    showImage: false,
+                  ),
+                  Gap(5),
+                  ConfirmPaymentsDetailsWidget(
+                    firstText: 'Recipient Mobile',
+                    secondText: '08097654321',
+                    showImage: false,
+                  ),
+                  Gap(5),
+                  ConfirmPaymentsDetailsWidget(
+                    firstText: 'Use points earned ',
+                    secondText: '-N 50.00',
+                    showImage: false,
+                  ),
+                                    Gap(20),
+
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      HeaderText('Payment Method'),
+                      Gap(10),
+                      Row(
+                        children: [
+                         Expanded(
+                           child: Row(children: [
+                             Assets.images.walletImage.image(),
+                            Gap(5),
+                            Text('Wallet (N1000.00)',
+                            style: FBText.fBTextBlackBoldMidMedium16,
+                            )
+                           ],),
+                         ),
+                          Icon(Icons.check,
+                          color: FBColors.orangeColor,
+                          )
+                        ],
+                      ),
+                    ],
+                  ),
+                  Gap(40),
+                  SizedBox(
+                    height: 50,
+                    child: FBButton(title: 'Confirm Payment',
+                    onTap:  () => Navigator.pop(context),
+                    color: FBColors.orangeColor,
+                    textColor: FBColors.whiteColor,
+                    ),
+                  )
+                  
+                  
+                ],
+              ),
+            ],
           ),
-          Text("Account Number copied to clipboard",
-              style: FBText.fBTextBlackMedium),
-              Gap(10),
-          SizedBox(
-            height: 48,
-            child: FBButton(
-              title: 'Okay',
-              color: FBColors.orangeColor,
-              textColor: FBColors.whiteColor,
-              onTap: () => Get.back(),
-            ),
-          ),
-        ],
-      ),
-    ),
+        ),
+      );
+    },
   );
 }
 
+class ConfirmPaymentsDetailsWidget extends StatelessWidget {
+  final String firstText;
+  final String secondText;
+  final bool showImage;
 
+  ConfirmPaymentsDetailsWidget({
+    required this.firstText,
+    required this.secondText,
+    this.showImage = false,
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(mainAxisAlignment: MainAxisAlignment.center, children: [
+      Expanded(
+        child: Text(
+          firstText,
+          style: FBText.fbLightBlactText,
+        ),
+      ),
+      gap32,
+      if (showImage) Assets.images.mtnLogo.image(height: 32, width: 32),
+      Gap(4),
+      Text(
+        secondText,
+        style: FBText.fBTextBlackBoldMiddMedium,
+        textAlign: TextAlign.end,
+      ),
+    ]);
+  }
+}

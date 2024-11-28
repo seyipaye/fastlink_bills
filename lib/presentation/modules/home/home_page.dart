@@ -54,7 +54,7 @@ class HomePage extends GetView<HomePageController> {
               gap20,
               TransactionTab(),
               gap24,
-              ReferralTab()
+              ReferralTab(),
             ],
           ),
         ),

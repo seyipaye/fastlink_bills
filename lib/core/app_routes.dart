@@ -19,9 +19,7 @@ import 'package:fastlink_app/presentation/modules/fund_wallet/fund_wallet_contro
 import 'package:fastlink_app/presentation/modules/fund_wallet/fund_wallet_screen.dart';
 import 'package:fastlink_app/presentation/modules/fund_wallet/fund_wallet_response/fund_wallet_controller.dart';
 import 'package:fastlink_app/presentation/modules/fund_wallet/fund_wallet_response/fund_wallet_result_screen.dart';
-import 'package:fastlink_app/presentation/modules/fund_wallet/bank_transfer/congratulations/congrats_controller.dart';
 import 'package:fastlink_app/presentation/modules/fund_wallet/bank_transfer/pages/congrats_screen.dart';
-import 'package:fastlink_app/presentation/modules/fund_wallet/bank_transfer/identity/identity_controller.dart';
 import 'package:fastlink_app/presentation/modules/fund_wallet/bank_transfer/pages/identity_page.dart';
 import 'package:fastlink_app/presentation/modules/fund_wallet/bank_transfer/bank_transfer_controller.dart';
 import 'package:fastlink_app/presentation/modules/fund_wallet/bank_transfer/bank_transfer_screen.dart';
@@ -226,7 +224,7 @@ class AppPages {
       name: Routes.congrats,
       page: () => CongratulationsPage(),
       binding: BindingsBuilder(() {
-        Get.put(CongratsController());
+        Get.put(BankTransferController());
       }),
       // middlewares: [EnsureAuthMiddleware()],
     ),

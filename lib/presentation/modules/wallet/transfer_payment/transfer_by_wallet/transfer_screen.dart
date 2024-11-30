@@ -173,55 +173,54 @@ class TransferDetailsWidget extends StatelessWidget {
       ],
     );
   }
+}
 
-  void _showCustomCopyDialog() {
-    Get.defaultDialog(
-      barrierDismissible: false,
-      title: "",
-      content: Container(
-        width: 320,
-        height: 220,
-        padding: EdgeInsets.all(20),
-        decoration: BoxDecoration(
-          color: Colors.white,
-          borderRadius: BorderRadius.circular(8),
-        ),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          //mainAxisSize: MainAxisSize.min,
-          children: [
-            Align(
-              child: Transform.translate(
-                offset: Offset(-100, 0.0), 
-                child: IconButton(
-                  icon: Icon(Icons.close, color: Colors.black),
-                  onPressed: () => Get.back(),
+void _showCustomCopyDialog() {
+  Get.dialog(
+    GestureDetector(
+      onTap: () {}, // To prevent accidental dismiss by tapping outside
+      child: Center(
+        child: Container(
+          width: 320,
+          height: 220,
+          padding: EdgeInsets.all(20),
+          decoration: BoxDecoration(
+            color: Colors.white,
+            borderRadius: BorderRadius.circular(8),
+          ),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Align(
+                alignment: Alignment.topLeft,
+                child: Transform.translate(
+                  offset: Offset(-100, 0.0),
+                  child: IconButton(
+                    icon: Icon(Icons.close, color: Colors.black),
+                    onPressed: () => Get.back(),
+                  ),
                 ),
               ),
-            ),
-
-            //  Align(
-            //    child: IconButton(
-            //         icon: Icon(Icons.close, color: Colors.black),
-            //         onPressed: () => Get.back(),
-            //       ),
-            //  ),
-            Text("Account Number copied to clipboard",
-                style: FBText.fBTextBlackSmall),
-                verticalSpace(10),
-            SizedBox(
-              width: 250,
-              height: 48,
-              child: FBButton(
-                title: 'Okay',
-                color: FBColors.orangeColor,
-                textColor: FBColors.whiteColor,
-                onTap: () => Get.back(),
+              Text(
+                "Account Number copied to clipboard",
+                style: FBText.fBTextBlackSmall,
               ),
-            ),
-          ],
+              verticalSpace(10),
+              SizedBox(
+                width: 250,
+                height: 48,
+                child: FBButton(
+                  title: 'Okay',
+                  color: FBColors.orangeColor,
+                  textColor: FBColors.whiteColor,
+                  onTap: () => Get.back(),
+                ),
+              ),
+            ],
+          ),
         ),
       ),
-    );
-  }
+    ),
+    barrierDismissible: false, // Prevent dismissing by tapping outside
+  );
 }

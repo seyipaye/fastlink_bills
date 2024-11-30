@@ -1,5 +1,5 @@
-import 'package:fastlink_app/presentation/modules/wallet/card_payment/card_details/card_details_screen.dart';
-import 'package:fastlink_app/presentation/modules/wallet/card_payment/card_details/card_screen_controller.dart';
+import 'package:fastlink_app/presentation/modules/fund_wallet/card_payment/card_details/card_details_screen.dart';
+import 'package:fastlink_app/presentation/modules/fund_wallet/card_payment/card_details/card_screen_controller.dart';
 import 'package:fastlink_app/presentation/widgets/app_card.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';

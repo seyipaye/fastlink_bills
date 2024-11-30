@@ -25,6 +25,9 @@ class $AssetsIconsGen {
   SvgGenImage get cellphoneSound =>
       const SvgGenImage('assets/icons/cellphone_sound.svg');
 
+  /// File path: assets/icons/copy.svg
+  SvgGenImage get copy => const SvgGenImage('assets/icons/copy.svg');
+
   /// File path: assets/icons/down_icon.svg
   SvgGenImage get downIcon => const SvgGenImage('assets/icons/down_icon.svg');
 
@@ -43,6 +46,9 @@ class $AssetsIconsGen {
   /// File path: assets/icons/phone.svg
   SvgGenImage get phone => const SvgGenImage('assets/icons/phone.svg');
 
+  /// File path: assets/icons/share.svg
+  SvgGenImage get share => const SvgGenImage('assets/icons/share.svg');
+
   /// File path: assets/icons/trash.png
   AssetGenImage get trash => const AssetGenImage('assets/icons/trash.png');
 
@@ -51,11 +57,13 @@ class $AssetsIconsGen {
         announce,
         bullet,
         cellphoneSound,
+        copy,
         downIcon,
         fastlinkWifi,
         notification,
         paymentIcon,
         phone,
+        share,
         trash
       ];
 }

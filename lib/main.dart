@@ -139,7 +139,7 @@ class _MyAppState extends State<MyApp> {
     );
 
     return GetMaterialApp(
-      title: 'FastLink Internet',
+      title: 'FastLink Bills',
       debugShowCheckedModeBanner: false,
       //initialRoute: Routes.login,
       initialRoute: initialRoute,

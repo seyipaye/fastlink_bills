@@ -8,11 +8,11 @@ import 'package:fastlink_app/core/extentions.dart';
 import 'package:pwa_install/pwa_install.dart' as pwa;
 import 'package:url_launcher/url_launcher.dart';
 
-import '../../../../core/app_routes.dart';
-import '../../../../data/user/user.dart';
-import '../../../../data/wallet/wallet.dart';
-import '../../../../domain/repositories/auth_repo.dart';
-import '../../../utils/constants.dart';
+import '../../../core/app_routes.dart';
+import '../../../data/user/user.dart';
+import '../../../data/wallet/wallet.dart';
+import '../../../domain/repositories/auth_repo.dart';
+import '../../utils/constants.dart';
 import 'fund_wallet_screen.dart';
 import 'package:http/http.dart' as http;
 // import 'package:html/parser.dart' show parse;
@@ -97,23 +97,23 @@ class FundWalletController extends GetxController {
       //'card' or 'others'
       final paymentMethod = await Get.bottomSheet(PaymentMethodBottomSheet());
 
-      if (paymentMethod == 'card') {
-        // Take user to Card Screen
+      // if (paymentMethod == 'card') {
+      //   // Take user to Card Screen
 
-        // Get.toNamed(Routes.cards, arguments: amount.value);
-        final result = await Get.bottomSheet(CardSelectionBottomSheet());
+      //   // Get.toNamed(Routes.cards, arguments: amount.value);
+      //   final result = await Get.bottomSheet(CardSelectionBottomSheet());
 
-        if (result is DebitCard) {
-          charge_card(result);
-          return;
-        } else if (result == 'new_card') {
-          type = 'card';
-        } else {
-          type = null;
-        }
-      } else if (paymentMethod == null) {
-        return;
-      }
+      //   if (result is DebitCard) {
+      //     charge_card(result);
+      //     return;
+      //   } else if (result == 'new_card') {
+      //     type = 'card';
+      //   } else {
+      //     type = null;
+      //   }
+      // } else if (paymentMethod == null) {
+      //   return;
+      // }
 
       showLoadingState;
 

@@ -1,7 +1,7 @@
-import 'package:fastlink_app/presentation/modules/wallet/card_payment/card_details/card_screen_controller.dart';
-import 'package:fastlink_app/presentation/modules/wallet/card_payment/fund_with_card/fund_with_card_controller.dart';
-import 'package:fastlink_app/presentation/modules/wallet/fund_wallet_response/fund_wallet_controller.dart';
-import 'package:fastlink_app/presentation/modules/wallet/fund_wallet_response/fund_wallet_result_screen.dart';
+import 'package:fastlink_app/presentation/modules/fund_wallet/card_payment/card_details/card_screen_controller.dart';
+import 'package:fastlink_app/presentation/modules/fund_wallet/card_payment/amount/amount_controller.dart';
+import 'package:fastlink_app/presentation/modules/fund_wallet/fund_wallet_response/fund_wallet_controller.dart';
+import 'package:fastlink_app/presentation/modules/fund_wallet/fund_wallet_response/fund_wallet_result_screen.dart';
 import 'package:fastlink_app/presentation/utils/styles/color.dart';
 import 'package:fastlink_app/presentation/utils/styles/fb_button.dart';
 import 'package:fastlink_app/presentation/utils/styles/text_size.dart';

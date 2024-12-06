@@ -8,6 +8,7 @@ class FBColors {
   static const Color fundWalletCardColor =  Color(0xFFE6D6D6);
   static const Color lightBlack = Color(0xFF505050);
   static const Color greyColor = Color(0xFFF505050);
+  static const Color greenColor = Color(0xFFF30BB7A);
 
   // static const Color greenText =  Color(0xFF00D187);
   // static const Color lightBlack = Color(0xFF666666);

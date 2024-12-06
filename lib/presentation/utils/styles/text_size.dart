@@ -54,7 +54,8 @@ class FBText {
   static TextStyle fBTextOrangeBigMedium = TextStyle(
       fontSize: 15, color: FBColors.orangeColor, fontWeight: FontWeight.w600);
 
-  static TextStyle fBTextOrangeSmall = TextStyle(
+  static TextStyle fBTextOrangeSmall = 
+  TextStyle(
       fontSize: 14, color: FBColors.orangeColor, fontWeight: FontWeight.w600);
 
 // static TextStyle ederTextGreenMedium =

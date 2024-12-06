@@ -1,6 +1,9 @@
+import 'package:fastlink_app/core/extentions.dart';
+import 'package:fastlink_app/presentation/utils/strings.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gap/gap.dart';
 import 'colors.dart';
 import 'values.dart';
@@ -102,6 +105,19 @@ kMoneyTextStyle({
       letterSpacing: .75,
       color: color,
     );
+
+const kNairaIcon = const SizedBox(
+  width: 5,
+  child: Center(
+      child: Text(
+    '₦',
+    style: TextStyle(
+      fontFamily: kRaleway,
+      fontSize: 16,
+      fontWeight: FontWeight.w600,
+    ),
+  )),
+);
 
 const kDivider = const Divider(
   color: AppColors.outline,

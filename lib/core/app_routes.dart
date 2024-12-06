@@ -19,12 +19,12 @@ import 'package:fastlink_app/presentation/modules/fund_wallet/fund_wallet_contro
 import 'package:fastlink_app/presentation/modules/fund_wallet/fund_wallet_screen.dart';
 import 'package:fastlink_app/presentation/modules/fund_wallet/fund_wallet_response/fund_wallet_controller.dart';
 import 'package:fastlink_app/presentation/modules/fund_wallet/fund_wallet_response/fund_wallet_result_screen.dart';
-import 'package:fastlink_app/presentation/modules/fund_wallet/bank_transfer/pages/congrats_screen.dart';
-import 'package:fastlink_app/presentation/modules/fund_wallet/bank_transfer/pages/identity_page.dart';
-import 'package:fastlink_app/presentation/modules/fund_wallet/bank_transfer/bank_transfer_controller.dart';
-import 'package:fastlink_app/presentation/modules/fund_wallet/bank_transfer/bank_transfer_screen.dart';
-import 'package:fastlink_app/presentation/modules/fund_wallet/bank_transfer/account_display/transfer_controller.dart';
-import 'package:fastlink_app/presentation/modules/fund_wallet/bank_transfer/account_display/transfer_screen.dart';
+import 'package:fastlink_app/presentation/modules/fund_wallet/transfer/pages/congrats_screen.dart';
+import 'package:fastlink_app/presentation/modules/fund_wallet/transfer/pages/identity_page.dart';
+import 'package:fastlink_app/presentation/modules/fund_wallet/transfer/bank_transfer_controller.dart';
+import 'package:fastlink_app/presentation/modules/fund_wallet/transfer/bank_transfer_screen.dart';
+import 'package:fastlink_app/presentation/modules/fund_wallet/transfer/account_display/transfer_controller.dart';
+import 'package:fastlink_app/presentation/modules/fund_wallet/transfer/account_display/transfer_screen.dart';
 import 'package:get/get.dart';
 
 import '../domain/repositories/app_repo.dart';

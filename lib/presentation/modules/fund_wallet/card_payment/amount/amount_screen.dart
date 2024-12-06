@@ -32,7 +32,7 @@ class AmmountScreen extends GetView<AmountController> {
               inputFormatters: <TextInputFormatter>[controller.formatter],
               //autofillHints: [AutofillHints.email],
               hintText: '100 - 50,000',
-              prefixText: 'NGN ',
+              prefixIcon: kNairaIcon,
               //onSaved: (val) => controller.email = val!.trim(),
               //validator: Validator.isNotEmpty,
             ),
@@ -70,7 +70,9 @@ class CardSelectionBottomSheet extends StatelessWidget {
               child: AppIconButton2(
                 width: 25,
                 icon: Icon(Icons.close),
-                onPressed: () {},
+                onPressed: () {
+                  Get.back();
+                },
               ),
             ),
             Gap(36),

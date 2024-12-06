@@ -70,16 +70,7 @@ class BuyAirtimeScreen extends GetView<BuyAirtimeController> {
                 style: TextStyle(
                   fontWeight: FontWeight.w600,
                 ),
-                prefixIcon: Container(
-                  width: 5,
-                  alignment: Alignment.center,
-                  child: Text('₦').applyStyle(
-                    fontSize: 16,
-                    bold: true,
-                  ),
-                ),
-                // onSaved: (val) => controller.email = val!.trim(),
-                // validator: Validator.isNotEmpty,
+                prefixIcon: kNairaIcon,
               ),
               gap24,
               AppElevatedButton(

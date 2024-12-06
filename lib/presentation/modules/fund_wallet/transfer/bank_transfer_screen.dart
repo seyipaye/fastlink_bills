@@ -6,8 +6,9 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../../../utils/constants.dart';
-import 'pages/congrats_screen.dart';
-import 'pages/identity_page.dart';
+import 'pages/complete_kyc_page.dart';
+import 'pages/congratulations_page.dart';
+import 'pages/identity_proof_page.dart';
 
 class BankTransferScreen extends GetView<BankTransferController> {
   const BankTransferScreen({super.key});
@@ -18,8 +19,7 @@ class BankTransferScreen extends GetView<BankTransferController> {
       appBar: AppBar(
         title: Text('Fund Wallet by Transfer'),
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(20.0),
+      body: SafeArea(
         child: PageView(
           controller: controller.pageController,
           children: [
@@ -29,48 +29,6 @@ class BankTransferScreen extends GetView<BankTransferController> {
           ],
         ),
       ),
-    );
-  }
-}
-
-class CompleteKYCPage extends GetView<BankTransferController> {
-  const CompleteKYCPage({
-    super.key,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Expanded(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                'Complete your KYC',
-                style: FBText.fBTextOrangeBig,
-              ),
-              gap20,
-              Text(
-                'To ensure a secure and seamless \nexperience, we are required by law to verify your identity before you can fund your wallet by transfer. ',
-                style: FBText.fBTextBlackMedium,
-              ),
-            ],
-          ),
-        ),
-        SizedBox(
-          // width: 340,
-          height: 50,
-          child: FBButton(
-            title: 'Proceed',
-            textColor: FBColors.whiteColor,
-            color: FBColors.orangeColor,
-            onTap: controller.page1Submit,
-          ),
-        ),
-        gap32,
-      ],
     );
   }
 }

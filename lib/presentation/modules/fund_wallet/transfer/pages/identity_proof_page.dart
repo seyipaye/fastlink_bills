@@ -18,6 +18,7 @@ class IdentityProofPage extends GetView<BankTransferController> {
   @override
   Widget build(BuildContext context) {
     return FlexibleScrollViewColumn(
+      padding: const EdgeInsets.all(20.0),
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Gap(5),
@@ -33,6 +34,7 @@ class IdentityProofPage extends GetView<BankTransferController> {
         Gap(50),
         AppTextFormField(
           label: 'BVN',
+          maxLength: 12,
           hintText: 'Enter 12 digits BVN',
         ),
         gap24,
@@ -66,7 +68,6 @@ class IdentityProofPage extends GetView<BankTransferController> {
             onTap: controller.page2Submit,
           ),
         ),
-        gap32,
       ],
     );
   }
@@ -79,11 +80,15 @@ class BvnText extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Row(
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Icon(
-          Icons.circle,
-          color: Colors.black,
-          size: 3.0,
+        Padding(
+          padding: const EdgeInsets.only(top: 10),
+          child: Icon(
+            Icons.circle,
+            color: Colors.black,
+            size: 3.0,
+          ),
         ),
         Gap(10),
         Expanded(

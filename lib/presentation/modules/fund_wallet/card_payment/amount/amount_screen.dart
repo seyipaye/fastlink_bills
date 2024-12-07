@@ -29,7 +29,7 @@ class AmmountScreen extends GetView<AmountController> {
               //textEditingController: controller.emailText,
               label: 'Amount',
               moneyInput: true,
-              inputFormatters: <TextInputFormatter>[controller.formatter],
+              inputFormatters: <TextInputFormatter>[kMoneyFormatter],
               //autofillHints: [AutofillHints.email],
               hintText: '100 - 50,000',
               prefixIcon: kNairaIcon,

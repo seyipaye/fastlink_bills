@@ -17,7 +17,11 @@ class AppStrings {
 
 const String kUrl = 'https://picsum.photos/200/200';
 
-const String kRaleway = 'Raleway';
+const String kRaleway = 'Raleway400';
+const String kRaleway500 = 'Raleway500';
+const String kRaleway600 = 'Raleway600';
+
+
 
 const int kCripsExpiryTime = 1; // In hours
 

@@ -130,9 +130,15 @@ flutter:
     - assets/icons/
 
   fonts:
-    - family: Raleway
+    - family: Raleway400
       fonts:
         - asset: assets/fonts/Raleway-Regular.ttf
+    - family: Raleway500
+      fonts:
+        - asset: assets/fonts/Raleway-Medium.ttf
+    - family: Raleway600
+      fonts:
+        - asset: assets/fonts/Raleway-SemiBold.ttf
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

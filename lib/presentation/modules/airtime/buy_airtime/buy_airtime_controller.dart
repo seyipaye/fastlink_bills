@@ -9,14 +9,28 @@ import '../../../../core/app_routes.dart';
 import '../../../../data/user/user.dart';
 import '../../../../domain/repositories/auth_repo.dart';
 
+enum AppOverlay {
+  network,
+  phone_number,
+}
+
 class BuyAirtimeController extends GetxController {
   final formKey = GlobalKey<FormState>();
+  final overlay = Rxn<AppOverlay>();
 
   Rx<User> get user => AuthRepository.instance.user;
 
   final user_plan = Rxn<Plan>();
   final plan_categories = Rxn<PlanCategories>();
   final discounts = Rxn<Discounts>();
+
+  void onNetworkPressed() {
+    overlay.value = AppOverlay.network;
+  }
+
+  void removeOverlay() {
+    overlay.value = null;
+  }
 
   @override
   void onInit() {
@@ -46,5 +60,5 @@ class BuyAirtimeController extends GetxController {
       showError(err);
     });
   }
-
 }
+

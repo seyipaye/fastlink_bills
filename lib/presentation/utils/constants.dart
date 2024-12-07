@@ -1,10 +1,10 @@
-import 'package:fastlink_app/core/extentions.dart';
+import 'package:currency_text_input_formatter/currency_text_input_formatter.dart';
 import 'package:fastlink_app/presentation/utils/strings.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gap/gap.dart';
+import 'package:intl/intl.dart';
 import 'colors.dart';
 import 'values.dart';
 
@@ -14,6 +14,32 @@ const gap16 = const Gap(16);
 const gap20 = const Gap(20);
 const gap24 = const Gap(24);
 const gap32 = const Gap(32);
+
+CurrencyTextInputFormatter get kMoneyFormatter => CurrencyTextInputFormatter(
+      NumberFormat.currency(
+        locale: 'en_NG',
+        symbol: '',
+        decimalDigits: 0,
+      ),
+    );
+
+CurrencyTextInputFormatter get kNairaFormatter => CurrencyTextInputFormatter(
+      NumberFormat.currency(
+        locale: 'en_NG',
+        symbol: '₦ ',
+        decimalDigits: 0,
+      ),
+    );
+
+String formatCurrency(String input) {
+  // Apply the formatter
+  return kNairaFormatter
+      .formatEditUpdate(
+        TextEditingValue.empty, // Initial value
+        TextEditingValue(text: input), // Input value
+      )
+      .text;
+}
 
 double kLineHeight(double height, {double fontSize = 1}) => height / fontSize;
 

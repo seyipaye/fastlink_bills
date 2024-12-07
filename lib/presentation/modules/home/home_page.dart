@@ -50,7 +50,7 @@ class HomePage extends GetView<HomePageController> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
-              FundWalletCard(),
+              TopBalanceCard(),
               gap20,
               QuickLink(),
               gap20,
@@ -112,8 +112,8 @@ class AvatarAndGreeting extends StatelessWidget {
   }
 }
 
-class FundWalletCard extends StatelessWidget {
-  const FundWalletCard({super.key});
+class TopBalanceCard extends StatelessWidget {
+  const TopBalanceCard({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -139,8 +139,7 @@ class FundWalletCard extends StatelessWidget {
                 ),
                 gap20,
                 VisibilityToggleText(
-                  text: '10000',
-                  textStyle: FBText.fBTextBlackBoldMidMedium16,
+                  text: formatCurrency('10000'),
                 ),
               ],
             ),

@@ -1,4 +1,5 @@
 import 'package:fastlink_app/presentation/utils/colors.dart';
+import 'package:fastlink_app/presentation/utils/strings.dart';
 import 'package:fastlink_app/presentation/utils/styles/color.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -23,7 +24,7 @@ class FBText {
       fontSize: 14, color: FBColors.blackColor, fontWeight: FontWeight.w500);
 
   static TextStyle fBTextBlackBoldMedium = TextStyle(
-      fontSize: 14, color: FBColors.blackColor, fontWeight: FontWeight.w500);
+      fontSize: 14.sp, color: FBColors.blackColor, fontFamily: kRaleway500);
 
   static TextStyle fBTextBlackBoldMediumGrey = TextStyle(
       fontSize: 14, color: FBColors.greyColor, fontWeight: FontWeight.w600);

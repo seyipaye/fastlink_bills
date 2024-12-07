@@ -92,15 +92,29 @@ extension AddTextstyle on Text {
     final bool bold = false,
     final Color? color = Colors.black,
     final double lineHeight = 20,
-    final FontWeight? fontWeight,
+    FontWeight? fontWeight,
     final double? letterSpacing,
   }) {
+    fontWeight =
+        (bold == true) ? FontWeight.w600 : fontWeight ?? FontWeight.w400;
+    String _getFontFamily() {
+      if (fontWeight == FontWeight.w600) {
+        return kRaleway600;
+      }
+      if (fontWeight == FontWeight.w500) {
+        return kRaleway500;
+      } else {
+        return kRaleway;
+      }
+    }
+
+    ;
+
     return DefaultTextStyle(
       style: TextStyle(
-          fontFamily: kRaleway,
+          fontFamily: _getFontFamily(),
           fontSize: fontSize.sp,
-          fontWeight:
-              (bold == true) ? FontWeight.w600 : fontWeight ?? FontWeight.w400,
+          fontWeight: fontWeight,
           color: color,
           letterSpacing: letterSpacing,
           height: kLineHeight(

@@ -15,7 +15,7 @@ import 'package:gap/gap.dart';
 import 'package:get/get.dart';
 import '../../../utils/colors.dart';
 import '../../../widgets/app_card.dart';
-import '../../../widgets/money_text_view.dart';
+import '../../../widgets/phone_number/Phone_number_wrapper.dart';
 
 const limited_time_offer = true;
 bool isSuccessful = false;
@@ -328,7 +328,8 @@ void _showBottomSheet(BuildContext context) {
                                           Assets.images.walletImage.image(),
                                           Gap(15),
                                           Column(
-                                            crossAxisAlignment: CrossAxisAlignment.center,
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.center,
                                             children: [
                                               Text(
                                                 'Wallet (N0.00)',
@@ -351,8 +352,8 @@ void _showBottomSheet(BuildContext context) {
                                       onTap: () {
                                         // Get.put(TransactionController());
                                         // Get.to(() => TransactionScreen());
-                                                    Get.to(() => DataPurchaseStatusScreen());
-
+                                        Get.to(
+                                            () => DataPurchaseStatusScreen());
                                       },
                                       text: 'Fund Wallet',
                                       color: FBColors.orangeColor,

@@ -6,14 +6,7 @@ import '../../fund_wallet_screen.dart';
 import 'amount_screen.dart';
 
 class AmountController extends GetxController {
-  final CurrencyTextInputFormatter formatter = CurrencyTextInputFormatter(
-    NumberFormat.currency(
-      locale: 'en_NG',
-      symbol: '',
-      decimalDigits: 0,
-      // customPattern: customPattern,
-    ),
-  );
+  
 
   void onProceedPressed() async {
     // Get.toNamed(Routes.cards, arguments: amount.value);

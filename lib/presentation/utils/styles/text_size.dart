@@ -2,7 +2,7 @@ import 'package:fastlink_app/presentation/utils/colors.dart';
 import 'package:fastlink_app/presentation/utils/styles/color.dart';
 import 'package:flutter/material.dart';
 
-class FBText {
+class AppText {
   static TextStyle fBTextBlackBigBold = TextStyle(
       fontSize: 32, color: FBColors.blackColor, fontWeight: FontWeight.w500);
 

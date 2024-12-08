@@ -23,12 +23,12 @@ class IdentityProofPage extends GetView<BankTransferController> {
         Gap(5),
         Text(
           'Proof of Identity',
-          style: FBText.fBTextOrangeBig,
+          style: AppText.fBTextOrangeBig,
         ),
         Gap(6),
         Text(
           'Please provide your Bank Verification \nNumber (BVN). Your BVN allows us to verify your account and protect you from fraud.',
-          style: FBText.fBTextBlackMedium,
+          style: AppText.fBTextBlackMedium,
         ),
         Gap(50),
         AppTextFormField(
@@ -89,7 +89,7 @@ class BvnText extends StatelessWidget {
         Expanded(
           child: Text(
             description,
-            style: FBText.fBTextBlackBoldMedium,
+            style: AppText.fBTextBlackBoldMedium,
           ),
         )
       ],

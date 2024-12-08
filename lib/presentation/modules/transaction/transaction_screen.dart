@@ -45,7 +45,7 @@ class MonthandIcon extends StatelessWidget {
       children: [
         Text(
           nameOfMonth,
-          style: FBText.fBTextBlackBoldMedium,
+          style: AppText.fBTextBlackBoldMedium,
         ),
         Icon(Icons.arrow_drop_down_sharp)
       ],

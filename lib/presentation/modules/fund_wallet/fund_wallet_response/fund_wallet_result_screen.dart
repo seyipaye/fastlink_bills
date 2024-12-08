@@ -29,7 +29,7 @@ class FundWalletResultScreen extends GetView<FundWalletResultController> {
                         Gap(40),
         
             Text('Your wallet has been funded\n successfully with NGN 5,000',
-            style: FBText.fBTextBlackBoldMiddMedium,
+            style: AppText.fBTextBlackBoldMiddMedium,
             ),
                         Gap(250),
         

@@ -40,7 +40,7 @@ class BuyDataScreen extends GetView<BuyDataController> {
                 alignment: Alignment.centerLeft,
                 child: Text(
                   'Mobile Data Bundles',
-                  style: FBText.fBTextOrangeBigMedium,
+                  style: AppText.fBTextOrangeBigMedium,
                 ),
               ),
               NetworkSelector(),
@@ -213,22 +213,21 @@ class DataBundle extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        _showBottomSheet(context);
-        //_showPersistentBottomSheet(context);
+        _paymentBottomSheet(context);
       },
       child: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
-        Text("1GB", style: FBText.fBTextBlackBoldMidMedium16),
-        Text("30 days", style: FBText.fBTextBlackBoldMediumGrey),
+        Text("1GB", style: AppText.fBTextBlackBoldMidMedium16),
+        Text("30 days", style: AppText.fBTextBlackBoldMediumGrey),
         Text(
           "₦600",
-          style: FBText.fBTextOrangeSmall,
+          style: AppText.fBTextOrangeSmall,
         )
       ]),
     );
   }
 }
 
-void _showBottomSheet(BuildContext context) {
+void _paymentBottomSheet(BuildContext context) {
   showModalBottomSheet(
     context: context,
     isDismissible: false,
@@ -237,154 +236,193 @@ void _showBottomSheet(BuildContext context) {
     builder: (BuildContext context) {
       return Container(
           height: 500,
-          padding: EdgeInsets.only(left: 16.0, right: 16.0),
+          padding: EdgeInsets.only(left: 20.0, right: 20.0),
           decoration: BoxDecoration(
             color: Colors.white,
             borderRadius: BorderRadius.vertical(
               top: Radius.circular(16.0),
             ),
           ),
-          child: Padding(
-            padding: const EdgeInsets.all(16),
-            child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                mainAxisSize: MainAxisSize.min,
-                children: <Widget>[
-                  Align(
-                    alignment: Alignment.topLeft,
-                    child: IconButton(
-                      icon: Icon(Icons.close, color: Colors.black),
-                      onPressed: () => Get.back(),
-                    ),
+          child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisSize: MainAxisSize.min,
+              children: <Widget>[
+                Align(
+                  alignment: Alignment.topRight,
+                  child: IconButton(
+                    icon: Icon(Icons.close, color: Colors.black),
+                    onPressed: () => Get.back(),
                   ),
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Center(
-                        child: Text(
-                          'N600.00',
-                          style: FBText.fBTextBlackBold,
-                          textAlign: TextAlign.center,
-                        ),
-                      ),
-                      Gap(10),
-                      ConfirmPaymentsDetailsWidget(
-                        firstText: 'Product',
-                        secondText: 'MobileData',
-                        showImage: true,
-                      ),
-                      Gap(10),
-                      ConfirmPaymentsDetailsWidget(
-                        firstText: 'Amount',
-                        secondText: 'N 600.00',
-                        showImage: false,
-                      ),
-                      Gap(10),
-                      ConfirmPaymentsDetailsWidget(
-                        firstText: 'Recipient Mobile',
-                        secondText: '08097654321',
-                        showImage: false,
-                      ),
-                      Gap(10),
-                      ConfirmPaymentsDetailsWidget(
-                        firstText: 'Use points earned ',
-                        secondText: '-N 50.00',
-                        showImage: false,
-                        showSwitch: true,
-                      ),
-                      Gap(20),
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          HeaderText('Payment Method'),
-                          Gap(30),
-                          isSuccessful
-                              ? Row(
-                                  children: [
-                                    Expanded(
-                                      child: Row(
-                                        children: [
-                                          Assets.images.walletImage.image(),
-                                          Gap(5),
-                                          Text(
-                                            'Wallet (N1000.00)',
-                                            style: FBText
-                                                .fBTextBlackBoldMidMedium16,
-                                          )
-                                        ],
+                ),
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Center(
+                      child: isSuccessful
+                          ? Column(
+                              children: [
+                                RichText(
+                                  text: TextSpan(
+                                    style: DefaultTextStyle.of(context).style,
+                                    children: [
+                                      TextSpan(
+                                        text: 'N',
+                                        style: TextStyle(
+                                            fontSize: 20,
+                                            fontWeight: FontWeight.w500),
                                       ),
-                                    ),
-                                    Icon(
-                                      Icons.check,
-                                      color: FBColors.orangeColor,
-                                    )
-                                  ],
-                                )
-                              : Row(
-                                  children: [
-                                    Expanded(
-                                      child: Row(
-                                        children: [
-                                          Assets.images.walletImage.image(),
-                                          Gap(15),
-                                          Column(
-                                            crossAxisAlignment: CrossAxisAlignment.center,
-                                            children: [
-                                              Text(
-                                                'Wallet (N0.00)',
-                                                style: FBText
-                                                    .fBTextBlackBoldMidMedium16,
-                                              ),
-                                              Gap(6),
-                                              Text(
-                                                'Insufficient balance',
-                                                style: FBText
-                                                    .fBTextBlackBoldMedium,
-                                              )
-                                            ],
-                                          )
-                                        ],
+                                      TextSpan(
+                                        text: '600.00',
+                                        style: TextStyle(
+                                            fontSize: 32,
+                                            fontWeight: FontWeight.w500),
                                       ),
-                                    ),
-                                    Gap(5),
-                                    CustomTextButton(
-                                      onTap: () {
-                                        // Get.put(TransactionController());
-                                        // Get.to(() => TransactionScreen());
-                                                    Get.to(() => DataPurchaseStatusScreen());
-
-                                      },
-                                      text: 'Fund Wallet',
-                                      color: FBColors.orangeColor,
-                                      trailing: Icon(
-                                        Icons.arrow_forward_ios,
-                                        color: FBColors.orangeColor,
-                                        size: 10,
-                                      ),
-                                    ),
-                                  ],
+                                    ],
+                                  ),
                                 ),
-                        ],
+                                Gap(5),
+                                Text('N200.00',
+                                    style: TextStyle(
+                                        decoration:
+                                            TextDecoration.lineThrough)),
+                              ],
+                            )
+                          : 
+                          RichText(
+                                  text: TextSpan(
+                                    style: DefaultTextStyle.of(context).style,
+                                    children: [
+                                      TextSpan(
+                                        text: 'N',
+                                        style: TextStyle(
+                                            fontSize: 20,
+                                            fontWeight: FontWeight.w500),
+                                      ),
+                                      TextSpan(
+                                        text: '500.00',
+                                        style: TextStyle(
+                                            fontSize: 32,
+                                            fontWeight: FontWeight.w500),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                    ),
+                    Gap(10),
+                    ConfirmPaymentsDetailsWidget(
+                      firstText: 'Product',
+                      secondText: 'MobileData',
+                      showImage: true,
+                    ),
+                    Gap(10),
+                    ConfirmPaymentsDetailsWidget(
+                      firstText: 'Amount',
+                      secondText: 'N 600.00',
+                      showImage: false,
+                    ),
+                    Gap(10),
+                    ConfirmPaymentsDetailsWidget(
+                      firstText: 'Recipient Mobile',
+                      secondText: '08097654321',
+                      showImage: false,
+                    ),
+                    Gap(10),
+                    ConfirmPaymentsDetailsWidget(
+                      firstText: 'Use points earned ',
+                      secondText: '-N 50.00',
+                      showImage: false,
+                      showSwitch: true,
+                    ),
+                    Gap(20),
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        HeaderText('Payment Method'),
+                        Gap(30),
+                        isSuccessful
+                            ? Row(
+                                children: [
+                                  Expanded(
+                                    child: Row(
+                                      children: [
+                                        Assets.images.walletImage.image(),
+                                        Gap(15),
+                                        Text(
+                                          'Wallet (N1000.00)',
+                                          style: AppText
+                                              .fBTextBlackBoldMidMedium16,
+                                        )
+                                      ],
+                                    ),
+                                  ),
+                                  Icon(
+                                    Icons.check,
+                                    color: FBColors.orangeColor,
+                                  )
+                                ],
+                              )
+                            : Row(
+                                children: [
+                                  Expanded(
+                                    child: Row(
+                                      children: [
+                                        Assets.images.walletImage.image(),
+                                        Gap(15),
+                                        Column(
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.center,
+                                          children: [
+                                            Text(
+                                              'Wallet (N0.00)',
+                                              style: AppText
+                                                  .fBTextBlackBoldMidMedium16,
+                                            ),
+                                            Gap(6),
+                                            Text(
+                                              'Insufficient balance',
+                                              style:
+                                                  AppText.fBTextBlackBoldMedium,
+                                            )
+                                          ],
+                                        )
+                                      ],
+                                    ),
+                                  ),
+                                  Gap(5),
+                                  CustomTextButton(
+                                    onTap: () {
+                                      Get.to(() => DataPurchaseStatusScreen());
+                                    },
+                                    text: 'Fund Wallet',
+                                    color: FBColors.orangeColor,
+                                    trailing: Icon(
+                                      Icons.arrow_forward_ios,
+                                      color: FBColors.orangeColor,
+                                      size: 10,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                      ],
+                    ),
+                    Gap(40),
+                    SizedBox(
+                      height: 50,
+                      child: FBButton(
+                        title: 'Confirm Payment',
+                        onTap: () => Navigator.pop(context),
+                        color: FBColors.orangeColor,
+                        textColor: FBColors.whiteColor,
                       ),
-                      Gap(40),
-                      SizedBox(
-                        height: 50,
-                        child: FBButton(
-                          title: 'Confirm Payment',
-                          onTap: () => Navigator.pop(context),
-                          color: FBColors.orangeColor,
-                          textColor: FBColors.whiteColor,
-                        ),
-                      )
-                    ],
-                  ),
-                ]),
-          ));
+                    )
+                  ],
+                ),
+              ]));
     },
   );
 }
 
-class ConfirmPaymentsDetailsWidget extends StatelessWidget {
+class ConfirmPaymentsDetailsWidget extends StatefulWidget {
   final String firstText;
   final String secondText;
   final bool showImage;
@@ -401,33 +439,45 @@ class ConfirmPaymentsDetailsWidget extends StatelessWidget {
   });
 
   @override
+  State<ConfirmPaymentsDetailsWidget> createState() =>
+      _ConfirmPaymentsDetailsWidgetState();
+}
+
+class _ConfirmPaymentsDetailsWidgetState
+    extends State<ConfirmPaymentsDetailsWidget> {
+  bool light = true;
+
+  @override
   Widget build(BuildContext context) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         Expanded(
           child: Text(
-            firstText,
-            style: FBText.fbLightBlactText,
+            widget.firstText,
+            style: AppText.fbLightBlactText,
           ),
         ),
         gap32,
-        if (showImage) Assets.images.mtnLogo.image(height: 32, width: 32),
+        if (widget.showImage)
+          Assets.images.mtnLogo.image(height: 32, width: 32),
         Gap(4),
         Text(
-          secondText,
-          style: FBText.fBTextBlackBoldMiddMedium,
+          widget.secondText,
+          style: AppText.fBTextBlackBoldMiddMedium,
           textAlign: TextAlign.end,
         ),
-        if (showSwitch) ...[
+        if (widget.showSwitch) ...[
           Transform.scale(
             scale: 0.5,
             child: Switch(
-              value: true,
-              onChanged: onSwitchChanged,
-              activeColor: FBColors.orangeColor,
-              inactiveThumbColor: FBColors.orangeColor,
-              inactiveTrackColor: Colors.white,
+              value: light,
+              activeColor: Colors.red,
+              onChanged: (bool value) {
+                setState(() {
+                  light = value;
+                });
+              },
             ),
           ),
         ],

@@ -115,7 +115,7 @@ Widget _profileBody(ProfileController controller) {
           SizedBox(height: 20),
           Text(
             'Hi, Rachael',
-            style: FBText.fBTextBlackBold,
+            style: AppText.fBTextBlackBold,
           ),
           verticalSpace(30),
           Container(
@@ -153,7 +153,7 @@ Widget _profileBody(ProfileController controller) {
                 Align(
                   alignment: Alignment(-0.4, 0.0),
                   child: Text('ACCOUNT SETTINGS',
-                  style: FBText.fBTextBlackBoldMiddMedium,
+                  style: AppText.fBTextBlackBoldMiddMedium,
                   ),
                 ),
                   ImageTextArrowRow(
@@ -226,7 +226,7 @@ class ImageTextArrowRow extends StatelessWidget {
                 horizontalSpace(15),
                 Text(
                   text,
-                  style: FBText.fBTextBlackBoldMiddMedium
+                  style: AppText.fBTextBlackBoldMiddMedium
                 ),
               ],
             ),

@@ -20,18 +20,21 @@ class TransactionTab extends StatelessWidget {
         'date': 'Sep 5th, 18:25',
         'amount': '-200',
         'image': Assets.images.phone.image(width: 80, height: 40),
+        'onTap': () {},
       },
       {
         'title': 'Data Purchase',
         'date': 'Sep 6th, 14:15',
         'amount': '-1000',
         'image': Assets.images.phone.image(width: 80, height: 40),
+        'onTap': () {},
       },
       {
         'title': 'Fund Wallet',
         'date': 'Sep 3rd, 14:15',
         'amount': '+1200',
         'image': Assets.images.plus.image(width: 80, height: 40),
+        'onTap': () {},
       },
     ];
 
@@ -43,7 +46,7 @@ class TransactionTab extends StatelessWidget {
           children: [
             Text(
               'Transactions',
-              style: FBText.fBTextBlackBoldMedium,
+              style: AppText.fBTextBlackBoldMedium,
             ),
             CustomTextButton(
               onTap: () {
@@ -73,52 +76,57 @@ class TransactionItem extends StatelessWidget {
   String date;
   String amount;
   Widget image;
+  VoidCallback onTap;
   TransactionItem(
       {required this.title,
       required this.date,
       required this.amount,
       required this.image,
+      required this.onTap,
       super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      padding: EdgeInsets.all(8),
-      decoration: BoxDecoration(
-        color: Colors.white,
-        borderRadius: BorderRadius.circular(8),
-        border: Border.all(color: Color(0xFFC2C6C8), width: 0.0),
-      ),
-      child: Row(
-        children: [
-          SizedBox(
-            child: image,
-            width: 32,
-          ),
-          Gap(16),
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                title,
-                style: FBText.fBTextBlackBold12,
-              ),
-              Text(
-                date,
-                style: FBText.fBTextBlacklittle,
-              ),
-            ],
-          ),
-          Gap(16),
-          Expanded(
-            child: Text(
-              amount,
-              textAlign: TextAlign.end,
-              style: FBText.fBTextBlackBoldMidMedium16,
-              maxLines: 1,
+    return GestureDetector(
+      onTap: onTap,
+      child: Container(
+        padding: EdgeInsets.all(8),
+        decoration: BoxDecoration(
+          color: Colors.white,
+          borderRadius: BorderRadius.circular(8),
+          border: Border.all(color: Color(0xFFC2C6C8), width: 0.0),
+        ),
+        child: Row(
+          children: [
+            SizedBox(
+              child: image,
+              width: 32,
             ),
-          ),
-        ],
+            Gap(16),
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  title,
+                  style: AppText.fBTextBlackBold12,
+                ),
+                Text(
+                  date,
+                  style: AppText.fBTextBlacklittle,
+                ),
+              ],
+            ),
+            Gap(16),
+            Expanded(
+              child: Text(
+                amount,
+                textAlign: TextAlign.end,
+                style: AppText.fBTextBlackBoldMidMedium16,
+                maxLines: 1,
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }
@@ -148,6 +156,7 @@ class TransactionList extends StatelessWidget {
             date: transaction['date'],
             amount: transaction['amount'],
             image: transaction['image'],
+            onTap: transaction['onTap'],
           ),
         );
       },

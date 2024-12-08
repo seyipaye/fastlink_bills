@@ -25,7 +25,7 @@ class TransferScreen extends GetView<TransferController> {
           children: [
             Text(
               'Account Details',
-              style: FBText.fBTextOrangeBigMedium,
+              style: AppText.fBTextOrangeBigMedium,
             ),
             verticalSpace(10),
             Text(
@@ -96,12 +96,12 @@ class TransferDetailsWidget extends StatelessWidget {
         Expanded(
           child: Text(
             firstText,
-            style: FBText.fbLightBlactText,
+            style: AppText.fbLightBlactText,
           ),
         ),
         Text(
           secondText,
-          style: FBText.fBTextBlackBoldMidMedium16,
+          style: AppText.fBTextBlackBoldMidMedium16,
           textAlign: TextAlign.end,
         ),
         if (showIcon)
@@ -186,7 +186,7 @@ class TransferDetailsWidget extends StatelessWidget {
             ),
           ),
           Text("Account Number copied to clipboard",
-              style: FBText.fBTextBlackMedium),
+              style: AppText.fBTextBlackMedium),
               Gap(10),
           SizedBox(
             height: 48,

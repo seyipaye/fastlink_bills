@@ -11,54 +11,54 @@ class DataPurchaseStatusScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Colors.white,
-      body: Padding(
-        padding: const EdgeInsets.only(left: 20, right: 20),
-        child: Column(
-          children: [
-            Gap(80),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.end,
-              children: [
-                CustomTextButton(
-                  onTap: () {
-                    //Get.to(() => ());
-                  },
-                  text: 'Done',
-                  color: FBColors.greenColor,
-                ),
-              ],
-            ),
-            Gap(20),
-            Column(
-              children: [
-                Assets.images.greenMark.image(),
-                Gap(20),
-                Text(
-                  'Data Purchase Successful',
-                  style: FBText.fBTextBlackBoldMidMedium16,
-                ),
-                Gap(20),
-                Text(
-                  'N600',
-                  style: FBText.fBTextBlackBigBold24,
-                ),
-                Gap(10),
-                
-                                Gap(30),
-
-                SizedBox(
-                  height: 50 ,
-                    child: FBButton.outline(
-                      color: FBColors.orangeColor,
-                      textColor: FBColors.orangeColor,
-                  title: 'View Reciept',
-                  onTap: () {},
-                ))
-              ],
-            ),
-          ],
+    return SafeArea(
+      child: Scaffold(
+        backgroundColor: Colors.white,
+        body: Padding(
+          padding: const EdgeInsets.only(left: 20, right: 20),
+          child: Column(
+            children: [
+              Gap(80),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: [
+                  CustomTextButton(
+                    onTap: () {
+                      //Get.to(() => ());
+                    },
+                    text: 'Done',
+                    color: FBColors.greenColor,
+                  ),
+                ],
+              ),
+              Gap(20),
+              Column(
+                children: [
+                  Assets.images.greenMark.image(),
+                  Gap(20),
+                  Text(
+                    'Data Purchase Successful',
+                    style: AppText.fBTextBlackBoldMidMedium16,
+                  ),
+                  Gap(20),
+                  Text(
+                    'N600',
+                    style: AppText.fBTextBlackBigBold24,
+                  ),
+                  Gap(10),
+                  Gap(30),
+                  SizedBox(
+                      height: 50,
+                      child: FBButton.outline(
+                        color: FBColors.orangeColor,
+                        textColor: FBColors.orangeColor,
+                        title: 'View Reciept',
+                        onTap: () {},
+                      ))
+                ],
+              ),
+            ],
+          ),
         ),
       ),
     );

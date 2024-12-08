@@ -49,12 +49,12 @@ class CompleteKYCPage extends GetView<BankTransferController> {
             children: [
               Text(
                 'Complete your KYC',
-                style: FBText.fBTextOrangeBig,
+                style: AppText.fBTextOrangeBig,
               ),
               gap20,
               Text(
                 'To ensure a secure and seamless \nexperience, we are required by law to verify your identity before you can fund your wallet by transfer. ',
-                style: FBText.fBTextBlackMedium,
+                style: AppText.fBTextBlackMedium,
               ),
             ],
           ),

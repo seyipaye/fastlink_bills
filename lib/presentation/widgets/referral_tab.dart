@@ -28,12 +28,12 @@ class ReferralTab extends StatelessWidget {
             children: [
               Text(
                 'Earn Big by Referring a Friend!',
-                style: FBText.fBTextBlackBoldMedium,
+                style: AppText.fBTextBlackBoldMedium,
               ),
               Gap(8),
               Text(
                 'Each referral helps you save on your bills - \nbecause every penny counts!',
-                style: FBText.fBTextBlacklittle,
+                style: AppText.fBTextBlacklittle,
               ),
               // RichText(
               //   text: TextSpan(

@@ -75,7 +75,7 @@ class CardDetailsScreen extends GetView<CardDetailsController> {
                 children: [
                   Text(
                     'Save card data for future payments',
-                    style: FBText.fBTextBlackMedium,
+                    style: AppText.fBTextBlackMedium,
                   ),
                 ],
               ),

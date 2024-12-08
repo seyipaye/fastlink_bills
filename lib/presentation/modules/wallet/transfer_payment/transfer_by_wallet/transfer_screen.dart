@@ -25,7 +25,7 @@ class TransferScreen extends GetView<TransferController> {
             children: [
               Text(
                 'Account Details',
-                style: FBText.fBTextOrangeBigMedium,
+                style: AppText.fBTextOrangeBigMedium,
               ),
               verticalSpace(10),
               Text(
@@ -142,7 +142,7 @@ class TransferDetailsWidget extends StatelessWidget {
       children: [
         Text(
           firstText,
-          style: FBText.fbLightBlactText,
+          style: AppText.fbLightBlactText,
         ),
         horizontalSpace(50),
         Expanded(
@@ -150,7 +150,7 @@ class TransferDetailsWidget extends StatelessWidget {
             padding: const EdgeInsets.only(left: 40),
             child: Text(
               secondText,
-              style: FBText.fBTextBlackBoldMidMedium16,
+              style: AppText.fBTextBlackBoldMidMedium16,
             ),
           ),
         ),
@@ -203,7 +203,7 @@ void _showCustomCopyDialog() {
               ),
               Text(
                 "Account Number copied to clipboard",
-                style: FBText.fBTextBlackSmall,
+                style: AppText.fBTextBlackSmall,
               ),
               verticalSpace(10),
               SizedBox(

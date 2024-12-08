@@ -135,12 +135,12 @@ class FundWalletCard extends StatelessWidget {
               children: [
                 Text(
                   'Wallet Balance',
-                  style: FBText.fBTextBlackBoldMedium,
+                  style: AppText.fBTextBlackBoldMedium,
                 ),
                 gap20,
                 VisibilityToggleText(
                   text: '10000',
-                  textStyle: FBText.fBTextBlackBoldMidMedium16,
+                  textStyle: AppText.fBTextBlackBoldMidMedium16,
                 ),
               ],
             ),
@@ -225,7 +225,7 @@ class HeaderText extends StatelessWidget {
   Widget build(BuildContext context) {
     return Text(
       text,
-      style: FBText.fBTextBlackBoldMedium,
+      style: AppText.fBTextBlackBoldMedium,
     );
   }
 }
@@ -279,7 +279,7 @@ class CustomTextButton extends StatelessWidget {
           if (leading != null) leading!,
           Text(
             text,
-            style: FBText.fBTextOrangeSmall.copyWith(
+            style: AppText.fBTextOrangeSmall.copyWith(
               color: color ?? Colors.orange,
             ),
           ),

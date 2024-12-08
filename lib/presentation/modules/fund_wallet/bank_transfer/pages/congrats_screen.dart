@@ -23,7 +23,7 @@ class CongratulationsPage extends GetView<BankTransferController> {
               Gap(40),
               Text(
                 'Congratulations!',
-                style: FBText.fBTextOrangeBig,
+                style: AppText.fBTextOrangeBig,
               ),
               Gap(6),
               Text(
@@ -32,7 +32,7 @@ class CongratulationsPage extends GetView<BankTransferController> {
               Gap(20),
               Text(
                 "You’ve successfully completed your KYC by adding your BVN. Your wallet is now active, and you're ready to start funding it and making transactions with ease!",
-                style: FBText.fBTextBlackBoldMedium,
+                style: AppText.fBTextBlackBoldMedium,
               ),
             ],
           ),

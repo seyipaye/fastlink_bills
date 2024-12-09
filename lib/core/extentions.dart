@@ -110,6 +110,22 @@ extension AddTextstyle on Text {
 
     ;
 
+    // Text(
+    //   this.data ?? '',
+    //   style: TextStyle(
+    //       fontFamily: _getFontFamily(),
+    //       fontSize: fontSize.sp,
+    //       fontWeight: fontWeight,
+    //       color: color,
+    //       letterSpacing: letterSpacing,
+    //       height: kLineHeight(
+    //         lineHeight,
+    //         fontSize: fontSize.sp,
+    //       )
+    //       // fontWeight: (bold == true) ? FontWeight.w600 : FontWeight.w400,
+    //       ),
+    // );
+
     return DefaultTextStyle(
       style: TextStyle(
           fontFamily: _getFontFamily(),

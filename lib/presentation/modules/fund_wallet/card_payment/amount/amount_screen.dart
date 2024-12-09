@@ -38,7 +38,7 @@ class AmmountScreen extends GetView<AmountController> {
             ),
             Gap(60),
             SizedBox(
-              //width: 340,
+              // width: 340,
               height: 50,
               child: FBButton(
                 title: 'Proceed',
@@ -75,7 +75,7 @@ class CardSelectionBottomSheet extends StatelessWidget {
                 },
               ),
             ),
-            Gap(36),
+            gap32,
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [

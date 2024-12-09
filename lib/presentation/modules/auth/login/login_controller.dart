@@ -56,7 +56,6 @@ class LoginController extends GetxController {
           Get.toNamed(Routes.otp, arguments: [email]);
         } else {
           // Error
-
           if (err is String) showError(err.toString(), clear: true);
         }
       }

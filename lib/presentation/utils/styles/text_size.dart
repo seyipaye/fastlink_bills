@@ -21,7 +21,7 @@ class FBText {
       fontSize: 12, color: FBColors.blackColor, fontWeight: FontWeight.w600);
 
   static TextStyle fBTextBlackBoldMiddMedium = TextStyle(
-      fontSize: 14, color: FBColors.blackColor, fontWeight: FontWeight.w500);
+      fontSize: 14, color: FBColors.blackColor, fontFamily: kRaleway500);
 
   static TextStyle fBTextBlackBoldMedium = TextStyle(
       fontSize: 14.sp, color: FBColors.blackColor, fontFamily: kRaleway500);
@@ -39,7 +39,7 @@ class FBText {
       fontSize: 10, color: FBColors.blackColor, fontWeight: FontWeight.w500);
 
   static TextStyle fbLightBlactText = TextStyle(
-      fontSize: 14, color: FBColors.lightBlack, fontWeight: FontWeight.w500);
+      fontSize: 14, color: FBColors.lightBlack, fontFamily: kRaleway500);
 
   static TextStyle fBTextWhiteMidMedium = TextStyle(
       fontSize: 16, color: FBColors.whiteColor, fontWeight: FontWeight.w600);

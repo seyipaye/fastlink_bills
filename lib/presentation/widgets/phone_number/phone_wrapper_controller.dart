@@ -9,23 +9,24 @@ import '../../../domain/repositories/app_repo.dart';
 import '../../../domain/repositories/auth_repo.dart';
 import '../../modules/airtime/buy_airtime/buy_airtime_controller.dart';
 import '../../utils/constants.dart';
+import '../../utils/strings.dart';
 
 enum MobileNetwork {
   mtn(
     displayName: "MTN",
-    imagePath: 'assets/images/mtn_logo.png',
+    imagePath: kMTNLogo,
   ),
   airtel(
     displayName: "Airtel",
-    imagePath: 'assets/images/mtn_logo.png',
+    imagePath: kAirtelLogo,
   ),
   glo(
     displayName: "Glo",
-    imagePath: 'assets/images/mtn_logo.png',
+    imagePath: kGloLogo,
   ),
   nineMobile(
     displayName: "9Mobile",
-    imagePath: 'assets/images/mtn_logo.png',
+    imagePath: kNineMobile,
   );
 
   final String displayName;

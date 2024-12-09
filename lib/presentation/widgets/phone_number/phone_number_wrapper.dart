@@ -166,31 +166,6 @@ class OverlayContainer extends StatelessWidget {
       ),
     );
   }
-
-  ListTile _buildItem({
-    required final MobileNetwork value,
-    required final MobileNetwork groupValue,
-    required final ValueChanged<MobileNetwork> onTap,
-  }) {
-    return ListTile(
-      contentPadding: EdgeInsets.symmetric(horizontal: 28),
-      dense: true,
-      leading: Assets.images.mtnLogo.image(width: 26, height: 26),
-      title: Text(
-        value.displayName,
-        style: TextStyle(
-          fontFamily: kRaleway500,
-        ),
-      ),
-      trailing: CupertinoRadio<MobileNetwork>(
-        activeColor: AppColors.primary,
-        value: value,
-        groupValue: groupValue,
-        onChanged: (_) => onTap(value),
-      ),
-      onTap: () => onTap(value),
-    );
-  }
 }
 
 //A widget for selecting network.

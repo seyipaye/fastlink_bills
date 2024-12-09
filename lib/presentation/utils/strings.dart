@@ -21,7 +21,10 @@ const String kRaleway = 'Raleway400';
 const String kRaleway500 = 'Raleway500';
 const String kRaleway600 = 'Raleway600';
 
-
+const String kMTNLogo = 'assets/images/mtn_logo.png';
+const String kAirtelLogo = 'assets/images/airtel_logo.png';
+const String kGloLogo = 'assets/images/glo_logo.png';
+const String kNineMobile = 'assets/images/nine_mobile_logo.png';
 
 const int kCripsExpiryTime = 1; // In hours
 

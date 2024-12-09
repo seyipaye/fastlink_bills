@@ -1,6 +1,8 @@
 import 'package:fastlink_app/core/extentions.dart';
 import 'package:fastlink_app/presentation/modules/data/profile/profile_controller.dart';
 import 'package:fastlink_app/presentation/modules/data/profile/profile_screen.dart';
+import 'package:fastlink_app/presentation/modules/transaction/transaction_controller.dart';
+import 'package:fastlink_app/presentation/modules/transaction/transaction_screen.dart';
 import 'package:fastlink_app/presentation/utils/colors.dart';
 import 'package:fastlink_app/presentation/utils/constants.dart';
 import 'package:fastlink_app/presentation/utils/styles/color.dart';
@@ -54,6 +56,28 @@ class HomePage extends GetView<HomePageController> {
               gap20,
               QuickLink(),
               gap20,
+              Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Text(
+              'Transactions',
+              style: AppText.fBTextBlackBoldMedium,
+            ),
+            CustomTextButton(
+              onTap: () {
+                Get.put(TransactionController());
+                Get.to(() => TransactionScreen());
+              },
+              text: 'View all',
+              color: FBColors.orangeColor,
+              trailing: Icon(
+                Icons.arrow_forward_ios,
+                color: FBColors.orangeColor,
+                size: 10,
+              ),
+            ),
+          ],
+        ),
               TransactionTab(),
               gap24,
               ReferralTab(),

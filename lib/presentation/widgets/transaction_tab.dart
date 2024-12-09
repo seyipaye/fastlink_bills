@@ -1,5 +1,6 @@
 import 'package:fastlink_app/presentation/modules/home/home_page.dart';
 import 'package:fastlink_app/presentation/modules/transaction/transaction_controller.dart';
+import 'package:fastlink_app/presentation/modules/transaction/transaction_details/transaction_details_screen.dart';
 import 'package:fastlink_app/presentation/modules/transaction/transaction_screen.dart';
 import 'package:fastlink_app/presentation/utils/styles/color.dart';
 import 'package:fastlink_app/presentation/utils/styles/text_size.dart';
@@ -20,14 +21,19 @@ class TransactionTab extends StatelessWidget {
         'date': 'Sep 5th, 18:25',
         'amount': '-200',
         'image': Assets.images.phone.image(width: 80, height: 40),
-        'onTap': () {},
+        'onTap': () {
+          Get.to(() => TransactionDetailsScreen());
+        },
       },
       {
         'title': 'Data Purchase',
         'date': 'Sep 6th, 14:15',
         'amount': '-1000',
         'image': Assets.images.phone.image(width: 80, height: 40),
-        'onTap': () {},
+        'onTap': () {
+                    Get.to(() => TransactionDetailsScreen());
+
+        },
       },
       {
         'title': 'Fund Wallet',
@@ -41,28 +47,7 @@ class TransactionTab extends StatelessWidget {
     return Column(
       mainAxisSize: MainAxisSize.min,
       children: [
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Text(
-              'Transactions',
-              style: AppText.fBTextBlackBoldMedium,
-            ),
-            CustomTextButton(
-              onTap: () {
-                Get.put(TransactionController());
-                Get.to(() => TransactionScreen());
-              },
-              text: 'View all',
-              color: FBColors.orangeColor,
-              trailing: Icon(
-                Icons.arrow_forward_ios,
-                color: FBColors.orangeColor,
-                size: 10,
-              ),
-            ),
-          ],
-        ),
+        
         verticalSpace(30),
         TransactionList(transactions: transactions),
       ],

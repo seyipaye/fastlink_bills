@@ -410,7 +410,7 @@ void _paymentBottomSheet(BuildContext context) {
                       height: 50,
                       child: FBButton(
                         title: 'Confirm Payment',
-                        onTap: () => Navigator.pop(context),
+                        onTap: () => Get.to(() => DataPurchaseStatusScreen()),
                         color: FBColors.orangeColor,
                         textColor: FBColors.whiteColor,
                       ),

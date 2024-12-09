@@ -18,13 +18,13 @@ class DataPurchaseStatusScreen extends StatelessWidget {
           padding: const EdgeInsets.only(left: 20, right: 20),
           child: Column(
             children: [
-              Gap(80),
+              Gap(20),
               Row(
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [
                   CustomTextButton(
                     onTap: () {
-                      //Get.to(() => ());
+                      Navigator.of(context).pop();
                     },
                     text: 'Done',
                     color: FBColors.greenColor,
@@ -46,6 +46,7 @@ class DataPurchaseStatusScreen extends StatelessWidget {
                     style: AppText.fBTextBlackBigBold24,
                   ),
                   Gap(10),
+                  
                   Gap(30),
                   SizedBox(
                       height: 50,

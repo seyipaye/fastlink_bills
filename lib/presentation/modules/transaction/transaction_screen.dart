@@ -4,6 +4,7 @@ import 'package:fastlink_app/presentation/utils/styles/text_size.dart';
 import 'package:fastlink_app/presentation/widgets/spacer.dart';
 import 'package:fastlink_app/presentation/widgets/transaction_tab.dart';
 import 'package:flutter/material.dart';
+import 'package:gap/gap.dart';
 import 'package:get/get.dart';
 
 class TransactionScreen extends GetView<TransactionController> {
@@ -22,11 +23,9 @@ class TransactionScreen extends GetView<TransactionController> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               MonthandIcon(nameOfMonth: 'Sep'),
-              verticalSpace(30),
-              //TransactionsData()
-              TransactionList(
-                transactions: [],
-              ),
+              Gap(30),
+              TransactionTab(),
+             
             ],
           ),
         ),

@@ -4,7 +4,6 @@ import 'package:fastlink_app/presentation/utils/strings.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:gap/gap.dart';
 import 'package:get/get.dart';
 import '../../../../resources/assets.gen.dart';
 import '../../../utils/colors.dart';
@@ -122,7 +121,7 @@ class ConfirmationBottomSheet extends StatelessWidget {
               child: Column(
                 children: [
                   Align(
-                    alignment: Alignment.centerRight,
+                    alignment: Alignment.centerLeft,
                     child: AppIconButton2(
                       width: 25,
                       icon: Icon(Icons.close),
@@ -133,26 +132,7 @@ class ConfirmationBottomSheet extends StatelessWidget {
                   ),
                   gap20,
                   Center(
-                    child: RichText(
-                      textAlign: TextAlign.center,
-                      text: TextSpan(
-                        text: '₦',
-                        style: TextStyle(
-                          fontSize: 20,
-                          color: AppColors.text,
-                          fontFamily: kRaleway500,
-                        ),
-                        children: [
-                          TextSpan(
-                            text: '600.00',
-                            style: TextStyle(
-                              fontSize: 36,
-                              color: AppColors.text,
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
+                    child: MoneyText('600.00'),
                   ),
                   gap20,
                   DetailListTile(
@@ -178,7 +158,7 @@ class ConfirmationBottomSheet extends StatelessWidget {
                   gap16,
                   DetailListTile(
                     firstText: 'Use points earned ',
-                    secondText: '-₦ 50',
+                    secondText: '-₦ 50.00',
                     usePoints: true,
                     onSwitchChanged: (value) {},
                   ),
@@ -277,6 +257,41 @@ class ConfirmationBottomSheet extends StatelessWidget {
   }
 }
 
+class MoneyText extends StatelessWidget {
+  const MoneyText(
+    this.text, {
+    super.key,
+    this.fontSize = 36,
+  });
+
+  final String text;
+  final double fontSize;
+
+  @override
+  Widget build(BuildContext context) {
+    return RichText(
+      textAlign: TextAlign.center,
+      text: TextSpan(
+        text: '₦',
+        style: TextStyle(
+          fontSize: 20,
+          color: AppColors.text,
+          fontFamily: kRaleway500,
+        ),
+        children: [
+          TextSpan(
+            text: text,
+            style: TextStyle(
+              fontSize: fontSize,
+              color: AppColors.text,
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
 class DetailListTile extends StatelessWidget {
   final String firstText;
   final String secondText;
@@ -321,7 +336,7 @@ class DetailListTile extends StatelessWidget {
           SizedBox(
             width: 32,
             child: Transform.scale(
-              scale: 0.6,
+              scale: 0.5,
               child: CupertinoSwitch(
                 value: usePoints ?? false,
                 onChanged: onSwitchChanged,

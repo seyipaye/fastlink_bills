@@ -122,7 +122,8 @@ class NetworkOverlay extends GetWidget<PhoneWrapperController> {
     return ListTile(
       contentPadding: EdgeInsets.symmetric(horizontal: 28),
       dense: true,
-      leading: Assets.images.mtnLogo.image(width: 26, height: 26),
+      leading: Image.asset(value.imagePath, width: 26, height: 26),
+      // Assets.images.mtnLogo.image(width: 26, height: 26),
       title: Text(
         value.displayName,
         style: TextStyle(

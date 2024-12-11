@@ -114,8 +114,8 @@ class LoginScreen extends GetView<LoginController> {
                           onPressed: () {
                             // Instantiate the HomePageController before navigating
                             //
-                            Get.put(HomePageController());
-                            Get.to(() => HomePage());
+
+                            Get.toNamed(Routes.home);
                           }
                           //controller.onLoginPressed,
                           ),

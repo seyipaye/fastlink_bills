@@ -9,7 +9,7 @@ class FBText {
       fontSize: 32, color: FBColors.blackColor, fontWeight: FontWeight.w500);
 
   static TextStyle fBTextBlackBigBold24 = TextStyle(
-      fontSize: 24, color: FBColors.blackColor, fontWeight: FontWeight.w500);
+      fontSize: 24, color: FBColors.blackColor, fontFamily: kRaleway500);
 
   static TextStyle fBTextBlackBold = TextStyle(
       fontSize: 20, color: FBColors.blackColor, fontWeight: FontWeight.w500);

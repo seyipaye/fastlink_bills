@@ -1,5 +1,9 @@
+import 'package:fastlink_app/presentation/modules/auth/transaction_pin/change_pin/change_pin_otp_controller.dart';
 import 'package:fastlink_app/presentation/utils/colors.dart';
+import 'package:fastlink_app/presentation/utils/constants.dart';
 import 'package:fastlink_app/presentation/utils/styles/text_size.dart';
+import 'package:fastlink_app/presentation/utils/values.dart';
+import 'package:fastlink_app/presentation/widgets/column_pro.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -8,13 +12,9 @@ import 'package:gap/gap.dart';
 import 'package:get/get.dart';
 import 'package:pinput/pinput.dart';
 
-import '../../../utils/constants.dart';
-import '../../../utils/values.dart';
-import '../../../widgets/column_pro.dart';
-import '../otp/otp_controller.dart';
 
-class ResetPasswordOtpScreen extends GetView<OtpController> {
-  const ResetPasswordOtpScreen({Key? key}) : super(key: key);
+class ChangePinOtpScreen extends GetView<ChangePinOtpController> {
+  const ChangePinOtpScreen({Key? key}) : super(key: key);
 
   final bool isLoading = true;
 

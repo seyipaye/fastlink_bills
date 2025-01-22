@@ -1,13 +1,15 @@
+import 'package:fastlink_app/core/app_routes.dart';
 import 'package:fastlink_app/core/extentions.dart';
 import 'package:fastlink_app/data/user/user.dart';
+import 'package:fastlink_app/domain/repositories/auth_repo.dart';
 import 'package:fastlink_app/presentation/modules/auth/password/password_changed_screen.dart';
+import 'package:fastlink_app/presentation/modules/auth/transaction_pin/pin_changed_screen.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import '../../../../core/app_routes.dart';
-import '../../../../domain/repositories/auth_repo.dart';
+
 import 'package:get/get.dart';
 
-class PasswordController extends GetxController {
+class NewPinController extends GetxController {
   final resetFormKey = GlobalKey<FormState>();
   final changeFormKey = GlobalKey<FormState>();
   final newFormKey = GlobalKey<FormState>();
@@ -37,7 +39,7 @@ class PasswordController extends GetxController {
   }
   
     void moveToNextScreen() {
-      Get.to(() => PasswordChangedScreen());
+      Get.to(() => PinChangedScreen());
     }
 
 

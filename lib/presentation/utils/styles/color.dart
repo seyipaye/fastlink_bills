@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 class FBColors {
   static const Color blackColor = Color(0xFF1A1A1A);
+  static const Color lightBlackColor = Color(0xFF404040);
 
   static const Color whiteColor = Color(0xFFFFFFFF);
   static const Color orangeColor = Color(0xFFE0371D);
@@ -9,6 +10,7 @@ class FBColors {
   static const Color lightBlack = Color(0xFF505050);
   static const Color greyColor = Color(0xFFF505050);
   static const Color greenColor = Color(0xFFF30BB7A);
+  static const Color lightGrey = Color(0xFF737373);
 
   // static const Color greenText =  Color(0xFF00D187);
   // static const Color lightBlack = Color(0xFF666666);

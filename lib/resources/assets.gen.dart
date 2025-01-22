@@ -98,6 +98,10 @@ class $AssetsImagesGen {
   AssetGenImage get cellphoneSound =>
       const AssetGenImage('assets/images/cellphone_sound.png');
 
+  /// File path: assets/images/check_status.png
+  AssetGenImage get checkStatus =>
+      const AssetGenImage('assets/images/check_status.png');
+
   /// File path: assets/images/fast_link_logo.png
   AssetGenImage get fastLinkLogo =>
       const AssetGenImage('assets/images/fast_link_logo.png');
@@ -117,6 +121,15 @@ class $AssetsImagesGen {
   AssetGenImage get highSpeed =>
       const AssetGenImage('assets/images/high_speed.png');
 
+  /// File path: assets/images/link.png
+  AssetGenImage get link => const AssetGenImage('assets/images/link.png');
+
+  /// File path: assets/images/list.png
+  AssetGenImage get list => const AssetGenImage('assets/images/list.png');
+
+  /// File path: assets/images/login.png
+  AssetGenImage get login => const AssetGenImage('assets/images/login.png');
+
   /// File path: assets/images/mtn_logo.png
   AssetGenImage get mtnLogo =>
       const AssetGenImage('assets/images/mtn_logo.png');
@@ -134,6 +147,18 @@ class $AssetsImagesGen {
 
   /// File path: assets/images/plus.png
   AssetGenImage get plus => const AssetGenImage('assets/images/plus.png');
+
+  /// File path: assets/images/profile_card.png
+  AssetGenImage get profileCard =>
+      const AssetGenImage('assets/images/profile_card.png');
+
+  /// File path: assets/images/profile_password.png
+  AssetGenImage get profilePassword =>
+      const AssetGenImage('assets/images/profile_password.png');
+
+  /// File path: assets/images/profilee.png
+  AssetGenImage get profilee =>
+      const AssetGenImage('assets/images/profilee.png');
 
   /// File path: assets/images/super_speed.png
   AssetGenImage get superSpeed =>
@@ -159,16 +184,23 @@ class $AssetsImagesGen {
         cardPng,
         cardSvg,
         cellphoneSound,
+        checkStatus,
         fastLinkLogo,
         fastLinkLogoCompact,
         greenMark,
         hands,
         highSpeed,
+        link,
+        list,
+        login,
         mtnLogo,
         notificationB,
         password,
         phone,
         plus,
+        profileCard,
+        profilePassword,
+        profilee,
         superSpeed,
         wallet,
         walletImage,

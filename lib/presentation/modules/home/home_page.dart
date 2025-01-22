@@ -101,6 +101,7 @@ class AvatarAndGreeting extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
+            
             Container(
               width: 30,
               height: 30,
@@ -127,6 +128,7 @@ class AvatarAndGreeting extends StatelessWidget {
                 ),
               ),
             ),
+            
             gap8,
             Text('Hi, Rachael').applyStyle(fontSize: 20),
           ],

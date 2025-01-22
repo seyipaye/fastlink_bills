@@ -1,4 +1,5 @@
 import 'package:fastlink_app/presentation/modules/auth/change_password/change_password_controller.dart';
+import 'package:fastlink_app/presentation/modules/auth/transaction_pin/change_pin/change_pin_controller.dart';
 import 'package:fastlink_app/presentation/utils/colors.dart';
 import 'package:fastlink_app/presentation/utils/styles/text_size.dart';
 import 'package:fastlink_app/presentation/utils/validators.dart';
@@ -11,11 +12,11 @@ import 'package:gap/gap.dart';
 import 'package:get/get.dart';
 import 'package:fastlink_app/presentation/modules/auth/login/login_controller.dart';
 
-import '../../../widgets/column_pro.dart';
+import '../../../../widgets/column_pro.dart';
 //import 'login_controller.dart';
 
-class ChangePasswordScreen extends GetView<ChangePasswordController> {
-  const ChangePasswordScreen({super.key});
+class ChangePinScreen extends GetView<ChangePinController> {
+  const ChangePinScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -23,7 +24,7 @@ class ChangePasswordScreen extends GetView<ChangePasswordController> {
     return Scaffold(
       backgroundColor: AppColors.whiteColor,
       appBar: AppBar(
-        title: Text("Change Password"),
+        title: Text("Change Payment PIN "),
       ),
       body: SafeArea(
         child: Form(
@@ -39,9 +40,9 @@ class ChangePasswordScreen extends GetView<ChangePasswordController> {
                   
                   Obx(
                     () => AppTextFormField(
-                      label: 'Current Password',
+                      label: 'Current PIN',
                       autofillHints: [AutofillHints.password],
-                      hintText: 'Enter password',
+                      hintText: 'Enter PIN',
                       obscureText: controller.hidePassword.value,
                       validator: Validator.isPassword,
                       onSaved: (val) =>
@@ -58,7 +59,7 @@ class ChangePasswordScreen extends GetView<ChangePasswordController> {
                    Center(
                       child: RichText(
                         text: TextSpan(
-                          text: "Forgot password?",
+                          text: "Forgot pin?",
                           style: AppText.fBTextBlackSmall,
                           children: [
                             TextSpan(

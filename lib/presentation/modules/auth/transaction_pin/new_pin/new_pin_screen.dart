@@ -1,21 +1,23 @@
 import 'package:fastlink_app/presentation/modules/auth/password/password_controller.dart';
+import 'package:fastlink_app/presentation/modules/auth/transaction_pin/new_pin/new_pin_controller.dart';
+import 'package:fastlink_app/presentation/utils/constants.dart';
+import 'package:fastlink_app/presentation/utils/validators.dart';
+import 'package:fastlink_app/presentation/utils/values.dart';
+import 'package:fastlink_app/presentation/widgets/app_text_form_field.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gap/gap.dart';
-import '../../../utils/constants.dart';
-import '../../../utils/validators.dart';
-import '../../../utils/values.dart';
-import '../../../widgets/app_text_form_field.dart';
+
 import 'package:get/get.dart';
 
-class SetNewPasswordScreen extends GetView<PasswordController> {
-  const SetNewPasswordScreen({Key? key}) : super(key: key);
+class SetNewPinScreen extends GetView<NewPinController> {
+  const SetNewPinScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Change Password'),
+        title: Text('Change Payment PIN'),
       ),
       backgroundColor: Colors.white,
       body: SingleChildScrollView(
@@ -29,9 +31,9 @@ class SetNewPasswordScreen extends GetView<PasswordController> {
                 
                 spacer(),
                 Obx(() => AppTextFormField(
-                      label: 'New Password',
+                      label: 'New PIN',
                       obscureText: controller.hidePassword.value,
-                      hintText: 'Enter password',
+                      hintText: 'Enter Pin',
                       validator: Validator.isPassword,
                       onSaved: (val) => controller.newPassword = val!.trim(),
                       suffixIcon: IconButton(
@@ -43,10 +45,10 @@ class SetNewPasswordScreen extends GetView<PasswordController> {
                     )),
                 spacer(),
                 Obx(() => AppTextFormField(
-                      label: 'Confirm New Password ',
+                      label: 'Confirm New PIN ',
                       obscureText: controller.hidePassword.value,
                       validator: Validator.isPassword,
-                      hintText: 'Enter password',
+                      hintText: 'Enter Pin',
                       onSaved: (val) =>
                           controller.confirmNewPassword = val!.trim(),
                       suffixIcon: IconButton(
@@ -58,7 +60,7 @@ class SetNewPasswordScreen extends GetView<PasswordController> {
                     )),
                 Gap(200.h),
                 ElevatedButton(
-                  child: Text('Change Password'),
+                  child: Text('Change Payment PIN'),
                   onPressed:  controller.moveToNextScreen,
                   
                   // controller.setPasswordPressed,

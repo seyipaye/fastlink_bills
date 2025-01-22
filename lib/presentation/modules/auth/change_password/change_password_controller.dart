@@ -1,3 +1,5 @@
+import 'package:fastlink_app/presentation/modules/auth/otp/otp_controller.dart';
+import 'package:fastlink_app/presentation/modules/auth/password/reset_password_otp_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:fastlink_app/core/extentions.dart';
@@ -14,6 +16,12 @@ class ChangePasswordController extends GetxController {
   String old_password = '';
   String new_password = '';
   String new_password_confirm = '';
+
+  void moveToNextScreen() {
+    Get.put(OtpController());
+
+    Get.to(() => ResetPasswordOtpScreen());
+  }
 
   void onSubmitPressed() async {
     FocusManager.instance.primaryFocus?.unfocus();

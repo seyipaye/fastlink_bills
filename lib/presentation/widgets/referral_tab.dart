@@ -1,3 +1,5 @@
+import 'package:fastlink_app/presentation/refer_and_earn/refer_and%20earn_controller.dart';
+import 'package:fastlink_app/presentation/refer_and_earn/refer_and_earn_screen.dart';
 import 'package:fastlink_app/presentation/utils/colors.dart';
 import 'package:fastlink_app/presentation/utils/constants.dart';
 import 'package:fastlink_app/presentation/utils/styles/color.dart';
@@ -6,6 +8,7 @@ import 'package:fastlink_app/presentation/utils/styles/text_size.dart';
 import 'package:fastlink_app/resources/assets.gen.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
+import 'package:get/get.dart';
 
 class ReferralTab extends StatelessWidget {
   const ReferralTab({super.key});
@@ -65,6 +68,11 @@ class ReferralTab extends StatelessWidget {
                   textColor: FBColors.whiteColor,
                   fontSize: 12,
                   fontWeight: FontWeight.w500,
+                  onTap: () {
+                    Get.put(ReferAndEarnController());
+
+                    Get.to(() => ReferAndEarnScreen());
+                  },
                 ),
               )
             ],

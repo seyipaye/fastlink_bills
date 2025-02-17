@@ -12,7 +12,7 @@ import 'domain/repositories/app_repo.dart';
 import 'domain/repositories/auth_repo.dart';
 import 'presentation/utils/theme.dart';
 
-var initialRoute = Routes.login;
+var initialRoute = Routes.splash;
 final appDebugMode = false.obs;
 
 Future _initializeUser() async {
@@ -21,7 +21,7 @@ Future _initializeUser() async {
   // Check if there is a User
   final user = AppSharedPrefs.instance.user;
   if (user != null) {
-    initialRoute = Routes.home;
+    //initialRoute = Routes.home;
   }
 }
 

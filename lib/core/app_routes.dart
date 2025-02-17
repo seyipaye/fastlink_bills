@@ -19,7 +19,9 @@ import 'package:fastlink_app/presentation/modules/auth/password/password_control
 import 'package:fastlink_app/presentation/modules/auth/change_password/change_password.dart';
 import 'package:fastlink_app/presentation/modules/data/purchase_plan/purchase_plan_controller.dart';
 import 'package:fastlink_app/presentation/modules/data/purchase_plan/purchase_plan_screen.dart';
+import 'package:fastlink_app/presentation/modules/onboarding_correct/onboarding_screen.dart';
 import 'package:fastlink_app/presentation/modules/profile/profile_screen.dart';
+import 'package:fastlink_app/presentation/modules/splash_screen.dart';
 import 'package:fastlink_app/presentation/modules/transaction/transaction_controller.dart';
 import 'package:fastlink_app/presentation/modules/transaction/transaction_screen.dart';
 import 'package:fastlink_app/presentation/modules/fund_wallet/card_payment/card_details/card_details_screen.dart';
@@ -38,6 +40,8 @@ import 'package:fastlink_app/presentation/modules/fund_wallet/bank_transfer/bank
 import 'package:fastlink_app/presentation/modules/fund_wallet/bank_transfer/bank_transfer_screen.dart';
 import 'package:fastlink_app/presentation/modules/fund_wallet/bank_transfer/account_display/transfer_controller.dart';
 import 'package:fastlink_app/presentation/modules/fund_wallet/bank_transfer/account_display/transfer_screen.dart';
+import 'package:fastlink_app/presentation/refer_and_earn/refer_and%20earn_controller.dart';
+import 'package:fastlink_app/presentation/refer_and_earn/refer_and_earn_screen.dart';
 import 'package:get/get.dart';
 
 import '../domain/repositories/app_repo.dart';
@@ -57,7 +61,7 @@ import '../presentation/modules/data/data_plans/data_plan_screen.dart';
 import '../presentation/modules/home/account/account_controller.dart';
 import '../presentation/modules/home/home_controller.dart';
 import '../presentation/modules/home/home_screen.dart';
-import '../presentation/modules/onboarding/onboarding_screen.dart';
+import '../presentation/modules/onboarding_wrong/onboarding_screen.dart';
 
 class Routes {
   // Auth
@@ -167,6 +171,10 @@ class Routes {
   static const newPinOtpScreen = '/new-pin-otp-screen';
 
 
+  ////////////////////Referral&Earnings//////////////////////
+  static const referralEarnings = '/referral-earnings';
+
+
 }
 
 // class AuthMiddleware extends GetMiddleware {
@@ -182,8 +190,12 @@ class AppPages {
 
   static final routes = [
     GetPage(
+      name: Routes.splash,
+      page: () => SplashScreen(),
+    ),
+    GetPage(
       name: Routes.onboarding,
-      page: () => OnBoardingScreen(),
+      page: () => OnboardingScreen(),
     ),
     GetPage(
       name: Routes.buyAirtime,
@@ -472,6 +484,13 @@ class AppPages {
         Get.put(NewPinController());
       }),
     ),
-
+///////////referral&Earnings-Screen////////////////
+    GetPage(
+      name: Routes.referralEarnings,
+      page: () => ReferAndEarnScreen(),
+      binding: BindingsBuilder(() {
+        Get.put(ReferAndEarnController());
+      }),
+    ),
   ];
 }

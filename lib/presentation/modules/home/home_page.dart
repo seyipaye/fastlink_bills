@@ -3,6 +3,8 @@ import 'package:fastlink_app/presentation/modules/data/profile/profile_controlle
 import 'package:fastlink_app/presentation/modules/data/profile/profile_screen.dart';
 import 'package:fastlink_app/presentation/modules/transaction/transaction_controller.dart';
 import 'package:fastlink_app/presentation/modules/transaction/transaction_screen.dart';
+import 'package:fastlink_app/presentation/refer_and_earn/refer_and%20earn_controller.dart';
+import 'package:fastlink_app/presentation/refer_and_earn/refer_and_earn_screen.dart';
 import 'package:fastlink_app/presentation/utils/colors.dart';
 import 'package:fastlink_app/presentation/utils/constants.dart';
 import 'package:fastlink_app/presentation/utils/styles/color.dart';
@@ -57,29 +59,31 @@ class HomePage extends GetView<HomePageController> {
               QuickLink(),
               gap20,
               Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Text(
-              'Transactions',
-              style: AppText.fBTextBlackBoldMedium,
-            ),
-            CustomTextButton(
-              onTap: () {
-                Get.put(TransactionController());
-                Get.to(() => TransactionScreen());
-              },
-              text: 'View all',
-              color: FBColors.orangeColor,
-              trailing: Icon(
-                Icons.arrow_forward_ios,
-                color: FBColors.orangeColor,
-                size: 10,
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    'Transactions',
+                    style: AppText.fBTextBlackBoldMedium,
+                  ),
+                  CustomTextButton(
+                    onTap: () {
+                      Get.put(TransactionController());
+                      Get.to(() => TransactionScreen());
+                    },
+                    text: 'View all',
+                    color: FBColors.orangeColor,
+                    trailing: Icon(
+                      Icons.arrow_forward_ios,
+                      color: FBColors.orangeColor,
+                      size: 10,
+                    ),
+                  ),
+                ],
               ),
-            ),
-          ],
-        ),
               TransactionTab(),
               gap24,
+              /////////////////////////Refer and earn/////////////
+
               ReferralTab(),
             ],
           ),
@@ -101,7 +105,6 @@ class AvatarAndGreeting extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            
             Container(
               width: 30,
               height: 30,
@@ -128,7 +131,6 @@ class AvatarAndGreeting extends StatelessWidget {
                 ),
               ),
             ),
-            
             gap8,
             Text('Hi, Rachael').applyStyle(fontSize: 20),
           ],
@@ -227,10 +229,16 @@ class QuickLink extends StatelessWidget {
               text: 'Fastlink Wifi',
               onPressed: () {},
             ),
+
+            /////////////////////////Refer and earn/////////////
             buildActionButton(
               image: Assets.icons.announce.svg(),
               text: 'Refer and Earn',
-              onPressed: () {},
+              onPressed: () {
+                                  Get.put(ReferAndEarnController());
+
+                Get.to(() => ReferAndEarnScreen());
+              },
             ),
           ],
         )

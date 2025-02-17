@@ -74,6 +74,9 @@ class $AssetsImagesGen {
   /// File path: assets/images/404.png
   AssetGenImage get a404 => const AssetGenImage('assets/images/404.png');
 
+  /// File path: assets/images/Stuck.png
+  AssetGenImage get stuck => const AssetGenImage('assets/images/Stuck.png');
+
   /// File path: assets/images/android_prompt.svg
   SvgGenImage get androidPrompt =>
       const SvgGenImage('assets/images/android_prompt.svg');
@@ -110,6 +113,10 @@ class $AssetsImagesGen {
   AssetGenImage get fastLinkLogoCompact =>
       const AssetGenImage('assets/images/fast_link_logo_compact.png');
 
+  /// File path: assets/images/fast_links_logo.png
+  AssetGenImage get fastLinksLogo =>
+      const AssetGenImage('assets/images/fast_links_logo.png');
+
   /// File path: assets/images/green_mark.png
   AssetGenImage get greenMark =>
       const AssetGenImage('assets/images/green_mark.png');
@@ -130,6 +137,10 @@ class $AssetsImagesGen {
   /// File path: assets/images/login.png
   AssetGenImage get login => const AssetGenImage('assets/images/login.png');
 
+  /// File path: assets/images/mega_phone.png
+  AssetGenImage get megaPhone =>
+      const AssetGenImage('assets/images/mega_phone.png');
+
   /// File path: assets/images/mtn_logo.png
   AssetGenImage get mtnLogo =>
       const AssetGenImage('assets/images/mtn_logo.png');
@@ -137,6 +148,18 @@ class $AssetsImagesGen {
   /// File path: assets/images/notificationB.svg
   SvgGenImage get notificationB =>
       const SvgGenImage('assets/images/notificationB.svg');
+
+  /// File path: assets/images/onboard_1.png
+  AssetGenImage get onboard1 =>
+      const AssetGenImage('assets/images/onboard_1.png');
+
+  /// File path: assets/images/onboard_2.png
+  AssetGenImage get onboard2 =>
+      const AssetGenImage('assets/images/onboard_2.png');
+
+  /// File path: assets/images/onboard_3.png
+  AssetGenImage get onboard3 =>
+      const AssetGenImage('assets/images/onboard_3.png');
 
   /// File path: assets/images/password.png
   AssetGenImage get password =>
@@ -160,6 +183,10 @@ class $AssetsImagesGen {
   AssetGenImage get profilee =>
       const AssetGenImage('assets/images/profilee.png');
 
+  /// File path: assets/images/stuck_at_home.png
+  AssetGenImage get stuckAtHome =>
+      const AssetGenImage('assets/images/stuck_at_home.png');
+
   /// File path: assets/images/super_speed.png
   AssetGenImage get superSpeed =>
       const AssetGenImage('assets/images/super_speed.png');
@@ -177,6 +204,7 @@ class $AssetsImagesGen {
   /// List of all assets
   List<dynamic> get values => [
         a404,
+        stuck,
         androidPrompt,
         announcenmt,
         bankPng,
@@ -187,20 +215,26 @@ class $AssetsImagesGen {
         checkStatus,
         fastLinkLogo,
         fastLinkLogoCompact,
+        fastLinksLogo,
         greenMark,
         hands,
         highSpeed,
         link,
         list,
         login,
+        megaPhone,
         mtnLogo,
         notificationB,
+        onboard1,
+        onboard2,
+        onboard3,
         password,
         phone,
         plus,
         profileCard,
         profilePassword,
         profilee,
+        stuckAtHome,
         superSpeed,
         wallet,
         walletImage,

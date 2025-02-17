@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 
 class AppColors {
+  
+  static const Color referralColor = Color(0xFFFDEFEF);
+
   static const Color scrim = Colors.black26;
 
   static const Color blue = Color(0xFF003D5B);

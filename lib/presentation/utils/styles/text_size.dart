@@ -9,6 +9,10 @@ class AppText {
   static TextStyle fBTextBlackBigBold24 = TextStyle(
       fontSize: 24, color: FBColors.blackColor, fontWeight: FontWeight.w500, fontFamily: 'Raleway-Regular');
 
+static TextStyle fBTextBlackBigBoldS24W600 = TextStyle(
+      fontSize: 24, color: FBColors.blackColor, fontWeight: FontWeight.w600, fontFamily: 'Raleway-Regular');
+
+
   static TextStyle fBTextBlackBold = TextStyle(
       fontSize: 20, color: FBColors.blackColor, fontWeight: FontWeight.w500, fontFamily: 'Raleway-Regular');
 
